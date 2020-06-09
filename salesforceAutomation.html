@@ -1,0 +1,1104 @@
+<DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Salesforce Automation Tools</title>
+		<!-- JQuery themes: http://keith-wood.name/themes.html -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/flick/jquery-ui.css">
+		<script data-require="jquery@3.5.1" data-semver="3.5.1" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script data-require="jquery-ui@1.12.1" data-semver="1.12.1" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<link rel="stylesheet" href="style.css" />
+		<script src="script.js"></script>
+	</head>
+	<style type="text/css">
+		body {
+			font-size: 1em;
+			font-family: Helvetica, Arial, sans-serif;
+		}
+
+		a {
+			color: #032E61;
+		}
+
+		a.textLink {
+			color: #000;
+			text-decoration: none;
+		}
+
+		li.no {
+			list-style: none;
+			margin-left: -1.25em;
+			padding: 0px;
+		}
+
+		li.no:before {
+			content: "\274C";
+			font-size: 0.6em;
+			padding-right: .45em;
+		}
+
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.columnLeft {
+			flex: 0;
+			width: 10%;
+		}
+
+		.columnRight {
+			flex: 1;
+			width: 90%;
+			padding-left: 1em;
+		}
+
+		/* Begin JQuery */
+		.ui-state-highlight,
+		.ui-state-error {
+			font-size: 0.8em !important;
+		}
+
+		.ui-state-highlight {
+			background: rgb(219, 219, 219) !important;
+		}
+
+		.ui-state-error {
+			background: #fef1ec !important;
+		}
+
+		.ui-corner-all {
+			border-radius: 4px;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+		}
+
+		.ui-widget-header {
+			background: rgb(248, 246, 246) !important;
+		}
+
+		.ui-state-hover {
+			background: #032E61 !important;
+		}
+
+		.ui-state-focus {
+			border: 1px solid #032E61 !important;
+		}
+
+		.ui-state-active a {
+			color: #032E61 !important;
+		}
+
+		.ui-state-active a:hover {
+			color: #FFF !important;
+		}
+
+		.fix {
+			background: none !important;
+		}
+	</style>
+	<script type="text/javascript">
+		// Code goes here
+		$(document).ready(function () {
+			jQuery(".tabs").tabs();
+			jQuery(".subtabs").tabs();
+			jQuery(".subsubtabs").tabs();
+
+			openParentTab();
+		});
+		function openParentTab() {
+			locationHash = location.hash.substring(1);
+			console.log(locationHash);
+			// Check if we have an location Hash
+			if (locationHash) {
+				// Check if the location hash exsist.
+				var hash = jQuery('#' + locationHash);
+				if (hash.length) {
+					// Check of the location Hash is inside a tab.
+					if (hash.closest(".tabContent").length) {
+						// Grab the index number of the parent tab so we can activate it
+						var tabNumber = hash.closest(".tabContent").index();
+						jQuery(".tabs.fix").tabs({ active: tabNumber });
+						// Not need but this puts the focus on the selected hash
+						hash.get(0).scrollIntoView();
+						setTimeout(function () {
+							hash.get(0).scrollIntoView();
+						}, 1000);
+					}
+				}
+			}
+		}
+	</script>
+
+	<body>
+		<h1>Salesforce Automation</h1>
+
+		<span>Salesforce offers different tools for automating business processes. The differ in features, complexity and required skills. The decision which automation tool to use depends on multipe factors. The overview below helps you decide which tool is bet for your use case.</span>
+
+		<br /><br /><br />
+		Note: Approval Processes and Entitlement Processes are not evaluated as they satisfy very specific use cases. L(W)Cs are not evaluated as they are dependent on other tools to be triggered.
+		<br />
+		TODO: Comparison table (similar to the one on help.sf.com - but with clickable links that directly open the respective tab)
+		<br />
+		Note: If tabs are not displayed properly, verify that all Ids do NOT have any space! e.g. id="Process Builder" is WRONG
+
+		<div class="tabs fix">
+			<ul>
+				<li>
+					<a href="#General">General</a>
+				</li>
+				<li>
+					<a href="#Best-Practices">Best Practices</a>
+				</li>
+				<li>
+					<a href="#Functionality">Functionality</a>
+				</li>
+				<li>
+					<a href="#Maintenance">Maintenance</a>
+				</li>
+				<li>
+					<a href="#Debugging">Debugging</a>
+				</li>
+				<li>
+					<a href="#Security">Security</a>
+				</li>
+				<li>
+					<a href="#Testing">Testing</a>
+				</li>
+				<li>
+					<a href="#Deployment">Deployment</a>
+				</li>
+				<li>
+					<a href="#Scalability">Scalability</a>
+				</li>
+				<li>
+					<a href="#Availability">Availability</a>
+				</li>
+				<li>
+					<a href="#Skills-Audience">Skills & Audience</a>
+				</li>
+				<li>
+					<a href="#Future-Proofness">Future-Proofness</a>
+				</li>
+				<li>
+					<a href="#Limits">Limits</a>
+				</li>
+				<li>
+					<a href="#Use-Cases">Use Cases</a>
+				</li>
+			</ul>
+			<div class="tabContainer">
+				<div id="General" class="tabContent">
+					<p>
+					<div class="container">
+						<div class="columnLeft">
+							<a href="https://help.salesforce.com/articleView?id=rss_flow_component.htm&type=5" target="_blank"><img height="64" width="64" src="https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/flow-builder/f1d99c79f186cea8adac115627a4729b_badge.png" alt="Flows" /></a>
+						</div>
+						<div class="columnRight">
+							<a href="https://help.salesforce.com/articleView?id=rss_flow_component.htm&type=5" target="_blank" class="textLink"><strong>
+									<span style="text-decoration: underline !important;">Flows</span>
+								</strong> automate business processes to collect, update, edit, create or delete Salesforce records as well as interact with external systems. Flows can either run in the background (<em>autolaunched flows</em>) or provide a user interface (<em>screen flows</em>). Flows offer great flexibility and are managed in the declarative and interactive Flow
+								Builder UI. Flows are
+								powered by Lightning Flow.</a>
+						</div>
+					</div>
+					</p>
+					<p>
+					<div class="container">
+						<div class="columnLeft">
+							<a href="https://help.salesforce.com/articleView?id=rss_flow_component.htm&type=5" target="_blank"><img height="64" width="64" src="https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/business_process_automation/eee3b8f9f85dde3f6681645ded4aa215_badge.png" alt="Process Builder" /></a>
+						</div>
+						<div class="columnRight">
+							<a href="https://help.salesforce.com/articleView?id=process_overview.htm&type=5" target="_blank" class="textLink"><strong>
+									<span style="text-decoration: underline !important;">Process Builder</span>
+								</strong> automates business processes to collect, update, edit or create delete Salesforce records as well as interact with external systems. Processes always run in the background. Processes offer moderate flexibility and are managed in the declarative and interactive Process Builder UI. Process Builder is powered by Lightning Flow.</a>
+						</div>
+					</div>
+					</p>
+					<p>
+					<div class="container">
+						<div class="columnLeft">
+							<a href="https://help.salesforce.com/articleView?id=customize_wf.htm&type=5" target="_blank"><img height="64" width="64" src="https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/flow-basics/c2d1e1b78bb73f734b6f668e6f9428de_badge.png" alt="Workflows" /></a>
+						</div>
+						<div class="columnRight">
+							<a href="https://help.salesforce.com/articleView?id=customize_wf.htm&type=5" target="_blank" class="textLink"><strong>
+									<span style="text-decoration: underline !important;">Workflow Rules</span>
+								</strong> automate business processes to update Salesforce records as well as interact with external systems in a limited manner. Workflows always run in the background. Workflows offer limited flexibility and are managed in a declarative wizard-like interface.</a>
+						</div>
+					</div>
+					</p>
+					<p>
+					<div class="container">
+						<div class="columnLeft">
+							<a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_intro_what_is_apex.htm" target="_blank"><img height="64" width="64" src="https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/apex_database/fab27840d343cc13934e9cf1f4a41dbc_badge.png" alt="Apex" /></a>
+						</div>
+						<div class="columnRight">
+							<a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_intro_what_is_apex.htm" target="_blank" class="textLink"><strong>
+									<span style="text-decoration: underline !important;">Apex</span>
+								</strong> automates any imaginable business processes within Salesforce and can interact with external systems in various ways. Apex runs in the background and can offer user interfaces via Lightning (Web) Components or Visualforce Pages. Apex offers unlimited flexibility due to its programmatic manner and is managed within the Developer
+								Console or any IDE.</a>
+						</div>
+					</div>
+					</p>
+				</div>
+				<div id="Best-Practices" class="tabContent">
+					<div class="subtabs">
+						<ul>
+							<li><a href="#subtab1">Subtab1</a></li>
+							<li><a href="#subtab2">Subtab2</a></li>
+						</ul>
+						<div id="subtab1" class="subtabContent">
+							Some sub content1
+							<div class="subsubtabs">
+								<ul>
+									<li><a href="#subsubtab1">SubSubtab1</a></li>
+									<li><a href="#subsubtab2">SubSubtab2</a></li>
+								</ul>
+								<div id="subsubtab1" class="subsubtabContent">
+									Some sub content2
+								</div>
+							</div>
+						</div>
+						<div id="subtab2" class="subtabContent">
+							Some sub content2
+						</div>
+					</div>
+				</div>
+				<div id="Functionality" class="tabContent">
+					<div class="subtabs">
+						<ul>
+							<li><a href="#Actions">Actions</a></li>
+							<li><a href="#Triggers">Triggers</a></li>
+							<li><a href="#RecordAccess">Record Access</a></li>
+							<li><a href="#FlowControl">Flow Control</a></li>
+						</ul>
+						<div id="Actions" class="subtabContent">
+							<div class="subsubtabs">
+								<ul>
+									<li><a href="#Actions-Flow">Flow</a></li>
+									<li><a href="#Actions-ProcessBuilder">Process Builder</a></li>
+									<li><a href="#Actions-Workflow">Workflow</a></li>
+									<li><a href="#Actions-Apex">Apex</a></li>
+								</ul>
+								<div id="Actions-Flow" class="subsubtabContent">
+									<ul>
+										<li><strong>Record Operations</strong></li>
+										<ul>
+											<li>Create, Read, Update or Delete any record</li>
+											<li class="no">Undelete records</li>
+											<li>Supports Custom Labels</li>
+											<li>Supports Custom Settings (via Get Records)</li>
+											<li>Supports Custom Metadata (via Get Records)</li>
+											<li class="no">Supports Static Resources</li>
+											<li>Supports all objects (e.g. Setup objects such as </code>*Share</code> or <code>GroupMember</code>, <code>EmailTemplate</code>)</li>
+										</ul>
+										<li><strong>Flow</strong> Invoke a sub-Flow</li>
+										<li><strong>Quick Action</strong> Use a global or object-specific quick action to create/update a record, or perform any other standard actions (e.g. Log a Call, Assign Article)</li>
+										<li><strong>Email</strong> Send an Email Alert to one or more recipients (via Quick Action)</li>
+										<li><strong>Invoke Apex</strong> Execute <code>@InvocableMethod</code> Apex methods and pass parameters (via Quick Action)</li>
+										<ul>
+											<li>Separates the <em>when</em> (flow) from the <em>what</em> (Apex code) and simplifies maintenance as well as debugging</li>
+											<li>Avoids triggers which are more difficult to handle, especially in regards to the Order of Execution</li>
+										</ul>
+										<li><strong>Create Platform Event</strong> (via Create Record)</li>
+										<li><strong>Manage Quip Documents</strong> Move, share, delete etc. Quip documents associated with a record (via Quick Action)</li>
+										<!-- TODO: I assume Apex can do the same, as it should just be an object the PB accesses and changes e.g. FolderUrl fields etc. In PB it is just exposed as a nice action -->
+										<li><a href="https://help.salesforce.com/articleView?id=flow_concepts_trigger_schedule.htm&type=5" target="_blank"><strong>Scheduled Flows</strong></a></li>
+										<ul>
+											<!-- TODO: <div class="howTo"> -->
+											<li>Double click the Start element to select filter criteria and schedule</li>
+											<li>Use case is to iterate over batches of records via Autolaunched Flows</li>
+										</ul>
+										<li><strong>Post to Chatter (via Quick Action)</strong> Post to the feed of a specific record, user, or Chatter group.</li>
+										<li><strong>Submit for Approval (via Quick Action)</strong> Submit a Salesforce record for approval if an approval process is defined for the current entity.</li>
+										<li><strong>Send Custom Notification(via Quick Action)</strong> Create a Lightning notification for Users, Groups or Teams on desktop or mobile</li>
+										<li><strong>Provide UI and forms</strong></li>
+										<ul>
+											<li>Provides simple-to-use UI elements (standard fields and pre-built components such as File Upoads as well as <a href="https://appexchange.salesforce.com/appxStore?type=Flow">custom Lightning Components</a>) and wizard-like interfaces</li>
+											<li>Components support conditional visibility </li>
+											<!-- TODO: <div class="howTo"> -->
+											<li>Screen > Screen Components > Custom (note: Will become visible only if you have a Lightning Component that implements <code>lightning:availableForFlowScreens</code> interface; otherwise there is no indication that you are able to add LCs)</li>
+										</ul>
+										<li><strong>Record Collections</strong> Can work with sets of records</li>
+										<ul>
+											<li>Working with collections requires more boilerplate compared to Apex</li>
+										</ul>
+										<li><strong>Send Survey Invitation</strong> (via Create Record)</li>
+										<li class="no">Send Outbound Messages</li>
+										<ul>
+											<li><em>Recommendation:</em> Use Apex and webservice callout to replace the Outbound Message, call Apex from flow.</li>
+										</ul>
+										<li><strong>Pause</strong>Can be paused by users and resumed at a later time</li>
+										<li><strong>Offline</strong>Can be executed offline (Field Service Mobile Flows)</li>
+										<li><strong>Templates</strong>Flows can be saved as reusable templates</li>
+									</ul>
+								</div>
+								<div id="Actions-ProcessBuilder" class="subsubtabContent">
+									<ul>
+										<li><strong>Record Operations</strong></li>
+										<ul>
+											<li>Create any record</li>
+											<li>Update any related records (not just record itself or parent)</li>
+											<li class="no">Delete records</li>
+											<li class="no">Undelete records</li>
+											<li>Supports Custom Labels</li>
+											<li>Supports Custom Settings</li>
+											<li>Supports Custom Metadata</li>
+											<li class="no">Supports Static Resources</li>
+											<li class="no">Supports all objects (e.g. Setup objects such as </code>*Share</code> or <code>GroupMember</code>, <code>GroupMember</code></li>
+										</ul>
+										<li><strong>Process</strong> Invoke an invocable sub-process.</li>
+										<li><strong>Launch Flow</strong> Launch an autolaunched flow</li>
+										<li><strong>Quick Action</strong> Use a global or object-specific quick action to create/update a record, or perform some other standard actions (e.g. Log a Call)</li>
+										<li><strong>Email</strong> Send an Email Alert to one or more recipients</li>
+										<li><strong>Invoke Apex</strong>Invoke <code>@InvocableMethod</code> Apex methods and pass parameters</li>
+										<ul>
+											<li>Separates the <em>when</em> (process) from the <em>what</em> (Apex code)and simplifies maintenance as well as debugging</li>
+											<li>Avoids triggers which are more difficult to handle, especially in regards to the Order of Execution</li>
+										</ul>
+										<li><strong>Create Platform Event</strong> (via Custom Object)</li>
+										<li><strong>Manage Quip Documents</strong> Move, share, delete etc. Quip documents associated with a record</li>
+										<li><strong>Scheduled Actions</strong> time-dependent actions</li>
+										<li><strong>Post to Chatter</strong> Post to the feed of a specific record, user, or Chatter group.</li>
+										<li><strong>Submit for Approval</strong> Submit a Salesforce record for approval if an approval process is defined for the current entity.</li>
+										<li><strong>Send Custom Notification</strong> Create a Lightning notification for Users, Groups or Teams on desktop or mobile</li>
+										<li><strong>Send Survey Invitation</strong></li>
+										<li class="no">Post to a community feed</li>
+										<li class="no">Submit a related record for approval</li>
+										<li class="no">Perform complex logic</li>
+										<li class="no">Support Outbound Messages</li>
+										<li class="no">Provide UI elements</li>
+										<ul>
+											<li><em>Recommendation:</em> Use Apex and webservice callout to replace the Outbound Message, call Apex from process.</li>
+										</ul>
+										<li class="no"><strong>Pause</strong> Can be paused by users (always runs to end)</li>
+										<li class="no"><strong>Offline</strong>Can be executed offline</li>
+										<li><strong>Templates</strong>Processes can be saved as reusable templates</li>
+									</ul>
+								</div>
+								<div id="Actions-Workflow" class="subsubtabContent">
+									<ul>
+										<li><strong>Record Operations</strong></li>
+										<ul>
+											<li>Create Task</li>
+											<li class="no">Create any other types of records</li>
+											<li>Update fields on triggering record</li>
+											<li class="no">Delete records</li>
+											<li class="no">Undelete records</li>
+											<li class="no">Supports Custom Labels</li>
+											<li>Supports Custom Settings (only Hierarchical)</li>
+											<li class="no">Supports Custom Metadata</li>
+											<li class="no">Supports Static Resources</li>
+											<li class="no">Supports all objects (e.g. Setup objects such as </code>*Share</code> or <code>GroupMember</code>, <code>GroupMember</code>)</li>
+										</ul>
+										<li><strong>Email</strong> Send an Email Alert to one or more recipients</li>
+										<li><strong>Send Outbound Message</strong> Send a UI-configurable API message via SOAP (in XML format) to a designated external
+											listener</li>
+										<li><strong>Scheduled Actions</strong> Create time-dependent actions</li>
+										<li><strong>Knowledge Actions</strong> Submit, publish, delete etc. of Knowledge Articles</li>
+									</ul>
+								</div>
+								<div id="Actions-Apex" class="subsubtabContent">
+									<ul>
+										<li><strong>Record Operations</strong></li>
+										<ul>
+											<li>Create, Read, Update, Upsert, Delete, Undelete or Merge any record (DML)</li>
+											<li>Update fields on any related or unrelated record</li>
+											<li>Supports Custom Labels</li>
+											<li>Supports Custom Settings (only Hierarchical)</li>
+											<li>Supports Custom Metadata</li>
+											<li>Supports Static Resources</li>
+											<li>Supports all objects (e.g. Setup objects such as </code>*Share</code> or <code>GroupMember</code>, <code>EmailTemplate</code>)</li>
+										</ul>
+										<li><strong>Email</strong>Send emails to one or more recipients with any email address, use and create email templates</li>
+										<li><strong>Launch Flow</strong> Launch an autolaunched flow</li>
+										<li><strong>Invoke Process</strong>Invoke a process (via Platform Event or record change)</li>
+										<li><strong>Send Outbound Message</strong> Send SOAP API message (in XML format) to a designated external
+											listener (independent of outbound messages)</li>
+										<li><strong>Actions</strong> Execute any global or object-specific quick action to create/update a record, or perform other standard actions (e.g. Log a Call, Submit for Approval)</li>
+										<li><strong><a href="https://help.salesforce.com/articleView?id=flow_distribute_system_apex.htm&type=5" target="_blank">Launch Flows</a></strong></li>
+										<li><strong>Apex</strong> Execute any visible Apex method</li>
+										<li><strong>Integration</strong>
+											<ul>
+												<li>Callout to external systems via SOAP/REST</li>
+												<li>Create Platform Events</li>
+												<li>Call any Salesforce APIs</li>
+												<li>Expose Invocable Methods (also polymorphic types)</li>
+											</ul>
+										<li><strong>Data Management</strong> Can consume and transform (bulk/LDV) data in any shape or form</li>Query database (SOQL, SOSL)</li>
+										<li><strong>Scheduled Jobs</strong> Jobs can be executed in any scheduling frequency</li>
+										<li><strong>Post to Chatter</strong> Post to the feed of a specific record, user, or Chatter group</li>
+										<li><strong>Submit for Approval</strong> Submit any Salesforce record for approval</li>
+										<li><strong>Send Custom Notification</strong> Create a Lightning notification for Users, Groups or Teams on desktop or mobile via REST API or <a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_push_notification.htm">mobile app</a></li>
+										<li><strong>Provide UI and forms</strong>Provides any UI via Lightning (Web) Components or Visualforce</li>
+										<li><strong>Record Collections</strong> Can work with sets of records</li>
+										<li><strong>Send Survey Invitation</strong></li>
+										<li class="no"><strong>Pause</strong>Can be paused by users and resumed at a later time</li>
+										<li class="no"><strong>Offline</strong>Can be executed offline (Field Service Mobile Flows)</li>
+										<li><strong>Templates</strong>Apex code can be made reusable via custom classes, object-oriented capabilities or components</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="Triggers" class="subtabContent">
+							<div class="subsubtabs">
+								<ul>
+									<li><a href="#Triggers-Flow">Flow</a></li>
+									<li><a href="#Triggers-ProcessBuilder">Process Builder</a></li>
+									<li><a href="#Triggers-Workflow">Workflow</a></li>
+									<li><a href="#Triggers-Apex">Apex</a></li>
+								</ul>
+								<div id="Triggers-Flow" class="subsubtabContent">
+									<ul>
+										<li><strong>Screen Flow</strong> Provides UI and allows user interaction. Can be invoked by Flow actions, Lightning/Aura/Visualforce pages, Buttons/Links, Tabs or Lightning Out</li>
+										<li><strong>Autolaunched Flow</strong> Is triggered by Process, Flow, <a href="https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_subscribe_flow.htm" target="_blank">Platform Event</a>, Apex, REST API, Button/Link, Visualforce, or record update and craetion</li>
+										<li><strong>User Provisioning Flow</strong> Provisions users for third-party services in the background. Is triggered as part of user provisioning wizard.</li>
+										<li><strong>Field Service Mobile Flow</strong> Screen-based flow for FSL mobile app triggered by actions to allow capturing signatures or pictures</li>
+										<li><strong>Field Service Embedded Flow</strong> Screen-based flow triggered by embedded appointment booking</li>
+										<li><strong>Contact Request Flow</strong> Screen-based self-service flow for Lightning Communities to request a customer to contact the user. Is triggered via button or embedded on page.</li>
+									</ul>
+								</div>
+								<div id="Triggers-ProcessBuilder" class="subsubtabContent">
+									<ul>
+										<li><strong>Record Change</strong>Triggered by record update and creation</li>
+										<ul>
+											<li>Record was created (insert)</li>
+											<li>Record was created, and every time it’s edited (insert/update, always)</li>
+											<li>Record was created, and every time it’s edited to subsequently meed the criteria (insert/update, if meets criteria)</li>
+										</ul>
+										<li><strong>Entry Criteria</strong>Multiple decision criteria are evaluated (nested formula or branching)</li>
+										<li><strong>Process</strong></li> Triggered by another process as invocable processs</li>
+										<li><strong>Apex</strong></li> Triggered by Apex (via Platform Event or record change)</li>
+										<li><strong>Platform Event</strong></li> Triggered by received Platform Event</li>
+										<li class="no">Open directly from UI</li> <!-- (only via workaround - via button: using connection.js, updating a field on record to trigger process) -->
+										<li class="no">Handles before-* operations (always executes <em>after</em> record insert/update)</li>
+									</ul>
+								</div>
+								<div id="Triggers-Workflow" class="subsubtabContent">
+									<ul>
+										<li><strong>Record Change</strong>Triggered by record update and creation</li>
+										<ul>
+											<li>Record was created (insert)</li>
+											<li>Record was created, and every time it’s edited (insert/update, always)</li>
+											<li>Record was created, and every time it’s edited to subsequently meed the criteria (insert/update, if meets criteria)</li>
+										</ul>
+										<li><strong>Entry Criteria</strong>Only one decision criteria is evaluated (nested formula)</li>
+										<li class="no">Open directly from UI</li> <!-- (only via workaround - via button: using connection.js, updating a field on record to trigger process) -->
+										<li class="no">Handles before-* operations (always executes <em>after</em> record insert/update)</li>
+									</ul>
+								</div>
+								<div id="Triggers-Apex" class="subsubtabContent">
+									<ul>
+										<li><strong>Execution Context</strong>Supports before/after insert, update, delete, after delete, after undelete contexts</li>
+										<li><strong>Entry Criteria</strong>Multiple, complex decision criteria can be evaluated</li>
+										<li><strong>Process</strong> Triggered by Processas invocable processs</li>
+										<li><strong>Flow</strong> Triggered by Flow as invocable processs or as embedded (polymorphic) Lightning (Web) Component</li>
+										<li><strong>Apex</strong> Triggered by Apex</li>
+										<li><strong>Platform Event</strong> Triggered by received Platform Event</li>
+										<li class="no">Open directly from UI (requires additional Lightning (Web) Component or Visualforce page)</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="RecordAccess" class="subtabContent">
+							<div class="subsubtabs">
+								<ul>
+									<li><a href="#RecordAccess-Flow">Flow</a></li>
+									<li><a href="#RecordAccess-ProcessBuilder">Process Builder</a></li>
+									<li><a href="#RecordAccess-Workflow">Workflow</a></li>
+									<li><a href="#RecordAccess-Apex">Apex</a></li>
+								</ul>
+								<div id="RecordAccess-Flow" class="subsubtabContent">
+									<ul>
+										<li><strong>Record Access</strong>
+											<ul>
+												<li>Access and update related or unrelated records(lookup, master-detail, parent, children)</li>
+												<li>Update multiple related records (all or some child records at once)</li>
+											</ul>
+										<li><strong>Field Access</strong> Access fields on related or unrelated records (multiple levels)</li>
+									</ul>
+								</div>
+								<div id="RecordAccess-ProcessBuilder" class="subsubtabContent">
+									<ul>
+										<li><strong>Record Access</strong>
+											<ul>
+												<li>Access and update related records (lookup, master-detail, parent, children)</li>
+												<li class="no">Access unrelated records</li>
+												<li>Update multiple related records (all child records at once)</li>
+											</ul>
+										<li><strong>Field Access</strong></li>
+										<ul>
+											<li>Access fields on related records (multiple levels)</li>
+											<li class="no">Access fields on unrelated records</li>
+										</ul>
+									</ul>
+								</div>
+								<div id="RecordAccess-Workflow" class="subsubtabContent">
+									<ul>
+										<li><strong>Record Access</strong>
+											<ul>
+												<li>Access and update triggering record or related custom master-detail record</li>
+												<li class="no">Access unrelated records</li>
+												<li class="no">Update multiple related records</li>
+											</ul>
+										<li><strong>Field Access</strong></li>
+										<ul>
+											<li>Access fields on triggering record</li>
+											<li class="no">Access fields on related or unrelated records (only via formula field on triggering record)</li>
+										</ul>
+									</ul>
+								</div>
+								<div id="RecordAccess-Apex" class="subsubtabContent">
+									<ul>
+										<li><strong>Record Access</strong>
+											<ul>
+												<li>Access and update any related or unrelated records</li>
+												<li>Update multiple related or unrelated records</li>
+											</ul>
+										<li><strong>Field Access</strong></li>
+										<ul>
+											<li>Access fields on related or unrelated records (multiple levels)</li>
+										</ul>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="FlowControl" class="subtabContent">
+							<div class="subsubtabs">
+								<ul>
+									<li><a href="#FlowControl-Flow">Flow</a></li>
+									<li><a href="#FlowControl-ProcessBuilder">Process Builder</a></li>
+									<li><a href="#FlowControl-Workflow">Workflow</a></li>
+									<li><a href="#FlowControl-Apex">Apex</a></li>
+								</ul>
+								<div id="FlowControl-Flow" class="subsubtabContent">
+									<ul>
+										<li>Provides control Order of Execution (if-then groups, sequence, iterations, complex branching logic with multiple condition and actions)</li>
+										<li>Supports working with collections of items and allows sorting</li>
+										<li>Supports variable assignments and complex conditions</li>
+										<li>Supports iterations (loops)</li>
+										<li>Able to prevent recursion (via custom conditions)</li>
+										<li>Error Handling (partially)</li>
+										<li class="no">Recovery Management</li>
+										<li class="no">Supports partial commit</li> <!-- TODO: Details -->
+										<li class="no">Supports identity management processes (partially via User Provisioning Flow)</li>
+									</ul>
+								</div>
+								<div id="FlowControl-ProcessBuilder" class="subsubtabContent">
+									<ul>
+										<li>Provides control over Order of Execution (if-then group, sequence, multiple condition and action groups, fall-through behavior)</li>
+										<!-- Note: Actions are executed in the order in which they appear in the process definition.</li> -->
+										<!-- Note: <li>*Use drag & drop of component groups; and select the “STOP” node to determine whether to continue or break*</li> -->
+										<li>Able to prevent recursion (via simple setting)</li>
+										<li>A Process can have multiple criteria diamonds – basically the equivalent of nesting multiple Workflow Rules together on one page. You can also see all the actions for each set of criteria that will be called.</li>
+										<li class="no">Error Handling and Recovery Management</li>
+										<li class="no">Supports partial commit (only all-or-none)</li>
+										<li class="no">Supports identity management processes</li>
+									</ul>
+								</div>
+								<div id="FlowControl-Workflow" class="subsubtabContent">
+									<ul>
+										<li class="no">Provides control over Order of Execution (workaround: Setting field flags and updating them with other Workflows, can get nasty quickly)</li>
+										<!-- Note: Actions are executed in the order in which they appear in the workflow definition.</li> -->
+										<li class="no">Supports multiple conditions and actions in one rule</li>
+										<li class="no">Error Handling and Recovery Management</li>
+										<li class="no">Supports partial commit (only all-or-none)</li>
+										<li class="no">Supports identity management processes</li>
+									</ul>
+								</div>
+								<div id="FlowControl-Apex" class="subsubtabContent">
+									<ul>
+										<li>Complete control over Order of Execution (any complexity level, conditional statements and loops)
+											<div class="ui-widget">
+												<div class="ui-state-highlight ui-corner-all">
+													<p>
+														<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+														<strong>Note</strong> Requires deep understanding of Apex code hierarchy
+													</p>
+												</div>
+											</div>
+										</li>
+										<!-- <li>Supports partial commit</li> TODO: -->
+										<li>Supports <a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dynamic.htm" target="_blank"></a>dynamic code</a></li>
+										<li>Supports any data type as well as custom types</li>
+										<li>Supports working with collections of items and allows sorting, requires little boilerplate code or verbosity</li>
+										<li>Error Handling and Recovery Management</li>
+										<li>Supports identity management processes</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="Maintenance" class="tabContent">
+					<div class="subtabs">
+						<ul>
+							<li><a href="#Maintenance-Flow">Flow</a></li>
+							<li><a href="#Maintenance-ProcessBuilder">Process Builder</a></li>
+							<li><a href="#Maintenance-Workflow">Workflow</a></li>
+							<li><a href="#Maintenance-Apex">Apex</a></li>
+						</ul>
+						<div id="Maintenance-Flow" class="subtabContent">
+							<ul>
+								<li><strong>Versioning</strong> Multiple versions per flow can be stored, so you can retain previous deactivated flows</li>
+								<li><strong>Status</strong> Flows can be active or inactive</li>
+								<li><strong>Maintenance Effort</strong> Medium effort to keep up-to-date, but the more (complex) flows you have the messier it gets</li>
+								<li><strong>Development Environment</strong> More complex visual UI, everything in one place</li>
+								<ul>
+									<li>Setting up a flow takes more time and is significantly more complex than a Process or Workflow.</li>
+								</ul>
+								<li><strong>Editability</strong> Can be customized on any org</li>
+								<div class="ui-widget">
+									<div class="ui-state-error ui-corner-all">
+										<p>
+											<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+											<strong>Warning</strong> It is strongly advised to not do any modifications directly in production.
+										</p>
+									</div>
+								</div>
+								<li><strong>Extensibility</strong> Provides various functionality and a semi-strict strict framework (while general resources are identical between flows, usage and branching can be very different)</li>
+								<li><strong>Readability</strong> Large flows can become difficult to read (logic is hidden within nodes or resources, need to be opened up separately)</li>
+								<ul>
+									<li>You cannot simply search through a flow's code (except by extracting it)</li>
+								</ul>
+								<li><strong>Organization</strong> Multiple criteria can be managed in one flow</li>
+								<li><strong>Documentation</strong> Documentation within the Flow is difficult (hidden within nodes), requires separate documentation (risk of being outdated)</li>
+								<ul>
+									<li>Especially in case of complex flows you need to maintain a separate document for each flow that you create. However, even with a document side-by-side, walking through a complete flow can be cumbersome.</li>
+								</ul>
+							</ul>
+						</div>
+						<div id="Maintenance-ProcessBuilder" class="subtabContent">
+							<ul>
+								<li><strong>Versioning</strong> Multiple versions per process can be stored, so you can retain previous deactivated processes</li>
+								<li><strong>Status</strong> Processes can be active or inactive</li>
+								<li><strong>Maintenance Effort</strong> Medium effort to keep up-to-date, but the more processes you have the messier it gets</li>
+								<li><strong>Development Environment</strong> Intuitive visual UI, everything in one place</li>
+								<li><strong>Editability</strong> Can be customized on any org</li>
+								<div class="ui-widget">
+									<div class="ui-state-error ui-corner-all">
+										<p>
+											<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+											<strong>Warning</strong> It is strongly advised to not do any modifications directly in production.
+										</p>
+									</div>
+								</div>
+								<li><strong>Extensibility</strong> Provides limited functionality and a relatively strict framework (any process' general setup is identical, everyone can read another’s process without much effort)</li>
+								<li><strong>Readability</strong> Processes offer limited flow control, however the more complex and nested the conditions get, the harder it is to manage a process (use flow instead)</li>
+								<li><strong>Organization</strong> Multiple criteria can be managed in one process</li>
+								<ul>
+									<li>You cannot simply search through a process' code (except by extracting it)</li>
+								</ul>
+								<li><strong>Documentation</strong>Documentation within the process is simple, separate documentation is recommended</li>
+							</ul>
+						</div>
+						<div id="Maintenance-Workflow" class="subtabContent">
+							<ul>
+								<li class="no"><strong>Versioning</strong> Can store multiple versions per workflow</li>
+								<li><strong>Status</strong> Workflows can be active or inactive</li>
+								<li><strong>Maintenance Effort</strong> Low effort to keep up-to-date, but the more workflows you have the messier it gets</li>
+								<li><strong>Development Environment</strong> Multi-step, cumbersome wizard</li>
+								<li><strong>Editability</strong> Can be customized on any org</li>
+								<div class="ui-widget">
+									<div class="ui-state-error ui-corner-all">
+										<p>
+											<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+											<strong>Warning</strong> It is strongly advised to not do any modifications directly in production.
+										</p>
+									</div>
+								</div>
+								<li><strong>Extensibility</strong> Provides limited functionality and a relatively strict framework (any workflow' general setup is identical, everyone can read another’s Workflow without much effort)</li>
+								<li><strong>Readability</strong> Workflows offer no flow control and are easy to make sense of, but require clicking through multiple pages</li>
+								<li><strong>Organization</strong> Each set of criteria requires a new workflow rule, making management more difficult (requires naming conventions to group by object or area)</li>
+								<li><strong>Documentation</strong>Documentation within the workflow is simple, separate documentation for all workflows per object is recommended</li>
+							</ul>
+						</div>
+						<div id="Maintenance-Apex" class="subtabContent">
+							<ul>
+								<li class="no"><strong>Versioning</strong> Can be versioned for API versions, requires separate management of code versions in source code repository (VCS)</li>
+								<li><strong>Status</strong> Triggers can be active or inactive, clasess are always ‘active’</li>
+								<li><strong>Maintenance Effort</strong> High effort, requires constant development and discipline with upkeep due to other, dependent changes or Salesforce updates. Easier to maintain than other options for complex business scenarios and nested logic</li>
+								<li><strong>Development Environment</strong> Development Console or IDE</li>
+								<li><strong>Editability</strong> Can be developed on any any sandbox or scratch org, but not on production</li>
+
+								<li>Apex is often more complex in its surroundings, i.e. different triggers, scheduled jobs etc. you need to consider</li>
+								<li><strong>Extensibility</strong>Provides great flexibility and freedom and has no strict framework (but recommended ones). Reading another's Apex code can be challenging and time-consuming.</li>
+								<div class="ui-widget">
+									<div class="ui-state-error ui-corner-all">
+										<p>
+											<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+											<strong>Warning</strong> With freedom comes rik &ndash; the risk that Apex may result in a negative impact on your Salesforce system is drastically higher than that of the standard Salesforce features. This is because Apex does not have the structure and restrictions that are built into standard Salesforce features.
+										</p>
+									</div>
+								</div>
+								<li><strong>Readability</strong> Due to few structural limitations and many options for designing code, Apex code can become difficult to read and understand</li>
+								<li><strong>Organization</strong> Organization is up to each developer, Apex provides great flexibility that allows for well but also badly organized code</li>
+								<li><strong>Documentation</strong>Documentation is part of the code, can be extracted automatically if based on common conventions</li>
+							</ul>
+						</div>
+					</div>
+					<div id="Debugging" class="tabContent">
+						<div class="subtabs">
+							<ul>
+								<li><a href="#Debugging-Flow">Flow</a></li>
+								<li><a href="#Debugging-ProcessBuilder">Process Builder</a></li>
+								<li><a href="#Debugging-Workflow">Workflow</a></li>
+								<li><a href="#Debugging-Apex">Apex</a></li>
+							</ul>
+							<div id="Debugging-Flow" class="subtabContent">
+								<ul>
+									<li>Supports Debug Logs</li>
+									<ul></ul>
+									<li>Dedicated debug page, or is it the same as system logs?</li>
+									<li>If a Flow fails, often just “Unhandled exception” is returned, without any more details. Sometimes email goes out, but only to LastModifier (trigger: whoever debugs). Sometimes no email. Sometimes misleading error messages. You also cannot catch exceptions - so in some scenarios, the user might see an error message. A trigger error you can catch and handle and e.g. display a better error message to the user. A flow jus stupidly fails (still true?)
+									</li>
+									<li>List consumed Governor Limits</li>
+								</ul>
+								</ul>
+							</div>
+							<div id="Debugging-ProcessBuilder" class="subtabContent">
+								<ul>
+									<li>Supports Debug Logs</li>
+									<li>Errors are often very generic</li>
+								</ul>
+							</div>
+							<div id="Debugging-Workflow" class="subtabContent">
+								<ul>
+									<li>Supports Debug Logs</li>
+									<li>Supports monitoring and managing pending scheduled actions</li>
+									<ul>
+										<li>Supports queueing</li>
+									</ul>
+								</ul>
+							</div>
+							<div id="Debugging-Apex" class="subtabContent">
+								<ul>
+									<li>Supports debug logs, allows custom debug or error messages or even ignore errors</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="Security" class="tabContent">
+						<div class="subtabs">
+							<ul>
+								<li><a href="#Security-Flow">Flow</a></li>
+								<li><a href="#Security-ProcessBuilder">Process Builder</a></li>
+								<li><a href="#Security-Workflow">Workflow</a></li>
+								<li><a href="#Security-Apex">Apex</a></li>
+							</ul>
+							<div id="Security-Flow" class="subtabContent">
+								<ul>
+									<li>Cannot be edited even if active (good! But might also clutter your org if you do not clean up inactive versions regularly, as differences between versions are not immediately visible)</li>
+									<li>Security is handled by the platform, gives you some options to change execution mode</li>
+									<li>Can be run in User Context (if launched via...), System Context (if launched via...), System Context with sharing and System Context without sharing</li>
+									<ul>
+										<li>Screen Flow: User context (Apex being called will also run in User Context)</li>
+										<li>Autolaunched Flow: System Context</li>
+										<li>if flow is called from Process Builder – System</li>
+										<li>if flow is called from Workflow – System</li>
+										<li>if flow is called from Apex – (depends on with or without sharing of apex class)</li>
+										<li>if flow is called from Custom Button – System</li>
+										<li>if flow is embed in Visualforce – Depends on VFP context</li>
+										<li>if flow is called from REST API – System</li>
+									</ul>
+									<li>InvocableMethod</li>
+									<ul>
+										<li>if this is called from flow – *User*</li>
+										<li>if this is called from Process Builder (does it depends on with or without sharing is specified on that Class) – System</li>
+										<li>if this is called from REST API – (depends on with or without sharing of the class)</li>
+									</ul>
+									<li>Can be restricted to Profiles or Permission Sets</li>
+									<li>Flows execute in the context from which they are called - e.g. PB processes always run in System Context, so if they invoke a Flow, it will run in SC as well</li>
+									<li>Screen Flows that are distributed via end-user experiences run in User Context, i.e. respects OLS, FLS, Sharing of the running user. You can now select to ignore OLS or FLS declaratively without Apex (i.e. run in System Mode, but still consider Sharing).</li>
+									<li>This is set for the complete Flow (Flow Properties), not a single action within the Flow</li>
+								</ul>
+							</div>
+							<div id="Security-ProcessBuilder" class="subtabContent">
+								<ul>
+									<li>Cannot be edited even if active (good! But might also clutter your org if you do not clean up inactive versions regularly, as differences between versions are not immediately visible)</li>
+									<li>Security is handled by the platform</li>
+									<li>Runs in System Context</li>
+									<li>Process Builder is limited to accessing the records and fields the running user has (User Context). Workflow rules would let you update an “invisible” field to the user. This was great for lots of data validation and controls. With Process Builder (and Visual Workflow) the field must be visible and editable by the user in order for the tool to update the field.</li>
+								</ul>
+							</div>
+							<div id="Security-Workflow" class="subtabContent">
+								<ul>
+									<li>Can be edited even if active</li>
+									<li>Security is handled by the platform</li>
+									<li>Runs in System Context</li>
+								</ul>
+							</div>
+							<div id="Security-Apex" class="subtabContent">
+								<ul>
+									<li>Requires to take care of security such as field, object and record access, or other potential vulnerabilities when using client-side code and have a deep understanding of the platform</li>
+									<li>Can be restricted to Profiles or Permission Sets</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="Testing" class="tabContent">
+						<div class="subtabs">
+							<ul>
+								<li><a href="#Testing-Flow">Flow</a></li>
+								<li><a href="#Testing-ProcessBuilder">Process Builder</a></li>
+								<li><a href="#Testing-Workflow">Workflow</a></li>
+								<li><a href="#Testing-Apex">Apex</a></li>
+							</ul>
+							<div id="Testing-Flow" class="subtabContent">
+								<ul>
+									<li>Somehow mandatory unit tests (code coverage can be customized)</li>
+								</ul>
+							</div>
+							<div id="Testing-ProcessBuilder" class="subtabContent">
+								<ul>
+									<li>No mandatory unit tests (or is FlowTestCoverage also for PBs? And for Flows, is it mandatory, customizable?)
+
+										But in the end, having that many processes might be a very good reason to think about replacing these with a solid trigger and an underlying trigger framework. The inability to have unit tests for processes - if your customer does not have a robust test unit framework in place which also takes care of processes, flows etc. - usually makes me want to move away from processes, as it looks simple and compelling in the beginning, but quickly becomes a
+										hassle
+										to maintain and develop further.</li>
+								</ul>
+							</div>
+							<div id="Testing-Workflow" class="subtabContent">
+								<ul></ul>
+							</div>
+							<div id="Testing-Apex" class="subtabContent">
+								<ul>
+									<li>Mandatory unit tests</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="Scalability" class="tabContent">
+						(does not only man “10000s of users” but also “support advanced features” - e.g. for WFs, you can’t really go any further, also PBs is limited, but Flows can be enhanced in various ways)
+						<div class="subtabs">
+							<ul>
+								<li><a href="#Scalability-Flow">Flow</a></li>
+								<li><a href="#Scalability-ProcessBuilder">Process Builder</a></li>
+								<li><a href="#Scalability-Workflow">Workflow</a></li>
+								<li><a href="#Scalability-Apex">Apex</a></li>
+							</ul>
+							<div id="Scalability-Flow" class="subtabContent">
+								<ul></ul>
+							</div>
+							<div id="Scalability-ProcessBuilder" class="subtabContent">
+								<ul>
+
+								</ul>
+							</div>
+							<div id="Scalability-Workflow" class="subtabContent">
+								<ul></ul>
+							</div>
+							<div id="Scalability-Apex" class="subtabContent">
+								<ul>
+									<li>Provide better performance and limit usage for LDV</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="Deployment" class="tabContent">
+						https://developer.salesforce.com/docs/atlas.en-us.salesforce_vpm_guide.meta/salesforce_vpm_guide/vpm_deploy_package.htm
+						<div class="subtabs">
+							<ul>
+								<li><a href="#Deployment-Flow">Flow</a></li>
+								<li><a href="#Deployment-ProcessBuilder">Process Builder</a></li>
+								<li><a href="#Deployment-Workflow">Workflow</a></li>
+								<li><a href="#Deployment-Apex">Apex</a></li>
+							</ul>
+							<div id="Deployment-Flow" class="subtabContent">
+								<ul></ul>
+							</div>
+							<div id="Deployment-ProcessBuilder" class="subtabContent">
+								<ul>
+
+								</ul>
+							</div>
+							<div id="Deployment-Workflow" class="subtabContent">
+								<ul></ul>
+							</div>
+							<div id="Deployment-Apex" class="subtabContent">
+								<ul>
+									<li>Can be packaged as (Un)managed Package</li>
+									<li>Supports deprecation for Managed Packages</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="Availability" class="tabContent">
+						<div class="subtabs">
+							<ul>
+								<li><a href="#Availability-Flow">Flow</a></li>
+								<li><a href="#Availability-ProcessBuilder">Process Builder</a></li>
+								<li><a href="#Availability-Workflow">Workflow</a></li>
+								<li><a href="#Availability-Apex">Apex</a></li>
+							</ul>
+							<div id="Availability-Flow" class="subtabContent">
+								<ul>
+									<li>can be built in all editions, as a sandbox is not required for deployment.</li>
+									<li>Flows features are not limited based on the edition.</li>
+									<li>*Flows* are available in all Salesforce Editions, including Essentials</li>
+								</ul>
+							</div>
+							<div id="Availability-ProcessBuilder" class="subtabContent">
+								<ul>
+
+								</ul>
+							</div>
+							<div id="Availability-Workflow" class="subtabContent">
+								<ul>
+									<li>WFRs are not available in Essentials or Professional Edition.</li>
+								</ul>
+							</div>
+							<div id="Availability-Apex" class="subtabContent">
+								<ul>
+									<li>Requires a dev and Sandbox to deploy, meaning it can only really be built in organizations that are Professional and above.</li>
+									<li>Apex is not available in Essentials, some Apex features are limited in Professional. Orgs with Enterprise and above have no Apex limitations.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="Skills-Audience" class="tabContent">
+						<div class="subtabs">
+							<ul>
+								<li><a href="#SkillsAudience-Flow">Flow</a></li>
+								<li><a href="#SkillsAudience-ProcessBuilder">Process Builder</a></li>
+								<li><a href="#SkillsAudience-Workflow">Workflow</a></li>
+								<li><a href="#SkillsAudience-Apex">Apex</a></li>
+							</ul>
+							<div id="SkillsAudience-Flow" class="subtabContent">
+								<ul>
+									<li>*Audience *Advanced Administrator</li>
+									<li>Requires more technical understanding (e.g. how do you iterate over collections, how to avoid exceeding governor limits etc.)</li>
+									<li>Clicks, not code (but built with typical programmatic logic in mind)</li>
+								</ul>
+							</div>
+							<div id="SkillsAudience-ProcessBuilder" class="subtabContent">
+								<ul>
+									<li>*Audience* Administrator</li>
+									<li>Clicks, not code</li>
+								</ul>
+							</div>
+							<div id="SkillsAudience-Workflow" class="subtabContent">
+								<ul>
+									<li>*Audience* Administrator</li>
+									<li>Clicks, not code</li>
+								</ul>
+							</div>
+							<div id="SkillsAudience-Apex" class="subtabContent">
+								<ul>
+									<li>*Audience* Developer</li>
+									<li>Pure code</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="Future-Proofness" class="tabContent">
+						<div class="subtabs">
+							<ul>
+								<li><a href="#FutureProofness-Flow">Flow</a></li>
+								<li><a href="#FutureProofness-ProcessBuilder">Process Builder</a></li>
+								<li><a href="#FutureProofness-Workflow">Workflow</a></li>
+								<li><a href="#FutureProofness-Apex">Apex</a></li>
+							</ul>
+							<div id="FutureProofness-Flow" class="subtabContent">
+								<ul>
+									<li>*Flows* are constantly being updated in each release with new features and capabilities.</li>
+									<li>Any functionality you have built may be improved by future Salesforce updates (e.g. additional UI elements)</li>
+								</ul>
+							</div>
+							<div id="FutureProofness-ProcessBuilder" class="subtabContent">
+								<ul>
+									<li>Often updated</li>
+									<li>Any functionality you have built may be improved by future Salesforce updates</li>
+								</ul>
+							</div>
+							<div id="FutureProofness-Workflow" class="subtabContent">
+								<ul>
+									<li>*WFRs* are not actively being updated by Salesforce (but you can still use them for the time being).</li>
+								</ul>
+							</div>
+							<div id="FutureProofness-Apex" class="subtabContent">
+								<ul>
+									<li>Any functionality you have built is not directly improved by future updates (typically requires action, as code is bound to API version)
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="Limits" class="tabContent">
+						<div class="subtabs">
+							<ul>
+								<li><a href="#Limits-Flow">Flow</a></li>
+								<li><a href="#Limits-ProcessBuilder">Process Builder</a></li>
+								<li><a href="#Limits-Workflow">Workflow</a></li>
+								<li><a href="#Limits-Apex">Apex</a></li>
+							</ul>
+							<div id="Limits-Flow" class="subtabContent">
+								<ul>
+									<li>*Flows* and *Process Builders* both contribute to CPU limits and other automation limits in Salesforce.</li>
+									<li>Bulkification : https://developer.salesforce.com/docs/atlas.en-us.salesforce_vpm_guide.meta/salesforce_vpm_guide/vpm_admin_bulkification.htm#vpm_admin_bulkification</li>
+									<li>*When your Edition limits how many flows you can create.* Essentials and Professional editions have a limit of 5 Process Builders and Flows in each org. For most logic in these editions, it is easier to create a Process Builder to handle them.</li>
+								</ul>
+							</div>
+							<div id="Limits-ProcessBuilder" class="subtabContent">
+								<ul>
+									<li>*Flows* and *Process Builders* both contribute to CPU limits and other automation limits in Salesforce.</li>
+									<li>Sobald man mehrere Processes auf dem gleichen Objekt hat, führt jeder SOQLQueries durch. Bei einem Trigger könnte man identische SOQL queries zu einer Abfrage vereinigen, und dann das Ergebnis n-fach nutzen. Jeder process läuft aber für sich. DAs führt schnell dazu, dass das Limit von 101 SOQL erreicht wird. Zudem kommt, dass process builder anscheinend für jede Abfrage zB einer Condition eine SOQL Query verbraucht - was sehr ungünstig ist! Zwar
+										ist
+										Process Builder bulkified was die records angeht, die Bedingungen etc. werden aber wohl immer noch nicht wirklich bulkified abgefragt.</li>
+									<li>*When your Edition limits how many flows you can create.* Essentials and Professional editions have a limit of 5 Process Builders and Flows in each org. For most logic in these editions, it is easier to create a Process Builder to handle them.</li>
+									<li>If you want to update a process created with process builder there is no way to do it. You need to clone the existing process and update it. Due to if-else criteria of process builder, a process that will need many workflows can be built with a single process.</li>
+									<li>Pro Flow/PB: Supports versioning</li>
+									<li>Apex: Versioning requires separate repository</li>
+									<li>There are some other downsides with the current version. The tool isn’t truly “bulkified” so managing many many records will be problematic. There are also some limits on the number of “criteria diamonds” you can have and the number of active processes per object.</li>
+								</ul>
+							</div>
+							<div id="Limits-Workflow" class="subtabContent">
+								<ul>
+									<li>There are limitations with how many *WFRs* can be active at once, but they typically do not contribute to CPU limits UNLESS the *WFR* triggers a *Process Builder* or *Flow* through one of its updates (a field update for example).</li>
+									<li>*WFRs* are limited to 1000 time triggers per hour.</li>
+								</ul>
+							</div>
+							<div id="Limits-Apex" class="subtabContent">
+								<ul>
+									<li>Number of code characters</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="Use-Cases" class="tabContent">
+						<div class="subtabs">
+							<ul>
+								<li><a href="#UseCases-Flow">Flow</a></li>
+								<li><a href="#UseCases-ProcessBuilder">Process Builder</a></li>
+								<li><a href="#UseCases-Workflow">Workflow</a></li>
+								<li><a href="#UseCases-Apex">Apex</a></li>
+							</ul>
+							<div id="UseCases-Flow" class="subtabContent">
+								<ul>
+									<li>* The main difference between flows and workflows is flows are user-triggered application and workflows are event-triggered. Workflows execute their actions behind the scenes while flows can display information on the screen. In workflows, actions are associated with a particular object and its related objects which is not the case with flows since they can create, update, lookup and delete records for multiple objects.
+										* Automate a guided visual experience.
+										* Add more functionality for a behind-the-scenes process than is available in Process Builder. Build the more complex functionality in the Cloud Flow Designer. Then call the resulting flow from the process.
+										* Start a behind-the-scenes business process when a user clicks something, like a button</li>
+								</ul>
+							</div>
+							<div id="UseCases-ProcessBuilder" class="subtabContent">
+								<ul>
+									<li>Intended for simple yet conditional actions, such as updating fields or creating PEs</li>
+								</ul>
+							</div>
+							<div id="UseCases-Workflow" class="subtabContent">
+								<ul></ul>
+							</div>
+							<div id="UseCases-Apex" class="subtabContent">
+								<ul>
+									<li>Complex Salesforce automation that requires multiple steps and actions, where a flow will become cumbersome.</li>
+									<li>Custom-built integrations with other systems (such as a connection to a SQL database that requires bi-directional syncs)</li>
+									<li>ERP integrations.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</body>
+
+	</html>
