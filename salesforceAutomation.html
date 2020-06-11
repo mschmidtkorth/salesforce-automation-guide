@@ -19,13 +19,21 @@
 		<meta name="author" content="Michael Schmidt-Korth">
 		<meta name="description" content="The perfect guide for picking your Salesforce automation tool and strategy.">
 		<meta name="keywords" content="Salesforce,Visual Flow,Workflow,Process Builder,Apex,Salesforce Automation,Flow Builder">
-		<meta name=”robots” content=”index,follow”>
+		<meta name="robots" content="index,follow">
 		<meta name="revisit-after" content="7 days">
 		<meta name="distribution" content="web">
 		<meta http-equiv="Content-Style-Type" content="text/css">
 		<meta http-equiv="Content-Script-Type" content="text/javascript">
-		<meta name=”robots” content=”noodp”>
-		<link rel="shortcut icon" type="image/png" href="/images/favicon.ico" /> <!-- TODO: -->
+		<meta name="robots" content="noodp">
+		<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+		<link rel="icon" type="image/x-icon" sizes="32x32" href="favicon.ico">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="site.webmanifest">
+		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
 		<!-- JQuery themes: http://keith-wood.name/themes.html ; https://jqueryui.com/themeroller/ ; https://api.jqueryui.com/theming/css-framework/ -->
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/flick/jquery-ui.css">
 		<!-- add integtrity="..." attribute for JQuery -->
@@ -38,13 +46,20 @@
 
 		<!-- D3.js -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-		<script src="radarChart.js" charset="utf-8"></script> Radar chart design created by Nadieh Bremer - VisualCinnamon.com -->
+		<script src="radarChart.js" charset="utf-8"></script> <!-- Radar chart design created by Nadieh Bremer - VisualCinnamon.com -->
 	</head>
 	<style type="text/css">
 		#feedback {
 			position: fixed;
 			bottom: 0px;
 			right: 0px;
+			background-color: #215ca0;
+			display: block;
+			font-size: 15px;
+			color: #FFF;
+			padding: 10px 25px;
+			border: 1px solid #215ca0;
+			border-radius: 5px 0;
 		}
 
 		body {
@@ -53,6 +68,7 @@
 			padding: 1em 6em;
 			color: #000;
 			font-size: 1em;
+			width: 80%;
 		}
 
 		h1 {
@@ -75,6 +91,14 @@
 			padding-bottom: 5px;
 		}
 
+		.headerNote {
+			font-size: 0.7em;
+		}
+
+		.headerLogo {
+			margin-left: 2em;
+		}
+
 		.footer {
 			background-color: rgb(248, 246, 246);
 			border: 1px solid #DDD;
@@ -90,11 +114,25 @@
 			margin: 1em 0;
 		}
 
+		span.textLinkVisible {
+			text-decoration: underline !important;
+		}
+
+		div.sourceBox {
+			text-align: right;
+			width: 100%;
+			margin-top: -0.5em;
+			font-size: 0.7em;
+		}
 
 		th,
 		td {
 			padding: 5px;
 			background-color: #F7F6F6;
+		}
+
+		td.center {
+			text-align: center;
 		}
 
 		thead tr {
@@ -113,6 +151,11 @@
 
 		a.textLink {
 			color: #000;
+			text-decoration: none;
+		}
+
+		a.feedbackLink {
+			color: #FFF;
 			text-decoration: none;
 		}
 
@@ -146,6 +189,15 @@
 			flex: 1;
 			width: 90%;
 			padding-left: 1em;
+		}
+
+		span.boxIcon {
+			float: left;
+			margin-right: .3em;
+		}
+
+		div.footer-info a {
+			text-decoration: none;
 		}
 
 		/* Begin JQuery */
@@ -332,24 +384,38 @@
 				}
 			}
 		}
+
+		// Toggle visibility of 'Order of Execution' list
+		function showDetails(elem, identifier) {
+			$('#' + identifier).toggle()
+			elem.innerHTML = elem.innerHTML == 'Show Order of Execution from an automation perspective' ? 'Hide Order of Execution from an automation perspective' : 'Show Order of Execution from an automation perspective';
+		}
 	</script>
-	<!-- TODO: "style" to CSS classes -->
 	<!-- TODO:  Update spider web with my own categories and values -->
 	<!-- TODO:  Go through all comments; clean up code (also radarChart.js) -->
+	<!-- TODO:  Cleanup HTML -->
+	<!-- TODO:  Add to Google SEO/Index (once feedback from org62) -->
 	<!-- Note: If tabs are not displayed properly, verify that all Ids do NOT have any space! e.g. id="Process Builder" is WRONG -->
 
-	<body style="width: 80%">
+	<body>
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB44RKL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
 		<div class="header">
 			<h1>Salesforce Automation Guide</h1>
-			Salesforce offers different tools for automating business processes. They differ in features, complexity and required skills.<br />
-			The decision which automation tool to use depends on multipe factors &mdash; let the overview below help you decide which tool is best for your use case.
-			<br /><br />
-			<span style="font-size: 0.7em">
-				<em>Note:</em> Approval Processes and Entitlement Processes are not evaluated as they satisfy very specific use cases. L(W)Cs are not evaluated as they are dependent on other tools to be triggered.
-			</span>
+			<div class="container">
+				<div class="columnLeft headerLogo">
+					<img src="https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg" alt="salesforce.com logo" />
+				</div>
+				<div class="columnRight">
+					Salesforce offers different tools for automating business processes. They differ in features, complexity and required skills.<br />
+					The decision which automation tool to use depends on multipe factors &mdash; let the overview below help you decide which tool is best for your use case.
+					<br /><br />
+					<span class="headerNote">
+						<em>Note:</em> Approval Processes and Entitlement Processes are not evaluated as they satisfy very specific use cases. L(W)Cs are not evaluated as they are dependent on other tools to be triggered.
+					</span>
+				</div>
+			</div>
 		</div>
 
 		<div class="tabs fix">
@@ -406,7 +472,7 @@
 						</div>
 						<div class="columnRight">
 							<a href="https://help.salesforce.com/articleView?id=rss_flow_component.htm&type=5" target="_blank" class="textLink"><strong>
-									<span style="text-decoration: underline !important;">Flows</span>
+									<span class="textLinkVisible">Flows</span>
 								</strong> automate business processes to collect, update, edit, create or delete Salesforce records as well as interact with external systems. Flows can either run in the background (<em>autolaunched flows</em>) or provide a user interface (<em>screen flows</em>). Flows offer great flexibility and are managed in the declarative and interactive Flow
 								Builder UI. Flows are
 								powered by Lightning Flow.</a>
@@ -420,7 +486,7 @@
 						</div>
 						<div class="columnRight">
 							<a href="https://help.salesforce.com/articleView?id=process_overview.htm&type=5" target="_blank" class="textLink"><strong>
-									<span style="text-decoration: underline !important;">Process Builder</span>
+									<span class="textLinkVisible">Process Builder</span>
 								</strong> automates business processes to collect, update, edit or create delete Salesforce records as well as interact with external systems. Processes always run in the background. Processes offer moderate flexibility and are managed in the declarative and interactive Process Builder UI. Process Builder is powered by Lightning Flow.</a>
 						</div>
 					</div>
@@ -432,7 +498,7 @@
 						</div>
 						<div class="columnRight">
 							<a href="https://help.salesforce.com/articleView?id=customize_wf.htm&type=5" target="_blank" class="textLink"><strong>
-									<span style="text-decoration: underline !important;">Workflow Rules</span>
+									<span class="textLinkVisible">Workflow Rules</span>
 								</strong> automate business processes to update Salesforce records as well as interact with external systems in a limited manner. Workflows always run in the background. Workflows offer limited flexibility and are managed in a declarative wizard-like interface.</a>
 						</div>
 					</div>
@@ -444,7 +510,7 @@
 						</div>
 						<div class="columnRight">
 							<a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_intro_what_is_apex.htm" target="_blank" class="textLink"><strong>
-									<span style="text-decoration: underline !important;">Apex</span>
+									<span class="textLinkVisible">Apex</span>
 								</strong> automates any imaginable business processes within Salesforce and can interact with external systems in various ways. Apex runs in the background and can offer user interfaces via Lightning (Web) Components or Visualforce Pages. Apex offers unlimited flexibility due to its programmatic manner and is managed within the Developer
 								Console or any IDE.</a>
 						</div>
@@ -464,15 +530,15 @@
 						<tbody>
 							<tr>
 								<td>Complexity</td>
-								<td style="text-align: center;">Complex</td>
-								<td style="text-align: center;">Multiple if-then statements</td>
-								<td style="text-align: center;">Single if-then statement</td>
-								<td style="text-align: center;">Complex</td>
+								<td class="center">Complex</td>
+								<td class="center">Multiple if-then statements</td>
+								<td class="center">Single if-then statement</td>
+								<td class="center">Complex</td>
 							</tr>
 							<tr>
 								<td>Visual designer</td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
+								<td class="center">&#10004;</td>
 								<td></td>
 								<td></td>
 							</tr>
@@ -511,97 +577,100 @@
 							</tr>
 							<tr>
 								<td>Supports time-based actions</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
 								<td></td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
+								<td class="center">&#10004;</td>
 							</tr>
 							<tr>
 								<td>Supports user interaction</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
 								<td></td>
 								<td></td>
-								<td style="text-align: center;">(&#10004;)</td>
+								<td class="center">(&#10004;)</td>
 							</tr>
 							<tr>
 								<td>Call Apex</td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
+								<td class="center">&#10004;</td>
 								<td></td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
 							</tr>
 							<tr>
 								<td>Invoke process</td>
-								<td style="text-align: center;">(&#10004;)</td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">(&#10004;)</td>
-								<td style="text-align: center;">(&#10004;)</td>
+								<td class="center">(&#10004;)</td>
+								<td class="center">&#10004;</td>
+								<td class="center">(&#10004;)</td>
+								<td class="center">(&#10004;)</td>
 							</tr>
 							<tr>
 								<td>Launch flow</td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
+								<td class="center">&#10004;</td>
 								<td></td>
-								<td style="text-align: center;">(&#10004;)</td>
+								<td class="center">(&#10004;)</td>
 							</tr>
 							<tr>
 								<td>Create records</td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">Tasks only</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
+								<td class="center">&#10004;</td>
+								<td class="center">Tasks only</td>
+								<td class="center">&#10004;</td>
 							</tr>
 							<tr>
 								<td>Update records</td>
-								<td style="text-align: center;">Any record</td>
-								<td style="text-align: center;">Any related record</td>
-								<td style="text-align: center;">Record or parent</td>
-								<td style="text-align: center;">Any record</td>
+								<td class="center">Any record</td>
+								<td class="center">Any related record</td>
+								<td class="center">Record or parent</td>
+								<td class="center">Any record</td>
 							</tr>
 							<tr>
 								<td>Delete records</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
 								<td></td>
 								<td></td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
 							</tr>
 							<tr>
 								<td>Post to Chatter</td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
+								<td class="center">&#10004;</td>
 								<td></td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
 							</tr>
 							<tr>
 								<td>Send email</td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">&#10004;<br />(Email Alert)</td>
-								<td style="text-align: center;">&#10004;<br />(Email Alert)</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
+								<td class="center">&#10004;<br />(Email Alert)</td>
+								<td class="center">&#10004;<br />(Email Alert)</td>
+								<td class="center">&#10004;</td>
 							</tr>
 							<tr>
 								<td>Send custom notification</td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
+								<td class="center">&#10004;</td>
 								<td></td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
 							</tr>
 							<tr>
 								<td>Send outbound message</td>
 								<td></td>
 								<td></td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
+								<td class="center">&#10004;</td>
 							</tr>
 							<tr>
 								<td>Submit for approval</td>
-								<td style="text-align: center;">&#10004;</td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
+								<td class="center">&#10004;</td>
 								<td></td>
-								<td style="text-align: center;">&#10004;</td>
+								<td class="center">&#10004;</td>
 							</tr>
 						</tbody>
 					</table>
+					<div class="sourceBox">
+						<a href="https://help.salesforce.com/articleView?id=process_which_tool.htm&type=5" target="_blank">Help</a>
+					</div>
 
 					<div class="wrapper">
 						<div class="wrapLeft">
@@ -697,7 +766,7 @@
 											<div class="ui-widget">
 												<div class="ui-state-highlight ui-corner-all">
 													<p>
-														<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+														<span class="ui-icon ui-icon-info boxIcon"></span>
 														<strong>How To</strong> Double-click the Start element to select filter criteria and schedule. A typical use case is to iterate over batches of records via Autolaunched Flows
 													</p>
 												</div>
@@ -712,7 +781,7 @@
 											<div class="ui-widget">
 												<div class="ui-state-highlight ui-corner-all">
 													<p>
-														<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+														<span class="ui-icon ui-icon-info boxIcon"></span>
 														<strong>How To</strong> Lightning Components become visible in the "Custom" section once you have a Lightning Component that implements <code>lightning:availableForFlowScreens</code> interface
 													</p>
 												</div>
@@ -724,7 +793,7 @@
 											<div class="ui-widget">
 												<div class="ui-state-highlight ui-corner-all">
 													<p>
-														<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+														<span class="ui-icon ui-icon-info boxIcon"></span>
 														<strong>Note</strong> Working with collections is more verbose compared to Apex
 													</p>
 												</div>
@@ -736,7 +805,7 @@
 											<div class="ui-widget">
 												<div class="ui-state-highlight ui-corner-all">
 													<p>
-														<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+														<span class="ui-icon ui-icon-info boxIcon"></span>
 														<strong>Recommendation</strong> Use Apex and webservice callout to replace the Outbound Message, call Apex from flow
 													</p>
 												</div>
@@ -785,7 +854,7 @@
 											<div class="ui-widget">
 												<div class="ui-state-highlight ui-corner-all">
 													<p>
-														<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+														<span class="ui-icon ui-icon-info boxIcon"></span>
 														<strong>Recommendation</strong> Use Apex and webservice callout to replace the Outbound Message, call Apex from process
 													</p>
 												</div>
@@ -877,7 +946,7 @@
 											<div class="ui-widget">
 												<div class="ui-state-highlight ui-corner-all">
 													<p>
-														<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+														<span class="ui-icon ui-icon-info boxIcon"></span>
 														<strong>Note</strong> While a flow cannot be triggered by a Platform Event (is not a selectable object), once it is running it can pause and <a href="https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_subscribe_flow.htm" target="_blank">listen for a Platform Event</a>
 													</p>
 												</div>
@@ -893,7 +962,7 @@
 											<div class="ui-widget">
 												<div class="ui-state-highlight ui-corner-all">
 													<p>
-														<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+														<span class="ui-icon ui-icon-info boxIcon"></span>
 														<strong>How To</strong> after-* flows are defined by using 'Users or apps&ndash;no flow trigger' as the trigger; before-* flows are defined by using 'New or updated records&ndash;flow makes fast field updates' as the trigger</a>
 													</p>
 												</div>
@@ -1015,6 +1084,40 @@
 							</div>
 						</div>
 						<div id="FlowControl" class="subtabContent">
+							<div class="tabDetails" style="font-size: 0.8em;">
+								<a href="#!" onclick="showDetails(this, 'orderOfExecution')">Show Order of Execution from an automation perspective</a>
+								<div id="orderOfExecution" style="display: none;">
+									<ol>
+										<li>(For updates) Load record with original values from database</li>
+										<li>(For updates) Overwrite original values with new values</li>
+										<li>Run system validation rules and user validation rules for multiline items</li>
+										<li><strong>Execute before-save flows</strong></li>
+										<li><strong>Execute <code>before</code> triggers</strong></li>
+										<li>Run system validation rules and all user validation rules</li>
+										<li>Execute duplicate rules</li>
+										<li>Save to database, but do not commit</li>
+										<li><strong>Execute <code>after</code> triggers</strong></li>
+										<li>Execute assignment rules</li>
+										<li>Execute auto-response rules</li>
+										<li><strong>Execute workflow rules</strong></li>
+										<li><strong>If there are workflow field updates, update the record again</strong></li>
+										<li><strong>If the record was updated with workflow field updates, fire <code>before</code> and <code>after update</code> triggers one more time as well as system validation rules</li>
+										<li>Executes processes and flows launched via processes and flow trigger workflow actions</strong></li>
+										<li><strong>If there are field updates, update the record again (record goes through save procedure)</strong></li>
+										<li><strong>Execute processes, and flows launched via processes (after-save)</strong></li>
+										<li><strong>If there are field updates, update the record again (record goes through save procedure)</strong></li>
+										<li>Execute escalation rules</li>
+										<li>Execute entitlement rules</li>
+										<li>Calculate roll-up summary fields (parent record goes through save procedure)</li>
+										<li>Execute Criteria-based-Sharing evaluation</li>
+										<li>Commit to database</li>
+										<li>Execute post-commit logic (e.g. sending email)</li>
+									</ol>
+									<div class="sourceBox">
+										<a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers_order_of_execution.htm" target="_blank">Help</a>
+									</div>
+								</div>
+							</div>
 							<div class="subsubtabs">
 								<ul>
 									<li><a href="#FlowControl-Flow">Flow</a></li>
@@ -1093,8 +1196,8 @@
 											<div class="ui-widget">
 												<div class="ui-state-highlight ui-corner-all">
 													<p>
-														<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-														<strong>How To</strong> Use drag & drop for component groups. Select the “STOP” node to determine whether to continue or break. Actions are executed in the order in which they appear in the process definition</a>
+														<span class="ui-icon ui-icon-info boxIcon"></span>
+														<strong>How To</strong> Use drag & drop for component groups. Select the “STOP" node to determine whether to continue or break. Actions are executed in the order in which they appear in the process definition</a>
 													</p>
 												</div>
 											</div>
@@ -1175,7 +1278,7 @@
 											<div class="ui-widget">
 												<div class="ui-state-highlight ui-corner-all">
 													<p>
-														<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+														<span class="ui-icon ui-icon-info boxIcon"></span>
 														<strong>Note</strong> As a workaround, set field flags and update them with other workflows however, this can get nasty quickly). Actions are executed in the order in which they appear in the workflow definition (no guarantee).
 													</p>
 												</div>
@@ -1198,7 +1301,7 @@
 											<div class="ui-widget">
 												<div class="ui-state-highlight ui-corner-all">
 													<p>
-														<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+														<span class="ui-icon ui-icon-info boxIcon"></span>
 														<strong>Note</strong> Requires deep understanding of Apex code hierarchy
 													</p>
 												</div>
@@ -1238,7 +1341,7 @@
 								<div class="ui-widget">
 									<div class="ui-state-highlight ui-corner-all">
 										<p>
-											<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+											<span class="ui-icon ui-icon-info boxIcon"></span>
 											<strong>Note</strong> Setting up a flow takes more time and is significantly more complex than a process or workflow.
 										</p>
 									</div>
@@ -1247,7 +1350,7 @@
 								<div class="ui-widget">
 									<div class="ui-state-error ui-corner-all">
 										<p>
-											<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+											<span class="ui-icon ui-icon-alert boxIcon"></span>
 											<strong>Warning</strong> It is strongly advised to not perform any modifications directly in production.
 										</p>
 									</div>
@@ -1263,7 +1366,7 @@
 								<div class="ui-widget">
 									<div class="ui-state-highlight ui-corner-all">
 										<p>
-											<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+											<span class="ui-icon ui-icon-info boxIcon"></span>
 											<strong>Note</strong> Especially in case of complex flows you need to maintain a separate document for each flow that you create. However, even with a document side-by-side, walking through a complete flow can be cumbersome.
 										</p>
 									</div>
@@ -1280,7 +1383,7 @@
 								<div class="ui-widget">
 									<div class="ui-state-error ui-corner-all">
 										<p>
-											<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+											<span class="ui-icon ui-icon-alert boxIcon"></span>
 											<strong>Warning</strong> It is strongly advised to not perform any modifications directly in production.
 										</p>
 									</div>
@@ -1305,7 +1408,7 @@
 								<div class="ui-widget">
 									<div class="ui-state-error ui-corner-all">
 										<p>
-											<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+											<span class="ui-icon ui-icon-alert boxIcon"></span>
 											<strong>Warning</strong> It is strongly advised to not perform any modifications directly in production.
 										</p>
 									</div>
@@ -1328,7 +1431,7 @@
 								<div class="ui-widget">
 									<div class="ui-state-error ui-corner-all">
 										<p>
-											<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+											<span class="ui-icon ui-icon-alert boxIcon"></span>
 											<strong>Warning</strong> With freedom comes risk &ndash; the likelihood that Apex may result in a negative impact on your Salesforce system is drastically higher than that of the standard Salesforce features. This is because Apex does not have the structure and restrictions that are built into standard Salesforce features.
 										</p>
 									</div>
@@ -1357,7 +1460,7 @@
 									<li>List actions performed and their results, including those of other automations</li>
 									<li>List consumed Governor Limits</li>
 									<li>If an exception occurs, error messages are sometimes very generic</li>
-									<!-- If a Flow fails, often just “Unhandled exception” is returned, without any more details. Sometimes email goes out, but only to LastModifier (trigger: whoever debugs). Sometimes no email. Sometimes misleading error messages. You also cannot catch exceptions - so in some scenarios, the user might see an error message. A trigger error you can catch and handle and e.g. display a better error message to the user. A flow jus stupidly fails (still true?) </li> -->
+									<!-- If a Flow fails, often just “Unhandled exception" is returned, without any more details. Sometimes email goes out, but only to LastModifier (trigger: whoever debugs). Sometimes no email. Sometimes misleading error messages. You also cannot catch exceptions - so in some scenarios, the user might see an error message. A trigger error you can catch and handle and e.g. display a better error message to the user. A flow jus stupidly fails (still true?) </li> -->
 									<li>Can be sent via email</li>
 									<li>Emails for non-template flows from managed packages contain limited information</li>
 									<!-- If someone installs a non-template flow from a managed package, error emails for that flow’s interviews don’t include any details about the individual flow elements. The email is sent to either the user who installed the flow or the Apex exception email recipients. -->
@@ -2347,18 +2450,17 @@
 			// Draw chart
 			RadarChart(".radarChart", data, radarChartOptions);
 		</script>
-
 		<div class="footer">
 			<div class="footer-info">
-				<a href="https://www.salesforce.com/company/legal/" style="text-decoration: none;" target="_blank">Legal</a>&nbsp;&nbsp;&nbsp;
-				<a href="https://www.salesforce.com/company/privacy/" style="text-decoration: none;" target="_blank">Privacy</a>&nbsp;&nbsp;&nbsp;
-				<a href="https://www.salesforce.com/company/disclosure/" style="text-decoration: none;" target="_blank">Responsible Disclosure</a>&nbsp;&nbsp;&nbsp;
-				<a href="https://www.salesforce.com/form/contact/contactme.jsp" style="text-decoration: none;" target="_blank">Contact</a>
+				<a href="https://www.salesforce.com/company/legal/" target="_blank">Legal</a>&nbsp;&nbsp;&nbsp;
+				<a href="https://www.salesforce.com/company/privacy/" target="_blank">Privacy</a>&nbsp;&nbsp;&nbsp;
+				<a href="https://www.salesforce.com/company/disclosure/" target="_blank">Responsible Disclosure</a>&nbsp;&nbsp;&nbsp;
+				<a href="https://www.salesforce.com/form/contact/contactme.jsp" target="_blank">Contact</a>
 			</div>
 			<div class="footer-copyright">
 				<p>&copy; Copyright 2020 salesforce.com, inc. <a href="https://www.salesforce.com/company/legal/intellectual/" style="text-decoration: none;" target="_blank">All rights reserved.</a> Various trademarks held by their respective
 					owners.<br />salesforce UK Limited, village 9, floor 26 Salesforce Tower, 110 Bishopsgate, London, UK</p>
-				<div id="feedback" style="background-color: #215ca0; display: block; font-size: 15px; color: #FFF; padding: 10px 25px; border: 1px solid #215ca0; border-radius: 5px 0; text-decoration: none;"><a href="#TODO" style="color: #FFF;">FEEDBACK</a></div>
+				<div id="feedback"><a class="feedbackLink" href="https://forms.gle/79dzU4qhpu3drPp4A" target="_blank">FEEDBACK</a></div>
 			</div>
 		</div>
 	</body>
