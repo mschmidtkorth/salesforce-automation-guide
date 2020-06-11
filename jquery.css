@@ -1,0 +1,70 @@
+.ui-corner-all {
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+.ui-widget-header {
+	background: rgb(248, 246, 246) !important;
+}
+
+.ui-widget-content {
+	color: #000 !important;
+}
+
+.ui-state-highlight,
+.ui-state-error {
+	font-size: 0.8em !important;
+	margin: 1em 0;
+}
+
+.ui-state-highlight {
+	background: rgb(240, 240, 240) !important;
+	margin: 1em 0;
+}
+
+.ui-state-error {
+	background: #fef1ec !important;
+}
+
+.ui-state-hover {
+	background: #032E61 !important;
+}
+
+.ui-state-focus {
+	border: 1px solid #032E61 !important;
+}
+
+.ui-state-active a {
+	color: #032E61 !important;
+}
+
+.ui-state-active a:hover {
+	color: #FFF !important;
+}
+
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited {
+	color: #032E61 !important;
+}
+
+.ui-state-default a:hover {
+	color: #FFF !important;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+	border-top: 1px solid #333 !important;
+	border-left: 1px solid #333 !important;
+	border-right: 1px solid #333 !important;
+}
+
+.fix {
+	background: rgb(248, 246, 246) !important;
+}
+
+.tabSplit {
+	clear: both;
+}

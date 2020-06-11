@@ -1,0 +1,79 @@
+.radarChart {
+	/* Also controls tooltip text */
+	font-family: 'Open Sans', sans-serif;
+	font-size: 0.8em;
+	font-weight: 300;
+	fill: #242424;
+	text-align: center;
+	text-shadow: 0 1px 0 #DDD, 1px 0 0 #DDD, -1px 0 0 #DDD, 0 -1px 0 #DDD;
+	cursor: default;
+}
+
+/*.legend {
+			font-family: 'Raleway', sans-serif;
+			fill: #333333;
+		}*/
+
+.tooltip {
+	fill: #000;
+	text-shadow: none;
+	opacity: 1;
+	font-weight: 900;
+	color: "#00FF00";
+}
+
+.wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	margin: auto;
+	margin-top: 3em;
+	width: 80%;
+}
+
+.wrapLeft {
+	flex: auto;
+	width: 80%;
+}
+
+.wrapRight {
+	flex: auto;
+	padding-left: 1em;
+}
+
+/* Legend */
+ul.legend {
+	list-style: none;
+	font-family: "Raleway";
+	margin-left: -2em;
+}
+
+ul.legend li {
+	list-style: none;
+	line-height: 1.2em;
+}
+
+ul.legend li::before {
+	content: "\2022";
+	font-weight: bold;
+	display: inline-block;
+	width: 1em;
+	margin-left: -1em;
+	font-size: 3em;
+	vertical-align: middle;
+}
+
+ul.legend li.flow::before {
+	color: #0C7BDC;
+}
+
+ul.legend li.process::before {
+	color: #CC333F;
+}
+
+ul.legend li.workflow::before {
+	color: #EDC951;
+}
+
+ul.legend li.apex::before {
+	color: #3C784C;
+}
