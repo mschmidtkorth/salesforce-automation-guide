@@ -38,13 +38,13 @@ ul.nav {
 }
 
 .container {
-	background-color:#F7F6F6;
+	background-color: #F7F6F6;
 	padding-bottom: 2em;
 }
 
 .tab-content {
 	margin: auto;
-	padding-right: 0 1rem 1rem 1rem;
+	padding: 0 1rem 1rem 1rem;
 }
 
 .tab-pane {

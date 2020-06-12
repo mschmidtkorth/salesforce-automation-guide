@@ -69,11 +69,11 @@
 	<!-- End Google Tag Manager (noscript) -->
 	<div id="header">
 		<h1>Salesforce Automation Guide</h1>
-		<div class="container">
-			<div class="columnLeft headerLogo">
+		<div class="columnContainer">
+			<div class="columnLeft columnLeft-header headerLogo">
 				<img src="https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg" alt="salesforce.com logo" />
 			</div>
-			<div class="columnRight">
+			<div class="columnRight columnRight-header">
 				Salesforce offers different tools for automating business processes. They differ in features, complexity and required skills.<br />
 				The decision which automation tool to use depends on multiple factors &mdash; let the overview below help you decide which tool is best for your use case.
 				<br /><br />
@@ -126,7 +126,7 @@
 			<div class="tab-content clearfix" style="width:90%">
 				<div class="tab-pane active" id="General">
 					<p>
-					<div class="container">
+					<div class="columnContainer">
 						<div class="columnLeft">
 							<a href="https://help.salesforce.com/articleView?id=rss_flow_component.htm&type=5" target="_blank"><img height="64" width="64" src="https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/flow-builder/f1d99c79f186cea8adac115627a4729b_badge.png" alt="Flows" /></a>
 						</div>
@@ -140,7 +140,7 @@
 					</div>
 					</p>
 					<p>
-					<div class="container">
+					<div class="columnContainer">
 						<div class="columnLeft">
 							<a href="https://help.salesforce.com/articleView?id=rss_flow_component.htm&type=5" target="_blank"><img height="64" width="64" src="https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/business_process_automation/eee3b8f9f85dde3f6681645ded4aa215_badge.png" alt="Process Builder" /></a>
 						</div>
@@ -152,7 +152,7 @@
 					</div>
 					</p>
 					<p>
-					<div class="container">
+					<div class="columnContainer">
 						<div class="columnLeft">
 							<a href="https://help.salesforce.com/articleView?id=customize_wf.htm&type=5" target="_blank"><img height="64" width="64" src="https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/flow-basics/c2d1e1b78bb73f734b6f668e6f9428de_badge.png" alt="Workflows" /></a>
 						</div>
@@ -164,7 +164,7 @@
 					</div>
 					</p>
 					<p>
-					<div class="container">
+					<div class="columnContainer">
 						<div class="columnLeft">
 							<a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_intro_what_is_apex.htm" target="_blank"><img height="64" width="64" src="https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/apex_database/fab27840d343cc13934e9cf1f4a41dbc_badge.png" alt="Apex" /></a>
 						</div>
@@ -191,157 +191,159 @@
 						</div>
 					</div>
 
-					<table style="margin-top: 3em;">
-						<thead>
-							<tr>
-								<th style="width: 20%"></th>
-								<th style="width: 20%">Flow</th>
-								<th style="width: 20%">Process</th>
-								<th style="width: 20%">Workflow</th>
-								<th style="width: 20%">Apex</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Complexity</td>
-								<td class="center">Complex</td>
-								<td class="center">Multiple if-then statements</td>
-								<td class="center">Single if-then statement</td>
-								<td class="center">Complex</td>
-							</tr>
-							<tr>
-								<td>Visual designer</td>
-								<td class="center">&#10004;</td>
-								<td class="center">&#10004;</td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>Starts when</td>
-								<td>
-									<ul>
-										<li>Record changed</li>
-										<li>Launched by another flow</li>
-										<li>Launched by process</li>
-										<li>Launched by Apex</li>
-										<li>Schedule</li>
-										<li>User clicks button/link</li>
-										<li>User accesses Lightning/Community/Visualforce page, custom tab, utility bar item</li>
-									</ul>
-								</td>
-								<td>
-									<ul>
-										<li>Record changed</li>
-										<li>Invoked by another process</li>
-										<li>Platform Event received</li>
-									</ul>
-								</td>
-								<td>
-									<ul>
-										<li>Record changed</li>
-									</ul>
-								</td>
-								<td>
-									<ul>
-										<li>Apex is called</li>
-										<li>Record is changed</li>
-										<li>Schedule</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td>Supports time-based actions</td>
-								<td class="center">&#10004;</td>
-								<td></td>
-								<td class="center">&#10004;</td>
-								<td class="center">&#10004;</td>
-							</tr>
-							<tr>
-								<td>Supports user interaction</td>
-								<td class="center">&#10004;</td>
-								<td></td>
-								<td></td>
-								<td class="center">(&#10004;)</td>
-							</tr>
-							<tr>
-								<td>Call Apex</td>
-								<td class="center">&#10004;</td>
-								<td class="center">&#10004;</td>
-								<td></td>
-								<td class="center">&#10004;</td>
-							</tr>
-							<tr>
-								<td>Invoke process</td>
-								<td class="center">(&#10004;)</td>
-								<td class="center">&#10004;</td>
-								<td class="center">(&#10004;)</td>
-								<td class="center">(&#10004;)</td>
-							</tr>
-							<tr>
-								<td>Launch flow</td>
-								<td class="center">&#10004;</td>
-								<td class="center">&#10004;</td>
-								<td></td>
-								<td class="center">(&#10004;)</td>
-							</tr>
-							<tr>
-								<td>Create records</td>
-								<td class="center">&#10004;</td>
-								<td class="center">&#10004;</td>
-								<td class="center">Tasks only</td>
-								<td class="center">&#10004;</td>
-							</tr>
-							<tr>
-								<td>Update records</td>
-								<td class="center">Any record</td>
-								<td class="center">Any related record</td>
-								<td class="center">Record or parent</td>
-								<td class="center">Any record</td>
-							</tr>
-							<tr>
-								<td>Delete records</td>
-								<td class="center">&#10004;</td>
-								<td></td>
-								<td></td>
-								<td class="center">&#10004;</td>
-							</tr>
-							<tr>
-								<td>Post to Chatter</td>
-								<td class="center">&#10004;</td>
-								<td class="center">&#10004;</td>
-								<td></td>
-								<td class="center">&#10004;</td>
-							</tr>
-							<tr>
-								<td>Send email</td>
-								<td class="center">&#10004;</td>
-								<td class="center">&#10004;<br />(Email Alert)</td>
-								<td class="center">&#10004;<br />(Email Alert)</td>
-								<td class="center">&#10004;</td>
-							</tr>
-							<tr>
-								<td>Send custom notification</td>
-								<td class="center">&#10004;</td>
-								<td class="center">&#10004;</td>
-								<td></td>
-								<td class="center">&#10004;</td>
-							</tr>
-							<tr>
-								<td>Send outbound message</td>
-								<td></td>
-								<td></td>
-								<td class="center">&#10004;</td>
-								<td class="center">&#10004;</td>
-							</tr>
-							<tr>
-								<td>Submit for approval</td>
-								<td class="center">&#10004;</td>
-								<td class="center">&#10004;</td>
-								<td></td>
-								<td class="center">&#10004;</td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="table-responsive">
+						<table style="margin-top: 3em;">
+							<thead>
+								<tr>
+									<th style="width: 20%" style="position: absolute;"></th>
+									<th style="width: 20%">Flow</th>
+									<th style="width: 20%">Process</th>
+									<th style="width: 20%">Workflow</th>
+									<th style="width: 20%">Apex</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="position: absolute;">Complexity</td>
+									<td class="center">Complex</td>
+									<td class="center">Multiple if-then statements</td>
+									<td class="center">Single if-then statement</td>
+									<td class="center">Complex</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Visual designer</td>
+									<td class="center">&#10004;</td>
+									<td class="center">&#10004;</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Starts when</td>
+									<td>
+										<ul>
+											<li>Record changed</li>
+											<li>Launched by another flow</li>
+											<li>Launched by process</li>
+											<li>Launched by Apex</li>
+											<li>Schedule</li>
+											<li>User clicks button/link</li>
+											<li>User accesses Lightning/Community/Visualforce page, custom tab, utility bar item</li>
+										</ul>
+									</td>
+									<td>
+										<ul>
+											<li>Record changed</li>
+											<li>Invoked by another process</li>
+											<li>Platform Event received</li>
+										</ul>
+									</td>
+									<td>
+										<ul>
+											<li>Record changed</li>
+										</ul>
+									</td>
+									<td>
+										<ul>
+											<li>Apex is called</li>
+											<li>Record is changed</li>
+											<li>Schedule</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Supports time-based actions</td>
+									<td class="center">&#10004;</td>
+									<td></td>
+									<td class="center">&#10004;</td>
+									<td class="center">&#10004;</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Supports user interaction</td>
+									<td class="center">&#10004;</td>
+									<td></td>
+									<td></td>
+									<td class="center">(&#10004;)</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Call Apex</td>
+									<td class="center">&#10004;</td>
+									<td class="center">&#10004;</td>
+									<td></td>
+									<td class="center">&#10004;</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Invoke process</td>
+									<td class="center">(&#10004;)</td>
+									<td class="center">&#10004;</td>
+									<td class="center">(&#10004;)</td>
+									<td class="center">(&#10004;)</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Launch flow</td>
+									<td class="center">&#10004;</td>
+									<td class="center">&#10004;</td>
+									<td></td>
+									<td class="center">(&#10004;)</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Create records</td>
+									<td class="center">&#10004;</td>
+									<td class="center">&#10004;</td>
+									<td class="center">Tasks only</td>
+									<td class="center">&#10004;</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Update records</td>
+									<td class="center">Any record</td>
+									<td class="center">Any related record</td>
+									<td class="center">Record or parent</td>
+									<td class="center">Any record</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Delete records</td>
+									<td class="center">&#10004;</td>
+									<td></td>
+									<td></td>
+									<td class="center">&#10004;</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Post to Chatter</td>
+									<td class="center">&#10004;</td>
+									<td class="center">&#10004;</td>
+									<td></td>
+									<td class="center">&#10004;</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Send email</td>
+									<td class="center">&#10004;</td>
+									<td class="center">&#10004;<br />(Email Alert)</td>
+									<td class="center">&#10004;<br />(Email Alert)</td>
+									<td class="center">&#10004;</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Send custom notification</td>
+									<td class="center">&#10004;</td>
+									<td class="center">&#10004;</td>
+									<td></td>
+									<td class="center">&#10004;</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Send outbound message</td>
+									<td></td>
+									<td></td>
+									<td class="center">&#10004;</td>
+									<td class="center">&#10004;</td>
+								</tr>
+								<tr>
+									<td style="position: absolute;">Submit for approval</td>
+									<td class="center">&#10004;</td>
+									<td class="center">&#10004;</td>
+									<td></td>
+									<td class="center">&#10004;</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 					<div class="sourceBox">
 						<a href="https://help.salesforce.com/articleView?id=process_which_tool.htm&type=5" target="_blank">Help</a>
 					</div>
@@ -2311,9 +2313,9 @@
 			<p>&copy; Copyright 2020 salesforce.com, inc. <a href="https://www.salesforce.com/company/legal/intellectual/" style="text-decoration: none;" target="_blank">All rights reserved.</a> Various trademarks held by their respective
 				owners.<br />salesforce UK Limited, village 9, floor 26 Salesforce Tower, 110 Bishopsgate, London, UK</p>
 			<p>This site is not part of the official Salesforce documentation. No guarantee for correctness</p>
-			<div id="feedback"><a class="feedbackLink" href="https://forms.gle/79dzU4qhpu3drPp4A" target="_blank">FEEDBACK</a></div>
 		</div>
 	</div>
+	<div id="feedback"><a class="feedbackLink" href="https://forms.gle/79dzU4qhpu3drPp4A" target="_blank">FEEDBACK</a></div>
 </body>
 
 </html>

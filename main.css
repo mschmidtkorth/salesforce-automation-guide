@@ -50,6 +50,29 @@ body {
 	.mdc-fab {
 		display: block !important;
 	}
+
+	.columnRight-header {
+		flex: auto !important;
+	}
+
+	div.columnLeft-header {
+		flex: auto !important;
+		margin: auto;
+		width: 100%;
+	}
+
+	.tab-content {
+		width: 100% !important;
+		padding: 0 !important;
+	}
+
+	.columnLeft {
+		width: 100% !important;
+	}
+
+	.wrapper {
+		width: 100% !important;
+	}
 }
 
 /* Smartphone portrait, landscape */
@@ -67,6 +90,29 @@ body {
 	.mdc-fab {
 		display: block !important;
 	}
+
+	.columnRight-header {
+		flex: auto !important;
+	}
+
+	div.columnLeft-header {
+		flex: auto !important;
+		margin: auto;
+		width: 100%;
+	}
+
+	.tab-content {
+		width: 100% !important;
+		padding: 0 !important;
+	}
+
+	.columnLeft {
+		width: 100% !important;
+	}
+
+	.wrapper {
+		width: 100% !important;
+	}
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
@@ -82,6 +128,29 @@ body {
 
 	.mdc-fab {
 		display: block !important;
+	}
+
+	.columnRight-header {
+		flex: auto !important;
+	}
+
+	div.columnLeft-header {
+		flex: auto !important;
+		margin: auto;
+		width: 100%;
+	}
+
+	.tab-content {
+		width: 100% !important;
+		padding: 0 !important;
+	}
+
+	.columnLeft {
+		width: 100% !important;
+	}
+
+	.wrapper {
+		width: 100% !important;
 	}
 }
 
@@ -99,6 +168,29 @@ body {
 	.mdc-fab {
 		display: block !important;
 	}
+
+	.columnRight-header {
+		flex: auto !important;
+	}
+
+	div.columnLeft-header {
+		flex: auto !important;
+		margin: auto;
+		width: 100%;
+	}
+
+	.tab-content {
+		width: 100% !important;
+		padding: 0 !important;
+	}
+
+	.columnLeft {
+		width: 100% !important;
+	}
+
+	.wrapper {
+		width: 100% !important;
+	}
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
@@ -114,6 +206,29 @@ body {
 
 	.mdc-fab {
 		display: block !important;
+	}
+
+	.columnRight-header {
+		flex: auto !important;
+	}
+
+	div.columnLeft-header {
+		flex: auto !important;
+		margin: auto;
+		width: 100%;
+	}
+
+	.tab-content {
+		width: 100% !important;
+		padding: 0 !important;
+	}
+
+	.columnLeft {
+		width: 100% !important;
+	}
+
+	.wrapper {
+		width: 100% !important;
 	}
 }
 
@@ -194,7 +309,8 @@ body {
 	--mdc-theme-primary: #215ca0;
 	--mdc-theme-secondary: #215ca0;
 	position: fixed !important;
-	left: 95% !important;
+	top: 3em;
+	left: 85% !important;
 	z-index: 999 !important;
 	border: 2px solid #FFF !important;
 }
@@ -276,7 +392,7 @@ li.no:before {
 	padding-right: .7em;
 }
 
-.container {
+.columnContainer {
 	display: flex;
 	flex-wrap: wrap;
 }
