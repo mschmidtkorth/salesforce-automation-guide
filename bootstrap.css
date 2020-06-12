@@ -1,0 +1,58 @@
+/* TODO: Use custom sass to avoid !important */
+@media (min-width: 1200px) {
+
+	.container,
+	.container-lg,
+	.container-md,
+	.container-sm,
+	.container-xl {
+		max-width: 100% !important;
+	}
+}
+
+.nav>li>a {
+	color: #215ca0 !important;
+}
+
+.nav>li>a:hover {
+	background-color: #FFF;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+	color: #FFF !important;
+	background-color: #215ca0 !important;
+}
+
+.nav-pills .nav-link {
+	font-weight: bold !important;
+	border-radius: 0 !important;
+}
+
+.tab-pane {
+	margin-top: 2em;
+}
+
+ul.nav {
+	border-bottom: 1px solid #DDD;
+}
+
+.container {
+	background-color:#F7F6F6;
+	padding-bottom: 2em;
+}
+
+.tab-content {
+	margin: auto;
+	padding-right: 0 1rem 1rem 1rem;
+}
+
+.tab-pane {
+	padding: 1em;
+}
+
+.subtabs2,
+.subsubtabs2 {
+	background-color: #FFF;
+	border: 1px solid #AAA;
+}
