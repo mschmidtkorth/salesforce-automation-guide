@@ -378,12 +378,17 @@
 									<li>Be careful of limits and loops</li>
 									<li>Handle higher complexity by calling Apex &ndash; do not be deceived by 'endless possibilities' and avoid creating too complex flows</li>
 									<li>Define proper testing scenarios and test flows in Apex unit tests where possible</li>
+									<li>Implement fault paths for error handling; custom error message for screen flows</li>
 								</ul>
+								<div class="sourceBox">
+									<a href="https://help.salesforce.com/articleView?id=flow_prep_bestpractices.htm&type=5" target="_blank">Help</a>
+								</div>
 							</div>
 							<div class="tab-pane" id="BestPractices-ProcessBuilder">
 								<ul>
 									<li>Single process per object (exception: Another process for different trigger) allows to control the Order of Execution, prevent race conditions and improve bulkification behavior </li>
 									<li>Evaluate conditions via the condition rhombus where possible instead of an immediate action (avoids <code>null</code> errors for related records)</li>
+									<li>Reuse common actions by making them available as Quick Actions or Invocable Processes</li>
 									<li>Handle complexity by calling a flow or Apex</li>
 									<li>Define proper testing scenarios and test processes in Apex unit tests where possible</li>
 								</ul>
@@ -444,6 +449,7 @@
 							<div class="tab-pane" id="UseCases-Workflow">
 								<ul>
 									<li>Simple logic and actions</li>
+									<li>Limited to one object (or master-detail relationship)</li>
 									<li>Perform conditional record actions or integration with external systems in very simple scenarios</li>
 									<li>Schedule one-time actions</li>
 									<li>Send emails</li>
@@ -471,6 +477,7 @@
 							<li class="nav-item"><a class="nav-link" href="#Functionality-Triggers" data-toggle="tab">Triggers</a></li>
 							<li class="nav-item"><a class="nav-link" href="#Functionality-RecordAccess" data-toggle="tab">Record Access</a></li>
 							<li class="nav-item"><a class="nav-link" href="#Functionality-FlowControl" data-toggle="tab">Flow Control</a></li>
+							<li class="nav-item"><a class="nav-link" href="#Functionality-Distribution" data-toggle="tab">Distribution</a></li>
 						</ul>
 
 						<div class="tab-content clearfix">
@@ -493,6 +500,10 @@
 													<li>Supports Custom Labels</li>
 													<li>Supports Custom Settings (via <em>Get Records</em>)</li>
 													<li>Supports Custom Metadata (via <em>Get Records</em>)</li>
+													<li>Supports External Objects</li>
+													<div class="sourceBox">
+														<a href="https://help.salesforce.com/articleView?id=flow_considerations_salesforce_features_external_object.htm&type=5" target="_blank">Help</a>
+													</div>
 													<li class="no">Supports Static Resources</li>
 													<li>Supports all objects (e.g. Setup objects such as <code>*Share</code>, <code>GroupMember</code>, <code>EmailTemplate</code>)</li>
 												</ul>
@@ -509,14 +520,29 @@
 												<li><a href="https://help.salesforce.com/articleView?id=flow_concepts_trigger_schedule.htm&type=5" target="_blank"><strong>Scheduled Flows</strong></a></li>
 												<ul>
 													<div class="ui-widget">
-														<div class="ui-state-highlight ui-corner-all">
+														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
 															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
+																<div class="textbox-left textbox-left-tip">
 																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
 																	<span style="vertical-align: top;"><strong>How to</strong></span>
 																</div>
 																<div>
-																	Double-click the Start element to select filter criteria and schedule. A typical use case is to iterate over batches of records via autolaunched flows
+																	Double-click the Start element to select filter criteria and schedule. A typical use case is to iterate over batches of records via autolaunched flows. For each record in the returned results a flow interview is executed
+																</div>
+															</div>
+														</div>
+													</div>
+												</ul>
+												<ul>
+													<div class="ui-widget">
+														<div class="ui-state-highlight ui-corner-all">
+															<div class="textbox">
+																<div class="textbox-left textbox-left-info">
+																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span>
+																</div>
+																<div>
+																	Scheduled flows cannot be executed manually/on-demand.
 																</div>
 															</div>
 														</div>
@@ -529,9 +555,9 @@
 												<ul>
 													<li>Provide simple-to-use UI elements (standard fields and pre-built components such as File Uploads as well as <a href="https://appexchange.salesforce.com/appxStore?type=Flow">custom Lightning Components</a>) and wizard-like interfaces</li>
 													<div class="ui-widget">
-														<div class="ui-state-highlight ui-corner-all">
+														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
 															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
+																<div class="textbox-left textbox-left-tip">
 																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
 																	<span style="vertical-align: top;"><strong>How to</strong></span>
 																</div>
@@ -588,6 +614,20 @@
 													<li>Supports Custom Labels</li>
 													<li>Supports Custom Settings</li>
 													<li>Supports Custom Metadata</li>
+													<li>Supports External Objects</li>
+													<div class="ui-widget">
+														<div class="ui-state-highlight ui-corner-all">
+															<div class="textbox">
+																<div class="textbox-left textbox-left-info">
+																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span>
+																</div>
+																<div>
+																	External Objects are not supported for record-change processes.
+																</div>
+															</div>
+														</div>
+													</div>
 													<li class="no">Supports Static Resources</li>
 													<li class="no">Supports all objects (e.g. Setup objects such as <code>*Share</code>, <code>GroupMember</code>, <code>EmailTemplate</code>)</li>
 												</ul>
@@ -603,6 +643,19 @@
 												<li><strong>Create Platform Event</strong> (via <em>Custom Object</em>)</li>
 												<li><strong>Manage Quip Documents</strong> Move, share, delete etc. Quip documents associated with a record</li>
 												<li><strong>Scheduled Actions</strong> Create time-dependent actions</li>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-corner-all">
+														<div class="textbox">
+															<div class="textbox-left textbox-left-info">
+																<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+																<span style="vertical-align: top;"><strong>Note</strong></span>
+															</div>
+															<div>
+																Scheduled updates <em>ignore</em> validation rules. Scheduled actions are batched into one transaction with other actions of the same process, triggered by the same user, that should occur at a time. This might cause governor limit exceptions if processes are not bulkified.
+															</div>
+														</div>
+													</div>
+												</div>
 												<li><strong>Post to Chatter</strong> Post to the feed of a specific record, user, or Chatter group</li>
 												<li class="no">Post to a Community Feed</li>
 												<li><strong>Submit for Approval</strong> Submit a Salesforce record for approval if an approval process is defined for the current entity</li>
@@ -643,6 +696,7 @@
 													<li class="no">Supports Custom Labels</li>
 													<li>Supports Custom Settings (only Hierarchical)</li>
 													<li class="no">Supports Custom Metadata</li>
+													<li class="no">Supports External Objects</li>
 													<li class="no">Supports Static Resources</li>
 													<li class="no">Supports all objects (e.g. Setup objects such as <code>*Share</code>, <code>GroupMember</code>, <code>EmailTemplate</code>)</li>
 												</ul>
@@ -650,6 +704,19 @@
 												<li><strong>Send Outbound Message</strong> Send a UI-configurable API message via SOAP (in XML format) to a designated external
 													listener</li>
 												<li><strong>Scheduled Actions</strong> Create time-dependent actions</li>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-corner-all">
+														<div class="textbox">
+															<div class="textbox-left textbox-left-info">
+																<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+																<span style="vertical-align: top;"><strong>Note</strong></span>
+															</div>
+															<div>
+																You can set schedules based on whole hours or days.
+															</div>
+														</div>
+													</div>
+												</div>
 												<li><strong>Knowledge Actions</strong> Submit, publish, delete etc. of Knowledge Articles</li>
 											</ul>
 										</div>
@@ -662,6 +729,7 @@
 													<li>Supports Custom Labels</li>
 													<li>Supports Custom Settings (only Hierarchical)</li>
 													<li>Supports Custom Metadata</li>
+													<li>Supports External Objects</li>
 													<li>Supports Static Resources</li>
 													<li>Supports all objects (e.g. Setup objects such as <code>*Share</code>, <code>GroupMember</code>, <code>EmailTemplate</code>)</li>
 												</ul>
@@ -731,13 +799,26 @@
 												<li><strong>Execution Context</strong> Handles before-/after-* operations (limited functionality for before-*) for autolaunched flows. before-* flows improve the performance drastically</li>
 												<ul>
 													<div class="ui-widget">
-														<div class="ui-state-highlight ui-corner-all">
+														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
 															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
+																<div class="textbox-left textbox-left-tip">
 																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
 																	<span style="vertical-align: top;"><strong>How to</strong></span>
 																</div>
-																<div>after-* flows are defined by using 'Users or apps&ndash;no flow trigger' as the trigger; before-* flows are defined by using 'New or updated records&ndash;flow makes fast field updates' as the trigger</div>
+																<div>after-* flows are defined by using 'Users or apps&ndash;no flow trigger' as the trigger; before-* flows are defined by using 'New or updated records&ndash;flow makes fast field updates' as the trigger. before-* flows are limited to the <em>Get Records</em> element</div>
+															</div>
+														</div>
+													</div>
+													<div class="ui-widget">
+														<div class="ui-state-error ui-corner-all">
+															<div class="textbox">
+																<div class="textbox-left textbox-left-warning">
+																	<span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+																	<span style="vertical-align: top;"><strong>Warning</strong></span>
+																</div>
+																<div>
+																	Changing only the record owner does <em>not</em> launch record-triggered before-* flows.
+																</div>
 															</div>
 														</div>
 													</div>
@@ -935,7 +1016,20 @@
 									<div class="tab-content clearfix">
 										<div class="tab-pane active" id="Functionality-FlowControl-Flow">
 											<ul>
-												<li><strong>Order of Execution</strong> Control Order of Execution (if-then groups, sequence, iterations, complex branching logic with multiple condition and actions)</li>
+												<li><strong>Order of Execution</strong> Control Order of Execution within a flow (if-then groups, sequence, iterations, complex branching logic with multiple condition and actions)</li>
+												<div class="ui-widget">
+													<div class="ui-state-error ui-corner-all">
+														<div class="textbox">
+															<div class="textbox-left textbox-left-warning">
+																<span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+																<span style="vertical-align: top;"><strong>Warning</strong></span>
+															</div>
+															<div>
+																The order of multiple before-/after-* flows cannot be controlled(or only partially via field flags).
+															</div>
+														</div>
+													</div>
+												</div>
 												<li><strong>Record Collections</strong> Supports working with collections of items and allows sorting</li>
 												<li><strong>Resource Management</strong> Supports variable assignments and complex conditions</li>
 												<li><strong>Iterations</strong> Supports loops</li>
@@ -1005,13 +1099,26 @@
 												<li><strong>Order of Execution</strong> Provides control over Order of Execution (if-then group, sequence, multiple condition and action groups, fall-through behavior)</li>
 												<ul>
 													<div class="ui-widget">
-														<div class="ui-state-highlight ui-corner-all">
+														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
 															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
+																<div class="textbox-left textbox-left-tip">
 																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
 																	<span style="vertical-align: top;"><strong>How to</strong></span>
 																</div>
 																<div>Use drag &amp; drop for component groups. Select the “STOP" node to determine whether to continue or break. Actions are executed in the order in which they appear in the process definition</div>
+															</div>
+														</div>
+													</div>
+													<div class="ui-widget">
+														<div class="ui-state-error ui-corner-all">
+															<div class="textbox">
+																<div class="textbox-left textbox-left-warning">
+																	<span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+																	<span style="vertical-align: top;"><strong>Warning</strong></span>
+																</div>
+																<div>
+																	The order of multiple before-/after-* flows cannot be controlled (or only partially via field flags).
+																</div>
 															</div>
 														</div>
 													</div>
@@ -1099,7 +1206,7 @@
 																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
 																	<span style="vertical-align: top;"><strong>Note</strong></span>
 																</div>
-																<div>As a workaround, set field flags and update them with other workflows however, this can get nasty quickly). Actions are executed in the order in which they appear in the workflow definition (no guarantee).
+																<div>As a workaround, set field flags and update them with other workflows however, this can get nasty quickly). Actions are executed in the order in which they appear in the workflow definition (no guarantee). Field updates are always executed first
 																</div>
 															</div>
 														</div>
@@ -1143,6 +1250,158 @@
 												<li><strong>Identity Management</strong> Supports Identity Management processes</li>
 												<li>Supports <a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dynamic.htm" target="_blank">dynamic code</a> and <a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_schema.htm" target="_blank">introspection</a></li>
 												<li>Supports any data type as well as custom types</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane" id="Functionality-Distribution">
+								<div class="subsubtabs2">
+									<ul class="nav nav-pills nav-justified">
+										<li class="nav-item"><a class="nav-link active" href="#Functionality-Distribution-Flow" data-toggle="tab">Flow</a></li>
+										<li class="nav-item"><a class="nav-link" href="#Functionality-Distribution-ProcessBuilder" data-toggle="tab">Process Builder</a></li>
+										<li class="nav-item"><a class="nav-link" href="#Functionality-Distribution-Workflow" data-toggle="tab">Workflow</a></li>
+										<li class="nav-item"><a class="nav-link" href="#Functionality-Distribution-Apex" data-toggle="tab">Apex</a></li>
+									</ul>
+
+									<div class="tab-content clearfix">
+										<div class="tab-pane active" id="Functionality-Distribution-Flow">
+											<ul>
+												<li><strong>Screen flow</strong></li>
+												<ul>
+													<li>Flow actions</li>
+													<div class="ui-widget">
+														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
+															<div class="textbox">
+																<div class="textbox-left textbox-left-tip">
+																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+																	<span style="vertical-align: top;"><strong>How to</strong></span>
+																</div>
+																<div>
+																	Create an Action of type <em>Flow</em> then add it to a page layout. Flow actions are typically used for non-screen flows that should not be executed automatically upon page load or for rarely used flows that should not be visible by default
+																</div>
+															</div>
+														</div>
+													</div>
+													<li>Lightning (Community) pages</li>
+													<div class="ui-widget">
+														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
+															<div class="textbox">
+																<div class="textbox-left textbox-left-tip">
+																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+																	<span style="vertical-align: top;"><strong>How to</strong></span>
+																</div>
+																<div>
+																	Screen flows are added to a Lightning App or Lightning Record Page via Lightning App Builder (Flow resource). Optionally, create a Lightning tab for your app. The flow is executed automatically upon opening the page
+																</div>
+															</div>
+														</div>
+													</div>
+													<li>Lightning Out</li>
+													<div class="ui-widget">
+														<div class="ui-state-highlight ui-corner-all">
+															<div class="textbox">
+																<div class="textbox-left textbox-left-info">
+																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span>
+																</div>
+																<div>
+																	Use for flows that should be accessible outside of Salesforce (<code>lightning:flow</code>)
+																</div>
+															</div>
+														</div>
+													</div>
+													<li>Embedded Service</li>
+													<div class="ui-widget">
+														<div class="ui-state-highlight ui-corner-all">
+															<div class="textbox">
+																<div class="textbox-left textbox-left-info">
+																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span>
+																</div>
+																<div>
+																	Use for flows that should be accessible outside of Salesforce without login
+																</div>
+															</div>
+														</div>
+													</div>
+													<li>Custom buttons/links</li>
+													<div class="ui-widget">
+														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
+															<div class="textbox">
+																<div class="textbox-left textbox-left-tip">
+																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+																	<span style="vertical-align: top;"><strong>How to</strong></span>
+																</div>
+																<div>
+																	Copy the URL from Flow properties (record details), create a custom button/link, and add it to a page layout
+																</div>
+															</div>
+														</div>
+													</div>
+													<li>Web tabs</li>
+													<li>Utility Bar</li>
+													<div class="ui-widget">
+														<div class="ui-state-highlight ui-corner-all">
+															<div class="textbox">
+																<div class="textbox-left textbox-left-info">
+																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span>
+																</div>
+																<div>
+																	Use for flows that should be accessible on <em>any</em> page for a given app (desktop only)
+																</div>
+															</div>
+														</div>
+													</div>
+													<li>Direct flow URLs</li>
+													<li>Snap-in deployments</li>
+													<li>Lightning components (also for Communities)</li>
+													<div class="ui-widget">
+														<div class="ui-state-highlight ui-corner-all">
+															<div class="textbox">
+																<div class="textbox-left textbox-left-info">
+																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span>
+																</div>
+																<div>
+																	Not all Lightning Component data types are supported (<a href="https://help.salesforce.com/articleView?id=flow_considerations_salesforce_features_lc_aura.htm&type=5" target="_blank">Data Types</a>, <a href="https://help.salesforce.com/articleView?id=flow_considerations_salesforce_features_lc_runtime.htm&type=5" target="_blank">Events</a>)
+																</div>
+															</div>
+														</div>
+													</div>
+													<li>Visualforce components</li>
+													<li>Lightning Bolt Solution (Communities)</li>
+												</ul>
+												<li><strong>Autolaunched flow</strong></li>
+												<ul>
+													<li>Process</li>
+													<li>Flow</li>
+													<li>Custom buttons/links</li>
+													<li><a href="https://help.salesforce.com/articleView?id=flow_distribute_system_rest.htm&type=5" target="_blank">REST API</a></li>
+													<li>Apex</li>
+													<li>Lightning Bolt Solution (Communities)</li>
+												</ul>
+											</ul>
+										</div>
+										<div class="tab-pane" id="Functionality-Distribution-ProcessBuilder">
+											<ul>
+												<li>Processes are only triggered by record changes</li>
+											</ul>
+										</div>
+										<div class="tab-pane" id="Functionality-Distribution-Workflow">
+											<ul>
+												<li>Workflows are only triggered by record changes</li>
+											</ul>
+										</div>
+										<div class="tab-pane" id="Functionality-Distribution-Apex">
+											<ul>
+												<li>Lightning components (also for Communities)</li>
+												<li>Visualforce component</li>
+												<li>REST/SOAP API</li>
+												<li>Triggers</li>
+												<li>Execute Anonymous</li>
+											</ul>
 											</ul>
 										</div>
 									</div>
@@ -1483,6 +1742,7 @@
 										<li>Emails for non-template flows from managed packages contain limited information</li>
 										<!-- If someone installs a non-template flow from a managed package, error emails for that flow’s interviews don’t include any details about the individual flow elements. The email is sent to either the user who installed the flow or the Apex exception email recipients. -->
 									</ul>
+									<li><strong>Platform Events</strong> Creates <code>FlowExecutionErrorEvent</code> record in case of errors</li>
 									<li><strong>Interactive Debugging</strong> Supports manually debugging a flow and providing input parameters</li>
 									<ul>
 										<li>List user and input parameters</li>
@@ -1522,6 +1782,7 @@
 										<li>List actions performed and their results, including those of other automations</li>
 										<li>List consumed Governor Limits</li>
 									</ul>
+									<li><strong>Platform Events</strong> Creates <code>FlowExecutionErrorEvent</code> record in case of errors</li>
 									<li class="no"><strong>Interactive Debugging</strong> Supports manually debugging a workflow and providing input parameters</li>
 									<li><strong>Monitoring</strong></li>
 									<ul>
@@ -1724,6 +1985,20 @@
 							<div class="tab-pane active" id="Scalability-Flow">
 								<ul>
 									<li><strong>Support Large Data Volumes</strong> Bulk processing (with limitations) and before-* actions are supported, performance is good</li>
+									<div class="ui-state-highlight ui-corner-all">
+										<div class="textbox">
+											<div class="textbox-left textbox-left-info">
+												<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+												<span style="vertical-align: top;"><strong>Recommendation</strong></span>
+											</div>
+											<div>
+												Any interview that is associated with the same flow will be able to have bulkified operations. All shared operations between the interviews (if a flow is executed multiple times per transction) will collect and bulkify their actions
+											</div>
+										</div>
+									</div>
+									<div class="sourceBox">
+										<a href="https://help.salesforce.com/articleView?id=flow_concepts_bulkification.htm&type=5" target="_blank">Help</a>
+									</div>
 									<li><strong>Support Complex Logic</strong> Additional logic branches can be added with good flexibility, record iteration and error handling is supported</li>
 									<li><strong>Integrate with External Systems</strong> Some integration options for outbound and inbound integration (Platform Events, Apex, REST API, Email)</li>
 									<li><strong>Involve Other Automation</strong> Is able to utilize processes and workflows (via record updates) and Apex</li>
@@ -1890,6 +2165,10 @@
 							<div class="tab-pane active" id="Limits-Flow">
 								<ul>
 									<li>Contributes to CPU limits</li>
+									<li>Text input is limited to select locales</li>
+									<div class="sourceBox">
+										<a href="https://help.salesforce.com/articleView?id=flow_considerations_design_fb.htm&type=5" target="_blank">Help</a>
+									</div>
 									<li><a href="https://help.salesforce.com/articleView?id=flow_considerations_usage_entitlements.htm&type=5" target="_blank"><strong>General Limits</strong></a></li>
 									<table>
 										<thead>
@@ -1949,37 +2228,95 @@
 										<li>Autolaunched flows are part of the larger transaction through which they were launched (e.g. if launched from process, flow is part of process transaction).</li>
 										<li>Screen flows can span multiple transactions (new transaction for each new screen or if user clicks "Next")</li>
 										<li>Paused flows span multiple transactions (new transaction once resumed. Everything after the pause is executed as part of a batch transaction that includes other resumed interviews. The batch includes interviews executed by the same user Id, have the same execution time, and have the same flow version Id).</li>
+										<table>
+											<thead>
+												<tr>
+													<th>Per-transaction Limit</th>
+													<th>Value</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Number of SOQL queries (Get Records, and Update/Delete Records with filter)</td>
+													<td>100</td>
+												</tr>
+												<tr>
+													<td>Number of records retrieved by SOQL queries (Get Records, and Update/Delete Records with filter)</td>
+													<td>50&thinsp;000</td>
+												</tr>
+												<tr>
+													<td>Number of DML statements (Create/Update/Delete Records)</td>
+													<td>150</td>
+												</tr>
+												<tr>
+													<td>Number of records processed by DML statements</td>
+													<td>10&thinsp;000</td>
+												</tr>
+												<tr>
+													<td>Number of duplicate updates allowed per batch</td>
+													<td>12</td>
+												</tr>
+											</tbody>
+										</table>
+										<table>
+											<thead>
+												<tr>
+													<th>Distribution method</th>
+													<th>Transaction starts when...</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Process Builder</td>
+													<td>Record is created or updated.</td>
+												</tr>
+												<tr>
+													<td>Flow URL</td>
+													<td>URL is accessed.</td>
+												</tr>
+												<tr>
+													<td>Custom button/link</td>
+													<td>Button/link is clicked.</td>
+												</tr>
+												<tr>
+													<td>Visualforce page</td>
+													<td>Page is accessed</td>
+												</tr>
+												<tr>
+													<td><code>Interview.start()</code></td>
+													<td>If the method starts via a <code>before</code> or <code>after</code> trigger, the transaction starts when a record is created or updated.<br />
+														Otherwise, the transaction starts when the method (or a parent method) is invoked.<br />
+														The <code>start()</code> method shares its limits with other operations in the transaction and other methods in the class.</td>
+												</tr>
+												<tr>
+													<td>REST API (Custom Actions or Flows resource)</td>
+													<td>When the REST call is made. Depending on how the REST call is implemented, the limits can be shared with other operations.</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="sourceBox">
+											<a href="https://help.salesforce.com/articleView?id=flow_concepts_transaction.htm&type=5" target="_blank">Help</a>
+										</div>
+										<li>A transaction ends when</li>
+										<ul>
+											<li>A Screen (i.e. interview), Local Action, or Pause element is executed</li>
+											<div class="ui-widget">
+												<div class="ui-state-highlight ui-corner-all">
+													<div class="textbox">
+														<div class="textbox-left textbox-left-info">
+															<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
+															<span style="vertical-align: top;"><strong>Recommendation</strong></span>
+														</div>
+														<div>
+															Use these elements to start a new transaction if you are close to hitting governor limits. As usual, if a flow is triggered by another action, it will become part of this action's transaction.
+														</div>
+													</div>
+												</div>
+											</div>
+											<li>The order of execution has completed—if the flow was triggered when a record was created or updated</li>
+											<li>All the interviews in the transaction have finished</li>
+										</ul>
 									</ul>
-									<table>
-										<thead>
-											<tr>
-												<th>Per-transaction Limit</th>
-												<th>Value</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>Number of SOQL queries (Get Records, and Update/Delete Records with filter)</td>
-												<td>100</td>
-											</tr>
-											<tr>
-												<td>Number of records retrieved by SOQL queries (Get Records, and Update/Delete Records with filter)</td>
-												<td>50&thinsp;000</td>
-											</tr>
-											<tr>
-												<td>Number of DML statements (Create/Update/Delete Records)</td>
-												<td>150</td>
-											</tr>
-											<tr>
-												<td>Number of records processed by DML statements</td>
-												<td>10&thinsp;000</td>
-											</tr>
-											<tr>
-												<td>Number of duplicate updates allowed per batch</td>
-												<td>12</td>
-											</tr>
-										</tbody>
-									</table>
 									<li><a href="https://help.salesforce.com/articleView?id=flow_considerations_usage_entitlements.htm&type=5" target="_blank"><strong>Usage-Based Entitlements</strong></a></li>
 								</ul>
 							</div>
