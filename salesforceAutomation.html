@@ -199,10 +199,10 @@
 					<div id="charts" style="display: none;"></div>
 
 					<div class="table-responsive">
-						<table style="margin-top: 3em;">
+						<table class="table-large" style="margin-top: 3em;">
 							<thead>
 								<tr>
-									<th style="width: 20%" style="position: absolute;"></th>
+									<th style="width: 20%"></th>
 									<th style="width: 20%">Flow</th>
 									<th style="width: 20%">Process</th>
 									<th style="width: 20%">Workflow</th>
@@ -211,21 +211,21 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td style="position: absolute;">Complexity</td>
+									<td>Complexity</td>
 									<td class="center">Complex</td>
 									<td class="center">Multiple if-then statements</td>
 									<td class="center">Single if-then statement</td>
 									<td class="center">Complex</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Visual designer</td>
+									<td>Visual designer</td>
 									<td class="center">&#10004;</td>
 									<td class="center">&#10004;</td>
 									<td></td>
 									<td></td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Starts when</td>
+									<td>Starts when</td>
 									<td>
 										<ul>
 											<li>Record changed</li>
@@ -258,91 +258,91 @@
 									</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Supports time-based actions</td>
+									<td>Supports time-based actions</td>
 									<td class="center">&#10004;</td>
 									<td></td>
 									<td class="center">&#10004;</td>
 									<td class="center">&#10004;</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Supports user interaction</td>
+									<td>Supports user interaction</td>
 									<td class="center">&#10004;</td>
 									<td></td>
 									<td></td>
 									<td class="center">(&#10004;)</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Call Apex</td>
+									<td>Call Apex</td>
 									<td class="center">&#10004;</td>
 									<td class="center">&#10004;</td>
 									<td></td>
 									<td class="center">&#10004;</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Invoke process</td>
+									<td>Invoke process</td>
 									<td class="center">(&#10004;)</td>
 									<td class="center">&#10004;</td>
 									<td class="center">(&#10004;)</td>
 									<td class="center">(&#10004;)</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Launch flow</td>
+									<td>Launch flow</td>
 									<td class="center">&#10004;</td>
 									<td class="center">&#10004;</td>
 									<td></td>
 									<td class="center">(&#10004;)</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Create records</td>
+									<td>Create records</td>
 									<td class="center">&#10004;</td>
 									<td class="center">&#10004;</td>
 									<td class="center">Tasks only</td>
 									<td class="center">&#10004;</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Update records</td>
+									<td>Update records</td>
 									<td class="center">Any record</td>
 									<td class="center">Any related record</td>
 									<td class="center">Record or parent</td>
 									<td class="center">Any record</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Delete records</td>
+									<td>Delete records</td>
 									<td class="center">&#10004;</td>
 									<td></td>
 									<td></td>
 									<td class="center">&#10004;</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Post to Chatter</td>
+									<td>Post to Chatter</td>
 									<td class="center">&#10004;</td>
 									<td class="center">&#10004;</td>
 									<td></td>
 									<td class="center">&#10004;</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Send email</td>
+									<td>Send email</td>
 									<td class="center">&#10004;</td>
 									<td class="center">&#10004;<br />(Email Alert)</td>
 									<td class="center">&#10004;<br />(Email Alert)</td>
 									<td class="center">&#10004;</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Send custom notification</td>
+									<td>Send custom notification</td>
 									<td class="center">&#10004;</td>
 									<td class="center">&#10004;</td>
 									<td></td>
 									<td class="center">&#10004;</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Send outbound message</td>
+									<td>Send outbound message</td>
 									<td></td>
 									<td></td>
 									<td class="center">&#10004;</td>
 									<td class="center">&#10004;</td>
 								</tr>
 								<tr>
-									<td style="position: absolute;">Submit for approval</td>
+									<td>Submit for approval</td>
 									<td class="center">&#10004;</td>
 									<td class="center">&#10004;</td>
 									<td></td>
@@ -387,7 +387,7 @@
 							<div class="tab-pane" id="BestPractices-ProcessBuilder">
 								<ul>
 									<li>Single process per object (exception: Another process for different trigger) allows to control the Order of Execution, prevent race conditions and improve bulkification behavior </li>
-									<li>Evaluate conditions via the condition rhombus where possible instead of an immediate action (avoids <code>null</code> errors for related records)</li>
+									<li>Evaluate conditions via the condition diamond node where possible instead of an immediate action (avoids <code>null</code> errors for related records)</li>
 									<li>Reuse common actions by making them available as Quick Actions or Invocable Processes</li>
 									<li>Handle complexity by calling a flow or Apex</li>
 									<li>Define proper testing scenarios and test processes in Apex unit tests where possible</li>
@@ -520,13 +520,13 @@
 												<li><a href="https://help.salesforce.com/articleView?id=flow_concepts_trigger_schedule.htm&type=5" target="_blank"><strong>Scheduled Flows</strong></a></li>
 												<ul>
 													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-tip">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>How to</strong></span>
+														<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
+																		<span style="vertical-align: top;"><strong>How to</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Double-click the Start element to select filter criteria and schedule. A typical use case is to iterate over batches of records via autolaunched flows. For each record in the returned results a flow interview is executed
 																</div>
 															</div>
@@ -536,12 +536,12 @@
 												<ul>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Note</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Scheduled flows cannot be executed manually/on-demand.
 																</div>
 															</div>
@@ -555,13 +555,13 @@
 												<ul>
 													<li>Provide simple-to-use UI elements (standard fields and pre-built components such as File Uploads as well as <a href="https://appexchange.salesforce.com/appxStore?type=Flow">custom Lightning Components</a>) and wizard-like interfaces</li>
 													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-tip">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>How to</strong></span>
+														<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
+																		<span style="vertical-align: top;"><strong>How to</strong></span></span>
 																</div>
-																<div>Lightning Components become visible in the "Custom" section once you have a Lightning Component that implements <code>lightning:availableForFlowScreens</code> interface</div>
+																<div class="col-md-9 col-xl-9">Lightning Components become visible in the "Custom" section once you have a Lightning Component that implements <code>lightning:availableForFlowScreens</code> interface</div>
 															</div>
 														</div>
 													</div>
@@ -571,12 +571,12 @@
 												<ul>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Note</strong></span>
-																</div><!-- -->
-																<div>Working with collections is more verbose compared to Apex</div>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
+																</div>
+																<div class="col-md-9 col-xl-9">Working with collections is more verbose compared to Apex</div>
 															</div>
 														</div>
 													</div>
@@ -586,12 +586,12 @@
 												<ul>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-tip">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Recommendation</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color:rgb(100, 143, 99);">highlight</span>
+																		<span style="vertical-align: top;"><strong>Tip</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Use Apex and webservice callout to replace the Outbound Message, call Apex from flow</div>
 															</div>
 														</div>
@@ -617,12 +617,12 @@
 													<li>Supports External Objects</li>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Note</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	External Objects are not supported for record-change processes.
 																</div>
 															</div>
@@ -645,12 +645,12 @@
 												<li><strong>Scheduled Actions</strong> Create time-dependent actions</li>
 												<div class="ui-widget">
 													<div class="ui-state-highlight ui-corner-all">
-														<div class="textbox">
-															<div class="textbox-left textbox-left-info">
-																<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																<span style="vertical-align: top;"><strong>Note</strong></span>
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span></span>
 															</div>
-															<div>
+															<div class="col-md-9 col-xl-9">
 																Scheduled updates <em>ignore</em> validation rules. Scheduled actions are batched into one transaction with other actions of the same process, triggered by the same user, that should occur at a time. This might cause governor limit exceptions if processes are not bulkified.
 															</div>
 														</div>
@@ -663,20 +663,18 @@
 												<li><strong>Send Survey Invitation</strong></li>
 												<li class="no">Submit a related record for approval</li>
 												<li class="no">Send Outbound Messages</li>
-												<ul>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-tip">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Recommendation</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color:rgb(100, 143, 99);">highlight</span>
+																		<span style="vertical-align: top;"><strong>Tip</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Use Apex and webservice callout to replace the Outbound Message, call Apex from process</div>
 															</div>
 														</div>
 													</div>
-												</ul>
 												<li class="no">Provide UI elements</li>
 												<li class="no"><strong>Pause</strong> Can be paused by users (always runs to end)</li>
 												<li class="no"><strong>Offline</strong> Can be executed offline</li>
@@ -706,12 +704,12 @@
 												<li><strong>Scheduled Actions</strong> Create time-dependent actions</li>
 												<div class="ui-widget">
 													<div class="ui-state-highlight ui-corner-all">
-														<div class="textbox">
-															<div class="textbox-left textbox-left-info">
-																<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																<span style="vertical-align: top;"><strong>Note</strong></span>
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span></span>
 															</div>
-															<div>
+															<div class="col-md-9 col-xl-9">
 																You can set schedules based on whole hours or days.
 															</div>
 														</div>
@@ -780,12 +778,12 @@
 												<ul>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Note</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	While a flow cannot be triggered by a Platform Event (is not a selectable object), once it is running it can pause and <a href="https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_subscribe_flow.htm" target="_blank">listen for a Platform Event</a></div>
 															</div>
 														</div>
@@ -799,24 +797,24 @@
 												<li><strong>Execution Context</strong> Handles before-/after-* operations (limited functionality for before-*) for autolaunched flows. before-* flows improve the performance drastically</li>
 												<ul>
 													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-tip">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>How to</strong></span>
+														<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
+																		<span style="vertical-align: top;"><strong>How to</strong></span></span>
 																</div>
-																<div>after-* flows are defined by using 'Users or apps&ndash;no flow trigger' as the trigger; before-* flows are defined by using 'New or updated records&ndash;flow makes fast field updates' as the trigger. before-* flows are limited to the <em>Get Records</em> element</div>
+																<div class="col-md-9 col-xl-9">after-* flows are defined by using 'Users or apps&ndash;no flow trigger' as the trigger; before-* flows are defined by using 'New or updated records&ndash;flow makes fast field updates' as the trigger. before-* flows are limited to the <em>Get Records</em> element</div>
 															</div>
 														</div>
 													</div>
 													<div class="ui-widget">
 														<div class="ui-state-error ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-warning">
-																	<span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
-																	<span style="vertical-align: top;"><strong>Warning</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+																		<span style="vertical-align: top;"><strong>Warning</strong></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Changing only the record owner does <em>not</em> launch record-triggered before-* flows.
 																</div>
 															</div>
@@ -842,12 +840,12 @@
 												<ul>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-tip">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Workaround</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Workaround</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Use a custom button to execute <a href="https://developer.salesforce.com/docs/atlas.en-us.ajax.meta/ajax/sforce_api_ajax_connecting.htm" target="_blank">AJAX</a></div>
 															</div>
 														</div>
@@ -869,12 +867,12 @@
 												<ul>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-tip">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Workaround</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Workaround</strong></span></span>
 																</div>
-																<div>Use a custom button to execute <a href="https://developer.salesforce.com/docs/atlas.en-us.ajax.meta/ajax/sforce_api_ajax_connecting.htm" target="_blank">AJAX</a></div>
+																<div class="col-md-9 col-xl-9">Use a custom button to execute <a href="https://developer.salesforce.com/docs/atlas.en-us.ajax.meta/ajax/sforce_api_ajax_connecting.htm" target="_blank">AJAX</a></div>
 															</div>
 														</div>
 													</div>
@@ -1019,12 +1017,12 @@
 												<li><strong>Order of Execution</strong> Control Order of Execution within a flow (if-then groups, sequence, iterations, complex branching logic with multiple condition and actions)</li>
 												<div class="ui-widget">
 													<div class="ui-state-error ui-corner-all">
-														<div class="textbox">
-															<div class="textbox-left textbox-left-warning">
-																<span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
-																<span style="vertical-align: top;"><strong>Warning</strong></span>
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+																	<span style="vertical-align: top;"><strong>Warning</strong></span>
 															</div>
-															<div>
+															<div class="col-md-9 col-xl-9">
 																The order of multiple before-/after-* flows cannot be controlled(or only partially via field flags).
 															</div>
 														</div>
@@ -1099,24 +1097,24 @@
 												<li><strong>Order of Execution</strong> Provides control over Order of Execution (if-then group, sequence, multiple condition and action groups, fall-through behavior)</li>
 												<ul>
 													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-tip">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>How to</strong></span>
+														<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
+																		<span style="vertical-align: top;"><strong>How to</strong></span></span>
 																</div>
-																<div>Use drag &amp; drop for component groups. Select the “STOP" node to determine whether to continue or break. Actions are executed in the order in which they appear in the process definition</div>
+																<div class="col-md-9 col-xl-9">Use drag &amp; drop for component groups. Select the “STOP" node to determine whether to continue or break. Actions are executed in the order in which they appear in the process definition</div>
 															</div>
 														</div>
 													</div>
 													<div class="ui-widget">
 														<div class="ui-state-error ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-warning">
-																	<span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
-																	<span style="vertical-align: top;"><strong>Warning</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+																		<span style="vertical-align: top;"><strong>Warning</strong></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	The order of multiple before-/after-* flows cannot be controlled (or only partially via field flags).
 																</div>
 															</div>
@@ -1201,12 +1199,12 @@
 												<ul>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Note</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
 																</div>
-																<div>As a workaround, set field flags and update them with other workflows however, this can get nasty quickly). Actions are executed in the order in which they appear in the workflow definition (no guarantee). Field updates are always executed first
+																<div class="col-md-9 col-xl-9">As a workaround, set field flags and update them with other workflows however, this can get nasty quickly). Actions are executed in the order in which they appear in the workflow definition (no guarantee). Field updates are always executed first
 																</div>
 															</div>
 														</div>
@@ -1228,12 +1226,12 @@
 												<li><strong>Order of Execution</strong> Complete control over Order of Execution (any complexity level, conditional statements and loops; typically using flow control frameworks)
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Note</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
 																</div>
-																<div>Requires deep understanding of Apex code hierarchy
+																<div class="col-md-9 col-xl-9">Requires deep understanding of Apex code hierarchy
 																</div>
 															</div>
 														</div>
@@ -1271,13 +1269,13 @@
 												<ul>
 													<li>Flow actions</li>
 													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-tip">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>How to</strong></span>
+														<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
+																		<span style="vertical-align: top;"><strong>How to</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Create an Action of type <em>Flow</em> then add it to a page layout. Flow actions are typically used for non-screen flows that should not be executed automatically upon page load or for rarely used flows that should not be visible by default
 																</div>
 															</div>
@@ -1285,13 +1283,22 @@
 													</div>
 													<li>Lightning (Community) pages</li>
 													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-tip">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>How to</strong></span>
+														<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
+															<!-- <div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																	<span style="vertical-align: top;"><strong>How to</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
+																	Screen flows are added to a Lightning App or Lightning Record Page via Lightning App Builder (Flow resource). Optionally, create a Lightning tab for your app. The flow is executed automatically upon opening the page
+																</div>
+															</div> -->
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
+																		<span style="vertical-align: top; white-space: nowrap"><strong>How to</strong></span></span></span>
+																</div>
+																<div class="col-md-9 col-xl-9">
 																	Screen flows are added to a Lightning App or Lightning Record Page via Lightning App Builder (Flow resource). Optionally, create a Lightning tab for your app. The flow is executed automatically upon opening the page
 																</div>
 															</div>
@@ -1300,12 +1307,12 @@
 													<li>Lightning Out</li>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Note</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Use for flows that should be accessible outside of Salesforce (<code>lightning:flow</code>)
 																</div>
 															</div>
@@ -1314,12 +1321,12 @@
 													<li>Embedded Service</li>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Note</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Use for flows that should be accessible outside of Salesforce without login
 																</div>
 															</div>
@@ -1327,13 +1334,13 @@
 													</div>
 													<li>Custom buttons/links</li>
 													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-tip">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>How to</strong></span>
+														<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
+																		<span style="vertical-align: top;"><strong>How to</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Copy the URL from Flow properties (record details), create a custom button/link, and add it to a page layout
 																</div>
 															</div>
@@ -1343,12 +1350,12 @@
 													<li>Utility Bar</li>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Note</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Use for flows that should be accessible on <em>any</em> page for a given app (desktop only)
 																</div>
 															</div>
@@ -1359,12 +1366,12 @@
 													<li>Lightning components (also for Communities)</li>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox">
-																<div class="textbox-left textbox-left-info">
-																	<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-																	<span style="vertical-align: top;"><strong>Note</strong></span>
+															<div class="textbox row">
+																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
 																</div>
-																<div>
+																<div class="col-md-9 col-xl-9">
 																	Not all Lightning Component data types are supported (<a href="https://help.salesforce.com/articleView?id=flow_considerations_salesforce_features_lc_aura.htm&type=5" target="_blank">Data Types</a>, <a href="https://help.salesforce.com/articleView?id=flow_considerations_salesforce_features_lc_runtime.htm&type=5" target="_blank">Events</a>)
 																</div>
 															</div>
@@ -1429,12 +1436,12 @@
 									<li><strong>Development Environment</strong> More complex visual UI, everything in one place</li>
 									<div class="ui-widget">
 										<div class="ui-state-highlight ui-corner-all">
-											<div class="textbox">
-												<div class="textbox-left textbox-left-info">
-													<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-													<span style="vertical-align: top;"><strong>Note</strong></span>
+											<div class="textbox row">
+												<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+													<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+														<span style="vertical-align: top;"><strong>Note</strong></span></span>
 												</div>
-												<div>
+												<div class="col-md-9 col-xl-9">
 													Setting up a flow takes more time and is significantly more complex than a process or workflow.
 												</div>
 											</div>
@@ -1443,12 +1450,12 @@
 									<li><strong>Editability</strong> Can be customized on any org</li>
 									<div class="ui-widget">
 										<div class="ui-state-error ui-corner-all">
-											<div class="textbox">
-												<div class="textbox-left textbox-left-warning">
-													<span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
-													<span style="vertical-align: top;"><strong>Warning</strong></span>
+											<div class="textbox row">
+												<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
+													<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+														<span style="vertical-align: top;"><strong>Warning</strong></span>
 												</div>
-												<div>
+												<div class="col-md-9 col-xl-9">
 													It is strongly advised to not perform any modifications directly in production.
 												</div>
 											</div>
@@ -1464,12 +1471,12 @@
 									<li><strong>Documentation</strong> Documenting within flows is difficult (hidden within nodes), requires separate documentation (risk of being outdated)</li>
 									<div class="ui-widget">
 										<div class="ui-state-highlight ui-corner-all">
-											<div class="textbox">
-												<div class="textbox-left textbox-left-info">
-													<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-													<span style="vertical-align: top;"><strong>Note</strong></span>
+											<div class="textbox row">
+												<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+													<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+														<span style="vertical-align: top;"><strong>Note</strong></span></span>
 												</div>
-												<div>
+												<div class="col-md-9 col-xl-9">
 													Especially in case of complex flows you need to maintain a separate document for each flow that you create. However, even with a document side-by-side, walking through a complete flow can be cumbersome.
 												</div>
 											</div>
@@ -1487,12 +1494,12 @@
 									<li><strong>Editability</strong> Can be customized on any org</li>
 									<div class="ui-widget">
 										<div class="ui-state-error ui-corner-all">
-											<div class="textbox">
-												<div class="textbox-left textbox-left-warning">
-													<span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
-													<span style="vertical-align: top;"><strong>Warning</strong></span>
+											<div class="textbox row">
+												<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
+													<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+														<span style="vertical-align: top;"><strong>Warning</strong></span>
 												</div>
-												<div>
+												<div class="col-md-9 col-xl-9">
 													It is strongly advised to not perform any modifications directly in production.
 												</div>
 											</div>
@@ -1518,12 +1525,12 @@
 									<li><strong>Editability</strong> Can be customized on any org</li>
 									<div class="ui-widget">
 										<div class="ui-state-error ui-corner-all">
-											<div class="textbox">
-												<div class="textbox-left textbox-left-warning">
-													<span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
-													<span style="vertical-align: top;"><strong>Warning</strong></span>
+											<div class="textbox row">
+												<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
+													<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+														<span style="vertical-align: top;"><strong>Warning</strong></span>
 												</div>
-												<div>
+												<div class="col-md-9 col-xl-9">
 													It is strongly advised to not perform any modifications directly in production.
 												</div>
 											</div>
@@ -1547,12 +1554,12 @@
 									<li><strong>Extensibility</strong> Provides great flexibility and freedom and has no strict framework (but recommended ones)</li>
 									<div class="ui-widget">
 										<div class="ui-state-error ui-corner-all">
-											<div class="textbox">
-												<div class="textbox-left textbox-left-warning">
-													<span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
-													<span style="vertical-align: top;"><strong>Warning</strong></span>
+											<div class="textbox row">
+												<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
+													<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+														<span style="vertical-align: top;"><strong>Warning</strong></span>
 												</div>
-												<div>
+												<div class="col-md-9 col-xl-9">
 													With freedom comes risk &ndash; the likelihood that Apex may result in a negative impact on your Salesforce system is drastically higher than that of the standard Salesforce features. This is because Apex does not have the structure and restrictions that are built into standard Salesforce features.
 												</div>
 											</div>
@@ -1678,12 +1685,12 @@
 									<li><strong>FLS, OLS, Sharing</strong> Choice whether to consider sharing or not when executing DML or SOQL and FLS/OLS when accessing records/fields</li>
 									<div class="ui-widget">
 										<div class="ui-state-error ui-corner-all">
-											<div class="textbox">
-												<div class="textbox-left textbox-left-warning">
-													<span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
-													<span style="vertical-align: top;"><strong>Warning</strong></span>
+											<div class="textbox row">
+												<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
+													<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+														<span style="vertical-align: top;"><strong>Warning</strong></span>
 												</div>
-												<div>Requires the developer to take care of evaluating FLS, OLS, user permissions and sharing and have a deep understanding of the platform.
+												<div class="col-md-9 col-xl-9">Requires the developer to take care of evaluating FLS, OLS, user permissions and sharing and have a deep understanding of the platform.
 												</div>
 											</div>
 										</div>
@@ -1985,13 +1992,13 @@
 							<div class="tab-pane active" id="Scalability-Flow">
 								<ul>
 									<li><strong>Support Large Data Volumes</strong> Bulk processing (with limitations) and before-* actions are supported, performance is good</li>
-									<div class="ui-state-highlight ui-corner-all">
-										<div class="textbox">
-											<div class="textbox-left textbox-left-info">
-												<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-												<span style="vertical-align: top;"><strong>Recommendation</strong></span>
+									<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
+										<div class="textbox row">
+											<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+												<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color:rgb(100, 143, 99);">highlight</span>
+													<span style="vertical-align: top;"><strong>Tip</strong></span></span>
 											</div>
-											<div>
+											<div class="col-md-9 col-xl-9">
 												Any interview that is associated with the same flow will be able to have bulkified operations. All shared operations between the interviews (if a flow is executed multiple times per transction) will collect and bulkify their actions
 											</div>
 										</div>
@@ -2301,13 +2308,13 @@
 										<ul>
 											<li>A Screen (i.e. interview), Local Action, or Pause element is executed</li>
 											<div class="ui-widget">
-												<div class="ui-state-highlight ui-corner-all">
-													<div class="textbox">
-														<div class="textbox-left textbox-left-info">
-															<span class="mdc-fab__icon material-icons" style="color: #215ca0;">info</span>
-															<span style="vertical-align: top;"><strong>Recommendation</strong></span>
+												<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
+													<div class="textbox row">
+														<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+															<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color:rgb(100, 143, 99);">highlight</span>
+																<span style="vertical-align: top;"><strong>Tip</strong></span></span>
 														</div>
-														<div>
+														<div class="col-md-9 col-xl-9">
 															Use these elements to start a new transaction if you are close to hitting governor limits. As usual, if a flow is triggered by another action, it will become part of this action's transaction.
 														</div>
 													</div>

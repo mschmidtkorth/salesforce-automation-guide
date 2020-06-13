@@ -26,8 +26,16 @@
 	margin: 1em 0;
 }
 
-.ui-state-highlight-tip {
+.ui-state-highlight-howto {
 	background: rgb(250, 244, 203) !important;
+	border: none !important;
+	border-radius: 0px !important;
+	padding: 0.7em;
+	margin: 1em 0;
+}
+
+.ui-state-highlight-tip {
+	background: rgb(216, 241, 194) !important;
 	border: none !important;
 	border-radius: 0px !important;
 	padding: 0.7em;
@@ -81,27 +89,36 @@ span.ui-icon {
 
 div.textbox {
 	display: flex;
-	flex-direction: row;
+	/* flex-direction: row; */
 }
 
 div.textbox-left {
-	width: 15%;
-	min-width: 11em;
+	/* width: 15%;
+	min-width: 11em; */
 }
 
 div.textbox-left-info {
 	border-right: 3px solid #878787;
-	margin-right: 1em;
+	/* margin-right: 1em; */
 }
 
 div.textbox-left-warning {
 	border-right: 3px solid #B52E3E;
-	margin-right: 1em;
+	/* margin-right: 1em; */
+}
+
+div.textbox-left-howto {
+	border-right: 3px solid #ECC740;
+	/* margin-right: 1em; */
 }
 
 div.textbox-left-tip {
-	border-right: 3px solid #ECC740;
-	margin-right: 1em;
+	border-right: 3px solid #72A071;
+	/* margin-right: 1em; */
+}
+
+div.textbox-right {
+	overflow-wrap: break-word;
 }
 
 .fix {
