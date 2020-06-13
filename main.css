@@ -475,3 +475,16 @@ span.boxIcon {
 	border: 1px solid #215ca0;
 	/* border-radius: 5px 0; */
 }
+
+#github {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	background-color: #215ca0;
+	display: block;
+	font-size: 15px;
+	color: #FFF;
+	padding: 10px 25px;
+	border: 1px solid #215ca0;
+	/* border-radius: 5px 0; */
+}
