@@ -75,7 +75,7 @@
 				<img src="https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg" alt="salesforce.com logo" />
 			</div>
 			<div class="columnRight columnRight-header">
-				Salesforce offers different tools for automating business processes. They differ in features, complexity and required skills.<br />
+				Salesforce offers different tools for automating business processes. They differ in features, complexity, and required skills.<br />
 				The decision which automation tool to use depends on multiple factors &mdash; let the overview below help you decide which tool is best for your use case.
 				<br /><br />
 				<span class="headerNote">
@@ -134,7 +134,7 @@
 						<div class="columnRight">
 							<a href="https://help.salesforce.com/articleView?id=rss_flow_component.htm&type=5" target="_blank" class="textLink"><strong>
 									<span class="textLinkVisible">Flows</span>
-								</strong> automate business processes to collect, update, edit, create or delete Salesforce records as well as interact with external systems. Flows can either run in the background (<em>autolaunched flows</em>) or provide a user interface (<em>screen flows</em>). Flows offer great flexibility and are managed in the declarative and interactive Flow
+								</strong> automate business processes to collect, update, edit, create, or delete Salesforce records as well as interact with external systems. Flows can either run in the background (<em>autolaunched flows</em>) or provide a user interface (<em>screen flows</em>). Flows offer great flexibility and are managed in the declarative and interactive Flow
 								Builder UI. Flows are
 								powered by Lightning Flow.</a>
 						</div>
@@ -382,7 +382,7 @@
 							</div>
 							<div class="tab-pane" id="BestPractices-ProcessBuilder">
 								<ul>
-									<li>Single process per object (exception: Another process for different trigger) allows to control the Order of Execution, prevent race conditions and improve bulkification behaviour </li>
+									<li>Single process per object (exception: Another process for different trigger) allows to control the Order of Execution, prevent race conditions and improve bulkification behavior </li>
 									<li>Evaluate conditions via the condition rhombus where possible instead of an immediate action (avoids <code>null</code> errors for related records)</li>
 									<li>Handle complexity by calling a flow or Apex</li>
 									<li>Define proper testing scenarios and test processes in Apex unit tests where possible</li>
@@ -452,7 +452,7 @@
 							<div class="tab-pane" id="UseCases-Apex">
 								<ul>
 									<li>Complex Orchestration, logic and actions</li>
-									<li>Provide a visual interfaces in combination with Lightning (Web) Components or Visualforce</li>
+									<li>Provide a visual interface in combination with Lightning (Web) Components or Visualforce</li>
 									<li>Schedule regular tasks</li>
 									<li>Manage all records in any way possible</li>
 									<li>Send emails</li>
@@ -488,7 +488,7 @@
 											<ul>
 												<li><strong>Record Operations</strong></li>
 												<ul>
-													<li>Create, Read, Update or Delete any record</li>
+													<li>Create, Read, Update, or Delete any record</li>
 													<li class="no">Undelete records</li>
 													<li>Supports Custom Labels</li>
 													<li>Supports Custom Settings (via <em>Get Records</em>)</li>
@@ -502,7 +502,7 @@
 													<li>Separates the <em>when</em> (flow) from the <em>what</em> (Apex) and simplifies maintenance as well as debugging</li>
 													<li>Avoids additional flow triggers which are more difficult to handle, especially in regards to the Order of Execution</li>
 												</ul>
-												<li><strong>Quick Action</strong> Use a global or object-specific quick action to create/update a record, or perform any other standard action (e.g. Log a Call, Assign Article)</li>
+												<li><strong>Quick Action</strong> Use a global or object-specific quick action to create/update a record or perform any other standard action (e.g. Log a Call, Assign Article)</li>
 												<li><strong>Email</strong> Send an Email Alert to one or more recipients (via <em>Quick Action</em>)</li>
 												<li><strong>Create Platform Event</strong> (via <em>Create Record</em>)</li>
 												<li><strong>Manage Quip Documents</strong> Move, share, delete etc. Quip documents associated with a record (via <em>Quick Action</em>)</li>
@@ -516,7 +516,7 @@
 																	<span style="vertical-align: top;"><strong>How to</strong></span>
 																</div>
 																<div>
-																	Double-click the Start element to select filter criteria and schedule. A typical use case is to iterate over batches of records via Autolaunched Flows
+																	Double-click the Start element to select filter criteria and schedule. A typical use case is to iterate over batches of records via autolaunched flows
 																</div>
 															</div>
 														</div>
@@ -593,7 +593,7 @@
 												</ul>
 												<li><strong>Invoke Process</strong> Invoke an invocable sub-process</li>
 												<li><strong>Launch Flow</strong> Launch an autolaunched flow</li>
-												<li><strong>Quick Action</strong> Use a global or object-specific quick action to create/update a record, or perform some other standard actions (e.g. Log a Call)</li>
+												<li><strong>Quick Action</strong> Use a global or object-specific quick action to create/update a record or perform some other standard actions (e.g. Log a Call)</li>
 												<li><strong>Email</strong> Send an Email Alert to one or more recipients</li>
 												<li><strong>Invoke Apex</strong> Invoke <code>@InvocableMethod</code> Apex methods and pass parameters</li>
 												<ul>
@@ -669,7 +669,7 @@
 												<li><a href="https://help.salesforce.com/articleView?id=flow_distribute_system_apex.htm&type=5" target="_blank"><strong>Launch Flow</strong></a> Launch an autolaunched or user provisioning flow</li>
 												<li><strong>Invoke Process</strong> Invoke a process (via Platform Event or record change)</li>
 												<li><strong>Send Outbound Message</strong> Send SOAP API message (in XML format) to a designated external listener (independent of outbound messages)</li>
-												<li><strong>Actions</strong> Execute any global or object-specific quick action to create/update a record, or perform other standard actions (e.g. Log a Call, Submit for Approval)</li>
+												<li><strong>Actions</strong> Execute any global or object-specific quick action to create/update a record or perform other standard actions (e.g. Log a Call, Submit for Approval)</li>
 												<li><strong>Call Apex</strong> Execute any visible Apex method</li>
 												<li><strong>Integration</strong></li>
 												<ul>
@@ -726,8 +726,8 @@
 												<li><strong>User Provisioning Flow</strong> Provisions users for third-party services in the background. Is triggered as part of user provisioning wizard</li>
 												<li><strong>Field Service Mobile Flow</strong> Screen-based flow for FSL mobile app triggered by actions to allow capturing signatures or pictures</li>
 												<li><strong>Field Service Embedded Flow</strong> Screen-based flow triggered by embedded appointment booking</li>
-												<li><strong>Contact Request Flow</strong> Screen-based self-service flow for Lightning Communities to request a customer to contact the user. Is triggered via button or embedded on page.</li>
-												<li><strong>API</strong> Triggered by external system</li>
+												<li><strong>Contact Request Flow</strong> Screen-based self-service flow for Lightning Communities to request a customer to contact the user. Is triggered via button or embedded on-page.</li>
+												<li><strong>API</strong> Triggered by an external system</li>
 												<li><strong>Execution Context</strong> Handles before-/after-* operations (limited functionality for before-*) for autolaunched flows. before-* flows improve the performance drastically</li>
 												<ul>
 													<div class="ui-widget">
@@ -750,7 +750,7 @@
 												<ul>
 													<li>Record was created (insert)</li>
 													<li>Record was created, and every time it’s edited (insert/update, always)</li>
-													<li>Record was created, and every time it’s edited to subsequently meed the criteria (insert/update, if meets criteria)</li>
+													<li>Record was created, and every time it’s edited to subsequently meet the criteria (insert/update, if meets criteria)</li>
 												</ul>
 												<li class="no"><strong>Execution Context</strong> Handles before-* operations (always executes <em>after</em> record insert/update)</li>
 												<li><strong>Process</strong> Triggered by another process as invocable process</li>
@@ -780,7 +780,7 @@
 												<ul>
 													<li>Record was created (insert)</li>
 													<li>Record was created, and every time it’s edited (insert/update, always)</li>
-													<li>Record was created, and every time it’s edited to subsequently meed the criteria (insert/update, if meets criteria)</li>
+													<li>Record was created, and every time it’s edited to subsequently meet the criteria (insert/update, if meets criteria)</li>
 												</ul>
 												<li class="no"><strong>Execution Context</strong> Handles before-* operations (always executes <em>after</em> record insert/update)</li>
 												<li><strong>Entry Criteria</strong> Only one decision criteria is evaluated (nested formula)</li>
@@ -808,7 +808,7 @@
 												<li><strong>Flow</strong> Triggered by flow (<code>@InvocableMethod</code>) or as embedded (polymorphic) Lightning (Web) Component</li>
 												<li><strong>Apex</strong> Triggered by Apex</li>
 												<li><strong>Platform Event</strong> Triggered by received Platform Event</li>
-												<li><strong>API</strong> Triggered by external system</li>
+												<li><strong>API</strong> Triggered byan external system</li>
 												<li><strong>Entry Criteria</strong> Multiple, complex decision criteria can be evaluated</li>
 												<li class="no">Open directly from UI (requires additional Lightning (Web) Component or Visualforce page)</li>
 											</ul>
@@ -1002,7 +1002,7 @@
 										</div>
 										<div class="tab-pane" id="Functionality-FlowControl-ProcessBuilder">
 											<ul>
-												<li><strong>Order of Execution</strong> Provides control over Order of Execution (if-then group, sequence, multiple condition and action groups, fall-through behaviour)</li>
+												<li><strong>Order of Execution</strong> Provides control over Order of Execution (if-then group, sequence, multiple condition and action groups, fall-through behavior)</li>
 												<ul>
 													<div class="ui-widget">
 														<div class="ui-state-highlight ui-corner-all">
@@ -1163,7 +1163,7 @@
 						<div class="tab-content clearfix">
 							<div class="tab-pane active" id="Maintenance-Flow">
 								<ul>
-									<li><strong>Versioning</strong> Multiple versions per flow can be stored, you can retain previous deactivated flows. Versions cannot be compared within Salesforce</li>
+									<li><strong>Versioning</strong> Multiple versions per flow can be stored, you can retain previously deactivated flows. Versions cannot be compared within Salesforce</li>
 									<li><strong>Editability</strong> Cannot be edited if active (keeps your environment stable, but might also clutter your org)</li>
 									<li><strong>Status</strong> Flows can be active or inactive</li>
 									<li><strong>Maintenance Effort</strong> Medium effort to keep up-to-date, but the more (complex) flows are the messier it gets</li>
@@ -1195,14 +1195,14 @@
 											</div>
 										</div>
 									</div>
-									<li><strong>Extensibility</strong> Provides various functionality and a semi-strict strict framework (while general resources are identical between flows, usage and branching can be very different)</li>
+									<li><strong>Extensibility</strong> Provides various functionality and a semi-strict framework (while general resources are identical between flows, usage and branching can be very different)</li>
 									<li><strong>Readability</strong> Large flows can become difficult to read (logic is hidden within nodes or resources, need to be opened up separately), especially if developed by someone else and grown over time</li>
 									<ul>
 										<li>You cannot simply search through a flow's code (except by extracting it)</li>
 									</ul>
 									<li><strong>Organization</strong> Multiple criteria can be managed in one flow</li>
-									<li><strong>Translations</strong> Can use Custom Labels, translatable fields and flow properties. Cannot translate text templates</li>
-									<li><strong>Documentation</strong> Documentation within flows is difficult (hidden within nodes), requires separate documentation (risk of being outdated)</li>
+									<li><strong>Translations</strong> Can use Custom Labels, translatable fields, and flow properties. Cannot translate text templates</li>
+									<li><strong>Documentation</strong> Documenting within flows is difficult (hidden within nodes), requires separate documentation (risk of being outdated)</li>
 									<div class="ui-widget">
 										<div class="ui-state-highlight ui-corner-all">
 											<div class="textbox">
@@ -1220,7 +1220,7 @@
 							</div>
 							<div class="tab-pane" id="Maintenance-ProcessBuilder">
 								<ul>
-									<li><strong>Versioning</strong> Multiple versions per process can be stored, so you can retain previous deactivated processes. Versions cannot be compared within Salesforce</li>
+									<li><strong>Versioning</strong> Multiple versions per process can be stored, so you can retain previously deactivated processes. Versions cannot be compared within Salesforce</li>
 									<li><strong>Editability</strong> Cannot be edited if active (keeps your environment stable, but might also clutter your org)</li>
 									<li><strong>Status</strong> Processes can be active or inactive</li>
 									<li><strong>Maintenance Effort</strong> Medium effort to keep up-to-date, but the more processes you have the messier it gets, especially if there are multiple processes per object</li>
@@ -1246,7 +1246,7 @@
 										<li>You cannot simply search through a process' code (except by extracting it)</li>
 									</ul>
 									<li><strong>Translations</strong> Can use Custom Labels</li>
-									<li><strong>Documentation</strong> Documentation within the process is simple, separate documentation is recommended</li>
+									<li><strong>Documentation</strong> Documenting within the process is simple, separate documentation is recommended</li>
 								</ul>
 							</div>
 							<div class="tab-pane" id="Maintenance-Workflow">
@@ -1274,7 +1274,7 @@
 									<li><strong>Readability</strong> Workflows offer no flow control and are easy to make sense of, but require clicking through multiple pages. Anyone can read another’s workflow without much effort</li>
 									<li><strong>Organization</strong> Each set of criteria requires a new workflow rule, making management more difficult (requires naming conventions to group by object or area)</li>
 									<li class="no"><strong>Translations</strong> Can be translated</li>
-									<li><strong>Documentation</strong> Documentation within the workflow is simple, separate documentation for all workflows per object is recommended</li>
+									<li><strong>Documentation</strong> Documenting within the workflow is simple, separate documentation for all workflows per object is recommended</li>
 								</ul>
 							</div>
 							<div class="tab-pane" id="Maintenance-Apex">
@@ -1284,7 +1284,7 @@
 									<li><strong>Status</strong> Triggers can be active or inactive, classes are always ‘active’</li>
 									<li><strong>Maintenance Effort</strong> High effort, requires constant adjustments and discipline with upkeep due to other, dependent changes or Salesforce updates. Apex is often more complex in its surroundings, e.g. due to different triggers or scheduled jobs you need to consider. Easier to maintain than other options for complex business scenarios and nested logic</li>
 									<li><strong>Development Environment</strong> Development Console or IDE</li>
-									<li><strong>Editability</strong> Can be developed on any any sandbox or scratch org, but not on production</li>
+									<li><strong>Editability</strong> Can be developed on any sandbox or scratch org, but not on production</li>
 									<li><strong>Extensibility</strong> Provides great flexibility and freedom and has no strict framework (but recommended ones)</li>
 									<div class="ui-widget">
 										<div class="ui-state-error ui-corner-all">
@@ -1302,7 +1302,7 @@
 									<li><strong>Readability</strong> Due to few structural limitations and many options for designing code, Apex code can become difficult to read and understand, especially if written by someone else</li>
 									<li><strong>Translations</strong> Can use Custom Labels, translatable Sharing Reasons</li>
 									<li><strong>Documentation</strong> Documentation is part of the code, can be extracted automatically if based on common conventions</li>
-									<li><strong>Organization</strong> Organization is up to each developer, Apex provides great flexibility that allows for well- but also badly-organized code</li>
+									<li><strong>Organization</strong> How code is organized and designed architecturally is up to each developer, Apex provides great flexibility that allows for well- but also badly-organized code</li>
 								</ul>
 							</div>
 						</div>
@@ -1440,11 +1440,11 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td>Process or flow (class with sharing)</td>
+													<td>Process or flow (class<code>with sharing</code>)</td>
 													<td>User Context with regards to sharing; FLS/OLS/user permissions are enforced as defined in code; User must have access to Apex class</td>
 												</tr>
 												<tr>
-													<td>Process or flow (class without sharing)</td>
+													<td>Process or flow (class <code>without sharing</code>)</td>
 													<td>System Context with regards to sharing; FLS/OLS/user permissions are enforced as defined in code; User must have access to Apex class</td>
 												</tr>
 												<tr>
@@ -1755,7 +1755,7 @@
 							<div class="tab-pane" id="Scalability-Apex">
 								<ul>
 									<li><strong>Support Large Data Volumes</strong> Bulk processing and before-*/after-* actions are supported, performance is very good even for complex use cases, asynchronous processing, dedicated Bulk API, various features to reduce governor limit usage</li>
-									<li><strong>Support Complex Logic</strong> Any logic can be implemented with great flexibility, record iteration and custom error handling is supported</li>
+									<li><strong>Support Complex Logic</strong> Any logic can be implemented with great flexibility, record iteration, and custom error handling is supported</li>
 									<li><strong>Integrate with External Systems</strong> Various integration options for outbound and inbound integration (Platform Events, REST/SOAP-based (Streaming) APIs, Email, UI integration etc.)</li>
 									<li><strong>Involve Other Automation</strong> Is able to utilize processes and workflows (via record updates), flows</li>
 								</ul>
@@ -1835,7 +1835,7 @@
 							<div class="tab-pane" id="SkillsAudience-Apex">
 								<ul>
 									<li><strong>Audience</strong> Developer</li>
-									<li><strong>Skills Required</strong> Pure code - requires knowledge in multiple programming languages and strong understanding of programmatic guidelines, conventions and architectural patterns, dependency on other automated processes, Order of Execution etc.</li>
+									<li><strong>Skills Required</strong> Pure code - requires knowledge in multiple programming languages and a strong understanding of programmatic guidelines, conventions and architectural patterns, dependency on other automated processes, Order of Execution etc.</li>
 								</ul>
 							</div>
 						</div>
