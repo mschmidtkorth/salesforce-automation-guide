@@ -39,6 +39,7 @@
 	<link rel="stylesheet" href="jquery.css">
 	<link rel="stylesheet" href="bootstrap.css">
 	<link rel="stylesheet" href="radarChart.css">
+	<link rel="stylesheet" href="media.css">
 
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/flick/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -518,36 +519,32 @@
 												<li><strong>Create Platform Event</strong> (via <em>Create Record</em>)</li>
 												<li><strong>Manage Quip Documents</strong> Move, share, delete etc. Quip documents associated with a record (via <em>Quick Action</em>)</li>
 												<li><a href="https://help.salesforce.com/articleView?id=flow_concepts_trigger_schedule.htm&type=5" target="_blank"><strong>Scheduled Flows</strong></a></li>
-												<ul>
-													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
-																		<span style="vertical-align: top;"><strong>How to</strong></span></span>
-																</div>
-																<div class="col-md-9 col-xl-9">
-																	Double-click the Start element to select filter criteria and schedule. A typical use case is to iterate over batches of records via autolaunched flows. For each record in the returned results a flow interview is executed
-																</div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
+																	<span style="vertical-align: top;"><strong>How to</strong></span></span>
+															</div>
+															<div class="col-md-9 col-xl-9">
+																Double-click the Start element to select filter criteria and schedule. A typical use case is to iterate over batches of records via autolaunched flows. For each record in the returned results a flow interview is executed
 															</div>
 														</div>
 													</div>
-												</ul>
-												<ul>
-													<div class="ui-widget">
-														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
-																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
-																</div>
-																<div class="col-md-9 col-xl-9">
-																	Scheduled flows cannot be executed manually/on-demand.
-																</div>
+												</div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span></span>
+															</div>
+															<div class="col-md-9 col-xl-9">
+																Scheduled flows cannot be executed manually/on-demand.
 															</div>
 														</div>
 													</div>
-												</ul>
+												</div>
 												<li><strong>Post to Chatter (via <em>Quick Action</em>)</strong> Post to the feed of a specific record, user, or Chatter group</li>
 												<li><strong>Submit for Approval (via <em>Quick Action</em>)</strong> Submit a Salesforce record for approval</li>
 												<li><strong>Send Custom Notification(via <em>Quick Action</em>)</strong> Create a Lightning notification for Users, Groups or Teams on desktop or mobile</li>
@@ -568,35 +565,31 @@
 													<li>Components support conditional visibility </li>
 												</ul>
 												<li><strong>Record Collections</strong> Work with sets of records</li>
-												<ul>
-													<div class="ui-widget">
-														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
-																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
-																</div>
-																<div class="col-md-9 col-xl-9">Working with collections is more verbose compared to Apex</div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span></span>
 															</div>
+															<div class="col-md-9 col-xl-9">Working with collections is more verbose compared to Apex</div>
 														</div>
 													</div>
-												</ul>
+												</div>
 												<li><strong>Send Survey Invitation</strong> (via <em>Create Record</em>)</li>
 												<li class="no">Send Outbound Messages</li>
-												<ul>
-													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color:rgb(100, 143, 99);">highlight</span>
-																		<span style="vertical-align: top;"><strong>Tip</strong></span></span>
-																</div>
-																<div class="col-md-9 col-xl-9">
-																	Use Apex and webservice callout to replace the Outbound Message, call Apex from flow</div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color:rgb(100, 143, 99);">highlight</span>
+																	<span style="vertical-align: top;"><strong>Tip</strong></span></span>
 															</div>
+															<div class="col-md-9 col-xl-9">
+																Use Apex and webservice callout to replace the Outbound Message, call Apex from flow</div>
 														</div>
 													</div>
-												</ul>
+												</div>
 												<li><strong>Actions &amp; Recommendations</strong> Flows can be added to Actions &amp; Recommendations</li>
 												<li><strong>Pause</strong> Can be paused by users and resumed at a later time</li>
 												<li><strong>Offline</strong> Can be executed offline (Field Service Mobile Flows)</li>
@@ -663,18 +656,18 @@
 												<li><strong>Send Survey Invitation</strong></li>
 												<li class="no">Submit a related record for approval</li>
 												<li class="no">Send Outbound Messages</li>
-													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color:rgb(100, 143, 99);">highlight</span>
-																		<span style="vertical-align: top;"><strong>Tip</strong></span></span>
-																</div>
-																<div class="col-md-9 col-xl-9">
-																	Use Apex and webservice callout to replace the Outbound Message, call Apex from process</div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color:rgb(100, 143, 99);">highlight</span>
+																	<span style="vertical-align: top;"><strong>Tip</strong></span></span>
 															</div>
+															<div class="col-md-9 col-xl-9">
+																Use Apex and webservice callout to replace the Outbound Message, call Apex from process</div>
 														</div>
 													</div>
+												</div>
 												<li class="no">Provide UI elements</li>
 												<li class="no"><strong>Pause</strong> Can be paused by users (always runs to end)</li>
 												<li class="no"><strong>Offline</strong> Can be executed offline</li>
@@ -775,52 +768,48 @@
 											<ul>
 												<li><strong>Screen Flow</strong> Provides UI and allows user interaction. Can be invoked by Flow actions, Lightning/Aura/Visualforce pages, Buttons/Links, Tabs, or Lightning Out</li>
 												<li><strong>Autolaunched Flow</strong> Is triggered by Schedule, Process, Flow, Apex, REST API, Button/Link, Visualforce, Einstein Bots, or record update and creation</li>
-												<ul>
-													<div class="ui-widget">
-														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
-																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
-																</div>
-																<div class="col-md-9 col-xl-9">
-																	While a flow cannot be triggered by a Platform Event (is not a selectable object), once it is running it can pause and <a href="https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_subscribe_flow.htm" target="_blank">listen for a Platform Event</a></div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span></span>
 															</div>
+															<div class="col-md-9 col-xl-9">
+																While a flow cannot be triggered by a Platform Event (is not a selectable object), once it is running it can pause and <a href="https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_subscribe_flow.htm" target="_blank">listen for a Platform Event</a></div>
 														</div>
 													</div>
-												</ul>
+												</div>
 												<li><strong>User Provisioning Flow</strong> Provisions users for third-party services in the background. Is triggered as part of user provisioning wizard</li>
 												<li><strong>Field Service Mobile Flow</strong> Screen-based flow for FSL mobile app triggered by actions to allow capturing signatures or pictures</li>
 												<li><strong>Field Service Embedded Flow</strong> Screen-based flow triggered by embedded appointment booking</li>
 												<li><strong>Contact Request Flow</strong> Screen-based self-service flow for Lightning Communities to request a customer to contact the user. Is triggered via button or embedded on-page.</li>
 												<li><strong>API</strong> Triggered by an external system</li>
 												<li><strong>Execution Context</strong> Handles before-/after-* operations (limited functionality for before-*) for autolaunched flows. before-* flows improve the performance drastically</li>
-												<ul>
-													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
-																		<span style="vertical-align: top;"><strong>How to</strong></span></span>
-																</div>
-																<div class="col-md-9 col-xl-9">after-* flows are defined by using 'Users or apps&ndash;no flow trigger' as the trigger; before-* flows are defined by using 'New or updated records&ndash;flow makes fast field updates' as the trigger. before-* flows are limited to the <em>Get Records</em> element</div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
+																	<span style="vertical-align: top;"><strong>How to</strong></span></span>
+															</div>
+															<div class="col-md-9 col-xl-9">after-* flows are defined by using 'Users or apps&ndash;no flow trigger' as the trigger; before-* flows are defined by using 'New or updated records&ndash;flow makes fast field updates' as the trigger. before-* flows are limited to the <em>Get Records</em> element</div>
+														</div>
+													</div>
+												</div>
+												<div class="ui-widget">
+													<div class="ui-state-error ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+																	<span style="vertical-align: top;"><strong>Warning</strong></span>
+															</div>
+															<div class="col-md-9 col-xl-9">
+																Changing only the record owner does <em>not</em> launch record-triggered before-* flows.
 															</div>
 														</div>
 													</div>
-													<div class="ui-widget">
-														<div class="ui-state-error ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
-																		<span style="vertical-align: top;"><strong>Warning</strong></span>
-																</div>
-																<div class="col-md-9 col-xl-9">
-																	Changing only the record owner does <em>not</em> launch record-triggered before-* flows.
-																</div>
-															</div>
-														</div>
-													</div>
-												</ul>
+												</div>
 											</ul>
 										</div>
 										<div class="tab-pane" id="Functionality-Triggers-ProcessBuilder">
@@ -837,20 +826,18 @@
 												<li><strong>Platform Event</strong> Triggered by received Platform Event</li>
 												<li><strong>Entry Criteria</strong> Multiple decision criteria are evaluated (nested formula or branching)</li>
 												<li class="no">Open directly from UI</li>
-												<ul>
-													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
-																		<span style="vertical-align: top;"><strong>Workaround</strong></span></span>
-																</div>
-																<div class="col-md-9 col-xl-9">
-																	Use a custom button to execute <a href="https://developer.salesforce.com/docs/atlas.en-us.ajax.meta/ajax/sforce_api_ajax_connecting.htm" target="_blank">AJAX</a></div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																	<span style="vertical-align: top;"><strong>Workaround</strong></span></span>
 															</div>
+															<div class="col-md-9 col-xl-9">
+																Use a custom button to execute <a href="https://developer.salesforce.com/docs/atlas.en-us.ajax.meta/ajax/sforce_api_ajax_connecting.htm" target="_blank">AJAX</a></div>
 														</div>
 													</div>
-												</ul>
+												</div>
 											</ul>
 										</div>
 										<div class="tab-pane" id="Functionality-Triggers-Workflow">
@@ -864,19 +851,17 @@
 												<li class="no"><strong>Execution Context</strong> Handles before-* operations (always executes <em>after</em> record insert/update)</li>
 												<li><strong>Entry Criteria</strong> Only one decision criteria is evaluated (nested formula)</li>
 												<li class="no">Open directly from UI</li>
-												<ul>
-													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
-																		<span style="vertical-align: top;"><strong>Workaround</strong></span></span>
-																</div>
-																<div class="col-md-9 col-xl-9">Use a custom button to execute <a href="https://developer.salesforce.com/docs/atlas.en-us.ajax.meta/ajax/sforce_api_ajax_connecting.htm" target="_blank">AJAX</a></div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																	<span style="vertical-align: top;"><strong>Workaround</strong></span></span>
 															</div>
+															<div class="col-md-9 col-xl-9">Use a custom button to execute <a href="https://developer.salesforce.com/docs/atlas.en-us.ajax.meta/ajax/sforce_api_ajax_connecting.htm" target="_blank">AJAX</a></div>
 														</div>
 													</div>
-												</ul>
+												</div>
 											</ul>
 										</div>
 										<div class="tab-pane" id="Functionality-Triggers-Apex">
@@ -1095,32 +1080,30 @@
 										<div class="tab-pane" id="Functionality-FlowControl-ProcessBuilder">
 											<ul>
 												<li><strong>Order of Execution</strong> Provides control over Order of Execution (if-then group, sequence, multiple condition and action groups, fall-through behavior)</li>
-												<ul>
-													<div class="ui-widget">
-														<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
-																		<span style="vertical-align: top;"><strong>How to</strong></span></span>
-																</div>
-																<div class="col-md-9 col-xl-9">Use drag &amp; drop for component groups. Select the “STOP" node to determine whether to continue or break. Actions are executed in the order in which they appear in the process definition</div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-state-highlight-howto ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-howto">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: rgb(201, 163, 25)">help</span>
+																	<span style="vertical-align: top;"><strong>How to</strong></span></span>
+															</div>
+															<div class="col-md-9 col-xl-9">Use drag &amp; drop for component groups. Select the “STOP" node to determine whether to continue or break. Actions are executed in the order in which they appear in the process definition</div>
+														</div>
+													</div>
+												</div>
+												<div class="ui-widget">
+													<div class="ui-state-error ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
+																	<span style="vertical-align: top;"><strong>Warning</strong></span>
+															</div>
+															<div class="col-md-9 col-xl-9">
+																The order of multiple before-/after-* flows cannot be controlled (or only partially via field flags).
 															</div>
 														</div>
 													</div>
-													<div class="ui-widget">
-														<div class="ui-state-error ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-warning">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons" style="color: #B52E3E;">warning</span>
-																		<span style="vertical-align: top;"><strong>Warning</strong></span>
-																</div>
-																<div class="col-md-9 col-xl-9">
-																	The order of multiple before-/after-* flows cannot be controlled (or only partially via field flags).
-																</div>
-															</div>
-														</div>
-													</div>
-												</ul>
+												</div>
 												<li><strong>Record Collections</strong> Supports working with collections of items (for child updates only)</li>
 												<li class="no"><strong>Resource Management</strong> Supports variable assignments and complex conditions</li>
 												<li class="no"><strong>Iterations</strong> Supports loops</li>
@@ -1196,20 +1179,30 @@
 										<div class="tab-pane" id="Functionality-FlowControl-Workflow">
 											<ul>
 												<li class="no"><strong>Order of Execution</strong> Provides control over Order of Execution</li>
-												<ul>
-													<div class="ui-widget">
-														<div class="ui-state-highlight ui-corner-all">
-															<div class="textbox row">
-																<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
-																	<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
-																		<span style="vertical-align: top;"><strong>Note</strong></span></span>
-																</div>
-																<div class="col-md-9 col-xl-9">As a workaround, set field flags and update them with other workflows however, this can get nasty quickly). Actions are executed in the order in which they appear in the workflow definition (no guarantee). Field updates are always executed first
-																</div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-state-highlight-tip ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-tip">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																	<span style="vertical-align: top;"><strong>Workaround</strong></span></span>
+															</div>
+															<div class="col-md-9 col-xl-9">
+																Set field flags and update them with other workflows - however, this can get nasty quickly. Avoid where possible</div>
+														</div>
+													</div>
+												</div>
+												<div class="ui-widget">
+													<div class="ui-state-highlight ui-corner-all">
+														<div class="textbox row">
+															<div class="textbox-left col-md-3 col-xl-3 textbox-left-info">
+																<span style="white-space: wrap;"><span class="mdc-fab__icon material-icons">info</span>
+																	<span style="vertical-align: top;"><strong>Note</strong></span></span>
+															</div>
+															<div class="col-md-9 col-xl-9">Actions are executed in the order in which they appear in the workflow definition (no guarantee). Field updates are always executed first
 															</div>
 														</div>
 													</div>
-												</ul>
+												</div>
 												<li class="no"><strong>Record Collections</strong> Supports working with collections of items</li>
 												<li class="no"><strong>Resource Management</strong> Supports variable assignments and complex conditions</li>
 												<li class="no"><strong>Iterations</strong> Supports loops</li>
@@ -1587,81 +1580,79 @@
 								<ul>
 									<li><strong>FLS, OLS, Sharing</strong> Security is handled by the platform, depending on execution mode</li>
 									<li><strong>Execution Mode</strong> Choice of <em>User Context or System context without sharing (ignores FLS, OLS, other user permissions and sharing)</em> (depends on how flow is launched) or <em>System Context with sharing (ignores FLS, OLS, other user permissions)</em>. If the first option is chosen, flows execute in the context from which they are called:</li>
-									<ul>
-										<table>
-											<thead>
-												<tr>
-													<th>Flow Called From</th>
-													<th>Execution Mode</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Apex</td>
-													<td>Depends on <code>with/without sharing</code> of Apex class; never considers FLS/OLS/user permissions</td>
-												</tr>
-												<tr>
-													<td>Community</td>
-													<td>User Context</td>
-												</tr>
-												<tr>
-													<td>Embedded as a visual component inside a custom Aura component</td>
-													<td>User Context</td>
-												</tr>
-												<tr>
-													<td>Embedded as a visual component inside a Visualforce page</td>
-													<td>User Context</td>
-												</tr>
-												<tr>
-													<td>Custom button</td>
-													<td>User Context</td>
-												</tr>
-												<tr>
-													<td>Custom link</td>
-													<td>User Context</td>
-												</tr>
-												<tr>
-													<td>Direct link</td>
-													<td>User Context</td>
-												</tr>
-												<tr>
-													<td>Flow action</td>
-													<td>User Context</td>
-												</tr>
-												<tr>
-													<td>Lightning page</td>
-													<td>User Context</td>
-												</tr>
-												<tr>
-													<td>Process Builder</td>
-													<td>System Context (as process always runs in System Context)</td>
-												</tr>
-												<tr>
-													<td>REST API</td>
-													<td>User Context</td>
-												</tr>
-												<tr>
-													<td>Apex method of a custom Aura component controller</td>
-													<td>Depends on <code>with/without sharing</code> of Apex class; never considers FLS/OLS/user permissions</td>
-												</tr>
-												<tr>
-													<td>Apex method of a Visualforce controller</td>
-													<td>Depends on <code>with/without sharing</code> of Apex class; never considers FLS/OLS/user permissions</td>
-												</tr>
-												<tr>
-													<td>Scheduled Flow</td>
-													<td>System Context</td>
-												</tr>
-												<tr>
-													<td>Web tab</td>
-													<td>User Context</td>
-												</tr>
-											</tbody>
-										</table>
-										<div class="sourceBox">
-											<a href="https://help.salesforce.com/apex/HTViewHelpDoc?id=flow_distribute_context.htm" target="_blank">Help</a>
-										</div>
-									</ul>
+									<table>
+										<thead>
+											<tr>
+												<th>Flow Called From</th>
+												<th>Execution Mode</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Apex</td>
+												<td>Depends on <code>with/without sharing</code> of Apex class; never considers FLS/OLS/user permissions</td>
+											</tr>
+											<tr>
+												<td>Community</td>
+												<td>User Context</td>
+											</tr>
+											<tr>
+												<td>Embedded as a visual component inside a custom Aura component</td>
+												<td>User Context</td>
+											</tr>
+											<tr>
+												<td>Embedded as a visual component inside a Visualforce page</td>
+												<td>User Context</td>
+											</tr>
+											<tr>
+												<td>Custom button</td>
+												<td>User Context</td>
+											</tr>
+											<tr>
+												<td>Custom link</td>
+												<td>User Context</td>
+											</tr>
+											<tr>
+												<td>Direct link</td>
+												<td>User Context</td>
+											</tr>
+											<tr>
+												<td>Flow action</td>
+												<td>User Context</td>
+											</tr>
+											<tr>
+												<td>Lightning page</td>
+												<td>User Context</td>
+											</tr>
+											<tr>
+												<td>Process Builder</td>
+												<td>System Context (as process always runs in System Context)</td>
+											</tr>
+											<tr>
+												<td>REST API</td>
+												<td>User Context</td>
+											</tr>
+											<tr>
+												<td>Apex method of a custom Aura component controller</td>
+												<td>Depends on <code>with/without sharing</code> of Apex class; never considers FLS/OLS/user permissions</td>
+											</tr>
+											<tr>
+												<td>Apex method of a Visualforce controller</td>
+												<td>Depends on <code>with/without sharing</code> of Apex class; never considers FLS/OLS/user permissions</td>
+											</tr>
+											<tr>
+												<td>Scheduled Flow</td>
+												<td>System Context</td>
+											</tr>
+											<tr>
+												<td>Web tab</td>
+												<td>User Context</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="sourceBox">
+										<a href="https://help.salesforce.com/apex/HTViewHelpDoc?id=flow_distribute_context.htm" target="_blank">Help</a>
+									</div>
 									<li><strong>User Access</strong> Can be restricted to Profiles or Permission Sets</li>
 									<!-- If Process Builder is the distribution method, the user that triggered the process sometimes requires other permissions. For example, if a process launches a flow that attempts to save permission set license assignments, and the running user doesn’t have the Assign Permission Sets permission, an error occurs. -->
 								</ul>
@@ -1696,30 +1687,28 @@
 										</div>
 									</div>
 									<li><strong>Execution Mode</strong> Choice whether to run in System Context with/without sharing. User context is preserved <em>only</em> for Scheduled Jobs (scheduling user) or during unit tests via <code>runAs()</code>. User impersonation may also happen via other ways</li>
-									<ul>
-										<table>
-											<thead>
-												<tr>
-													<th>Apex/Invocable Method Called From</th>
-													<th>Execution Mode</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Process or flow (class<code>with sharing</code>)</td>
-													<td>User Context with regards to sharing; FLS/OLS/user permissions are enforced as defined in code; User must have access to Apex class</td>
-												</tr>
-												<tr>
-													<td>Process or flow (class <code>without sharing</code>)</td>
-													<td>System Context with regards to sharing; FLS/OLS/user permissions are enforced as defined in code; User must have access to Apex class</td>
-												</tr>
-												<tr>
-													<td>REST API</td>
-													<td>User Context with regards to sharing; FLS/OLS/user permissions are enforced as defined in code; User must have access to Apex class</td>
-												</tr>
-											</tbody>
-										</table>
-									</ul>
+									<table>
+										<thead>
+											<tr>
+												<th>Apex/Invocable Method Called From</th>
+												<th>Execution Mode</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Process or flow (class<code>with sharing</code>)</td>
+												<td>User Context with regards to sharing; FLS/OLS/user permissions are enforced as defined in code; User must have access to Apex class</td>
+											</tr>
+											<tr>
+												<td>Process or flow (class <code>without sharing</code>)</td>
+												<td>System Context with regards to sharing; FLS/OLS/user permissions are enforced as defined in code; User must have access to Apex class</td>
+											</tr>
+											<tr>
+												<td>REST API</td>
+												<td>User Context with regards to sharing; FLS/OLS/user permissions are enforced as defined in code; User must have access to Apex class</td>
+											</tr>
+										</tbody>
+									</table>
 									<li><strong>User Access</strong> Can be restricted to Profiles or Permission Sets</li>
 								</ul>
 							</div>
