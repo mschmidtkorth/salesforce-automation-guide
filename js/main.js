@@ -1,10 +1,10 @@
-$(document).ready(function () {
+/*$(document).ready(function () {
 	jQuery(".tabs").tabs();
 	jQuery(".subtabs").tabs();
 	jQuery(".subsubtabs").tabs();
 
 	openParentTab();
-});
+});*/
 
 function openParentTab() {
 	locationHash = location.hash.substring(1);
@@ -32,7 +32,7 @@ function showDetails(elem, identifier) {
 
 function showAllCharts() {
 	$('#charts').toggle();
-	$('#charts').html('<a href="ratingFlow.png" target="_blank"><img src="ratingFlow.png" alt="Rating for Flows." width="25%" /></a><a href="ratingProcess.png" target="_blank"><img src="ratingProcess.png" alt="Rating for Process Builder." width="25%" /></a><a href="ratingWorkflow.png" target="_blank"><img src="ratingWorkflow.png" alt="Rating for Wokflows." width="25%" /></a><a href="ratingApex.png" target="_blank"><img src="ratingApex.png" alt="Rating for Apex." width="25%" /></a>');
+	$('#charts').html('<a href="./images/spiderChart/ratingFlow.png" target="_blank"><img src="./images/spiderChart/ratingFlow.png" alt="Rating for Flows." width="25%" /></a><a href="./images/spiderChart/ratingProcess.png" target="_blank"><img src="./images/spiderChart/ratingProcess.png" alt="Rating for Process Builder." width="25%" /></a><a href="./images/spiderChart/ratingWorkflow.png" target="_blank"><img src="./images/spiderChart/ratingWorkflow.png" alt="Rating for Wokflows." width="25%" /></a><a href="./images/spiderChart/ratingApex.png" target="_blank"><img src="./images/spiderChart/ratingApex.png" alt="Rating for Apex." width="25%" /></a>');
 }
 
 function mobileFullscreen() {
