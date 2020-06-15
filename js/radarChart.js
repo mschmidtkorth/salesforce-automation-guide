@@ -68,6 +68,8 @@ function RadarChart(id, data, options) {
 		.attr("width", cfg.w + cfg.margin.left + cfg.margin.right)
 		.attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
 		.attr("class", "radar" + id);
+	var width = cfg.w + cfg.margin.left + cfg.margin.right // MSK
+	var height = cfg.w + cfg.h + cfg.margin.top + cfg.margin.bottom // MSK
 	//Append a g element
 	var g = svg.append("g")
 		.attr("transform", "translate(" + (cfg.w / 2 + cfg.margin.left) + "," + (cfg.h / 2 + cfg.margin.top) + ")");
@@ -278,11 +280,11 @@ function RadarChart(id, data, options) {
 			tooltip
 				.attr('x', newX)
 				.attr('y', newY)
-				.text(d.axis + ' ' + Format(d.value))
+				.text(d.axis + ' ' + Format(d.value)) // MSK
 				.transition().duration(200)
 				.style('opacity', 1)
-				.style('font-weight', 900)
-				.style('fill', 'black');
+				.style('font-weight', 900) // MSK
+				.style('fill', 'black'); // MSK
 		})
 		.on("mouseout", function () {
 			tooltip.transition().duration(200)
@@ -325,5 +327,4 @@ function RadarChart(id, data, options) {
 			}
 		});
 	} //wrap
-
 } //RadarChart
