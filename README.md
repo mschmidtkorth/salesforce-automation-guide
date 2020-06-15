@@ -11,7 +11,7 @@ Check it out on **[salesforce-automation.herokuapp.com](https://salesforce-autom
 Do you want to suggest an enhancement, provide additional information or report incorrect information? See below!
 
 ## Providing Feedback
-If you are missing information or have found incorrect statements, feel free to [leave feedback](https://forms.gle/79dzU4qhpu3drPp4A), create an [issue](https://github.com/mschmidtkorth/salesforce-automation-guide/issues) me know or fix it yourself:
+If you are missing information or have found incorrect statements, feel free to [leave feedback](https://forms.gle/79dzU4qhpu3drPp4A), create an [issue](https://github.com/mschmidtkorth/salesforce-automation-guide/issues) to let me know or fix it yourself:
 
 1. Fork it! Clone it locally to start coding: `git clone https://github.com/mschmidtkorth/salesforce-automation-guide.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
