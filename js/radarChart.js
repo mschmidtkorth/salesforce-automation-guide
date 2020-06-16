@@ -315,7 +315,8 @@ function RadarChart(id, data, options) {
 				dy = parseFloat(text.attr("dy")),
 				tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
 
-			while (word = words.pop()) {
+			while (words.length > 0) {
+				word = words.pop();
 				line.push(word);
 				tspan.text(line.join(" "));
 				if (tspan.node().getComputedTextLength() > width) {
@@ -325,6 +326,18 @@ function RadarChart(id, data, options) {
 					tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
 				}
 			}
+
+			//var allWords = words.pop();
+			// for (var i = 0; i < allWords.length; i += 1) {
+			// 	line.push(allWords[i]);
+			// 	tspan.text(line.join(" "));
+			// 	if (tspan.node().getComputedTextLength() > width) {
+			// 		line.pop();
+			// 		tspan.text(line.join(" "));
+			// 		line = [allWords[i]];
+			// 		tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(allWords[i]);
+			// 	}
+			// }
 		});
 	} //wrap
 } //RadarChart
