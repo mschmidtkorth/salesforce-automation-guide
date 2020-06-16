@@ -26,7 +26,7 @@ function openParentTab() {
 }
 
 function showDetails(elem, identifier) {
-	$('#' + identifier).toggle()
+	$('#' + identifier).toggle();
 	elem.innerHTML = elem.innerHTML == 'Show Order of Execution from an automation perspective' ? 'Hide Order of Execution from an automation perspective' : 'Show Order of Execution from an automation perspective';
 }
 
@@ -38,7 +38,7 @@ function showAllCharts() {
 function mobileFullscreen() {
 	$('#header').toggle();
 	$('#footer').toggle();
-	var maxButton = $('#maximize')
+	var maxButton = $('#maximize');
 	if (maxButton.html() == 'open_in_full') {
 		$('body').addClass('fullscreen');
 		maxButton.html('close_fullscreen');

@@ -40,11 +40,11 @@ function RadarChart(id, data, options) {
 	var maxValue = Math.max(cfg.maxValue, d3.max(data, function (i) {
 		return d3.max(i.map(function (o) {
 			return o.value;
-		}))
+		}));
 	}));
 
 	var allAxis = (data[0].map(function (i, j) {
-			return i.axis
+			return i.axis;
 		})), //Names of each axis
 		total = allAxis.length, //The number of different axes
 		radius = Math.min(cfg.w / 2, cfg.h / 2), //Radius of the outermost circle
@@ -68,8 +68,8 @@ function RadarChart(id, data, options) {
 		.attr("width", cfg.w + cfg.margin.left + cfg.margin.right)
 		.attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
 		.attr("class", "radar" + id);
-	var width = cfg.w + cfg.margin.left + cfg.margin.right // MSK
-	var height = cfg.w + cfg.h + cfg.margin.top + cfg.margin.bottom // MSK
+	var width = cfg.w + cfg.margin.left + cfg.margin.right; // MSK
+	var height = cfg.w + cfg.h + cfg.margin.top + cfg.margin.bottom; // MSK
 	//Append a g element
 	var g = svg.append("g")
 		.attr("transform", "translate(" + (cfg.w / 2 + cfg.margin.left) + "," + (cfg.h / 2 + cfg.margin.top) + ")");
@@ -159,7 +159,7 @@ function RadarChart(id, data, options) {
 			return rScale(maxValue * cfg.labelFactor) * Math.sin(angleSlice * i - Math.PI / 2);
 		})
 		.text(function (d) {
-			return d
+			return d;
 		})
 		.call(wrap, cfg.wrapWidth);
 
