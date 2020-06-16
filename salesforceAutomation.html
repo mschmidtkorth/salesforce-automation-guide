@@ -36,20 +36,23 @@
 	<meta name="theme-color" content="#ffffff">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" href="./css/main.css">
+	<!-- <link rel="stylesheet" href="./css/main.css">
 	<link rel="stylesheet" href="./css/jquery.css">
 	<link rel="stylesheet" href="./css/bootstrap.css">
 	<link rel="stylesheet" href="./css/radarChart.css">
-	<link rel="stylesheet" href="./css/media.css">
+	<link rel="stylesheet" href="./css/media.css"> -->
+	<link rel="stylesheet" href="./css/style.min.css">
 
 	<!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/flick/jquery-ui.css"> -->
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="./js/handlebars.js"></script>
+	<!-- <script src="./js/handlebars.js"></script> -->
+	<script src="./js/handlebars.min.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="./js/main.js"></script>
+	<!-- <script type="text/javascript" src="./js/main.js"></script> -->
+	<script type="text/javascript" src="./js/main.min.js"></script>
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
@@ -66,7 +69,8 @@
 </head>
 
 <body>
-	<script src="./js/radarChart.js" charset="utf-8"></script>
+	<!-- <script src="./js/radarChart.js" charset="utf-8"></script> -->
+	<script src="./js/radarChart.min.js" charset="utf-8"></script>
 
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB44RKL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -504,6 +508,7 @@
 																		<li><strong>Record Operations</strong></li>
 																		<ul>
 																			<li>Create, Read, Update, or Delete any record</li>
+																			{{> partialTextbox type="info" text="Flows can ready any record via the <em>Get Records</em> element. Workflows or Processes have no way of accessing other records (except related records and Custom Metadata)."}}
 																			<li class="no">Undelete records</li>
 																			<li>Supports Custom Labels</li>
 																			<li>Supports Custom Settings (via <em>Get Records</em>)</li>
@@ -663,13 +668,14 @@
 																	<li><strong>Screen Flow</strong> Provides UI and allows user interaction. Can be invoked by Flow actions, Lightning/Aura/Visualforce pages, Buttons/Links, Tabs, or Lightning Out. Can also be launched from Setup</li>
 																	<li><strong>Autolaunched Flow</strong> Is triggered by Schedule, Process, Flow, Apex, REST API, Button/Link, Visualforce, Einstein Bots, or record update and creation. Can also be launched from Setup</li>
 																	{{> partialTextbox type="info" text="While a flow cannot be triggered by a Platform Event (is not a selectable object), once it is running it can pause and <a href='https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_subscribe_flow.htm' target='_blank'>listen for a Platform Event</a>."}}
+																	{{> partialTextbox type="info" text="Record-change based flows do <em>not</em> require a separate process to be triggered, they run on their own."}}
 																	<li><strong>User Provisioning Flow</strong> Provisions users for third-party services in the background. Is triggered as part of user provisioning wizard</li>
 																	<li><strong>Field Service Mobile Flow</strong> Screen-based flow for FSL mobile app triggered by actions to allow capturing signatures or pictures</li>
 																	<li><strong>Field Service Embedded Flow</strong> Screen-based flow triggered by embedded appointment booking</li>
 																	<li><strong>Contact Request Flow</strong> Screen-based self-service flow for Lightning Communities to request a customer to contact the user. Is triggered via button or embedded on-page.</li>
 																	<li><strong>API</strong> Triggered by an external system</li>
-																	<li><strong>Execution Context</strong> Handles before-/after-* operations (limited functionality for before-*) for autolaunched flows. before-* flows improve the performance drastically</li>
-																	{{> partialTextbox type="howto" text="after-* flows are defined by using 'Users or apps&ndash;no flow trigger' as the trigger; before-* flows are defined by using 'New or updated records&ndash;flow makes fast field updates' as the trigger. before-* flows are limited to the <em>Get Records</em> element."}}
+																	<li><strong>Execution Context</strong> Handles before-/after-* operations (limited functionality for before-*) for autolaunched flows. before-* flows improve the performance drastically (up to 10 times compared to process)</li>
+																	{{> partialTextbox type="howto" text="before-* flows are defined by using 'Before the record is saved' (or 'New or updated records&ndash;flow makes fast field updates' in Spring '20) as the trigger. after-* flows are defined by using 'After the record is saved' as the trigger. before-* flows are limited to the <em>Get Records</em> element, field updates can be performed via assignments."}}
 																	{{> partialTextbox type="warning" text="Changing only the record owner does <em>not</em> launch record-triggered before-* flows."}}
 																</ul>
 																{{/ifEquals}}
