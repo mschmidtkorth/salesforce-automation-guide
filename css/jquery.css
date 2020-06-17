@@ -97,6 +97,7 @@ div.textbox {
 div.textbox-left {
 	/* width: 15%;
 	min-width: 11em; */
+	max-width: 13em;
 }
 
 div.textbox-left-info {
