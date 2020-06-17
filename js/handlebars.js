@@ -10,65 +10,6 @@ function drawRadarChart() {
 		height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 
 	var data = [
-		// Note: 0 does not exist, so lowest value is 0.1
-		[ //Workflow Rule
-			{
-				axis: "Functionality",
-				value: 0.2
-			}, // Limited record management, few standard actions, few standard metadata capabilities, no flow control
-			{
-				axis: "Speed",
-				value: 1.0
-			}, // Most mature solution, high speed due to limited functionality and flexibility
-			{
-				axis: "Scalability",
-				value: 0.45
-			}, // Can only make one decision, few standard actions, but good with data/performance
-			{
-				axis: "Maintenance",
-				value: 0.6
-			}, // No versioning, non-ideal wizard, naming conventions - but simple
-			{
-				axis: "Security",
-				value: 0.7
-			}, // Platform handles it, but runs in system context and no user access management
-			{
-				axis: "Error Handling",
-				value: 1.0
-			}, // Nothing to handle - will not fail for the user as wrong configuration is validated during configuration
-			{
-				axis: "Limit Management",
-				value: 0.9
-			}, // Barely any limits
-			{
-				axis: "Debugging",
-				value: 0.7
-			}, // Good, unlikely to run into complex debugging situations, but no dedicated interactive debugging
-			{
-				axis: "Testing",
-				value: 0.2
-			}, // No dedicated testing, no unit tests
-			{
-				axis: "Deployment",
-				value: 1.0
-			}, // Simple deployment, editable in any org
-			{
-				axis: "Availability",
-				value: 0.8
-			}, // Not all editions, Classic/Lightning
-			{
-				axis: "Skills Required",
-				value: 1.0
-			}, // Requires you to be able to read
-			{
-				axis: "Low Risk",
-				value: 1.0
-			}, // Few save actions, no deletion, no complexity
-			{
-				axis: "Future-Proofness",
-				value: 0.2
-			} // Not EoL but also no longer developed
-		],
 		[ //Process Builder
 			{
 				axis: "Functionality",
@@ -124,128 +65,12 @@ function drawRadarChart() {
 			}, // If something breaks, easily fixable, risk of creating too many processes with other dependencies, no deletion
 			{
 				axis: "Future-Proofness",
-				value: 1.0
-			} // Active development
-		],
-		[ //Flow
-			{
-				axis: "Functionality",
-				value: 0.8
-			}, // All record capabilities, Advanced logic, , good standard metadata capabilities, good flow control, but still limited capabilities
-			{
-				axis: "Speed",
-				value: 0.85
-			}, // Still not fully optimized, especially in bulk scenarios, but has gotten much better, especially with before-* updates
-			{
-				axis: "Scalability",
-				value: 0.85
-			}, // Call flow, apex; very manay features and external addons (solutions); risky for lDV, less limited logic
-			{
-				axis: "Maintenance",
-				value: 0.6
-			}, // Versioning, UI, too much? flexibility - can get crazy,
-			{
-				axis: "Security",
-				value: 0.9
-			}, // Platform handles it, allows context choice, user access management, conditional components
-			{
-				axis: "Error Handling",
-				value: 0.5
-			}, // Situational error handling (fault paths), crazy error messages
-			{
-				axis: "Limit Management",
-				value: 0.65
-			}, // Apex-like governor limits, not much flexibility to cope with them
-			{
-				axis: "Debugging",
-				value: 0.8
-			}, // More complex functionality, but also better (interactive) debugging
-			{
-				axis: "Testing",
-				value: 0.5
-			}, // No dedicated testing framework, some Apex unit-test requirements, interactive debugger
-			{
-				axis: "Deployment",
-				value: 0.9
-			}, // Simple deployment, editable in any org, cannot be removed from Managed Packages
-			{
-				axis: "Availability",
-				value: 1.0
-			},
-			{
-				axis: "Skills Required",
-				value: 0.6
-			}, // Can get complex, programmatic mind
-			{
-				axis: "Low Risk",
-				value: 0.6
-			}, // Can get messy
-			{
-				axis: "Future-Proofness",
-				value: 1.0
-			} // Active development
-		],
-		[ //Apex
-			{
-				axis: "Functionality",
-				value: 1.0
-			}, // Unlimited potential
-			{
-				axis: "Speed",
-				value: 1.0
-			}, // Extremely fast (if built correctly)
-			{
-				axis: "Scalability",
-				value: 1.0
-			}, // Unlimited scalability
-			{
-				axis: "Maintenance",
-				value: 0.3
-			}, // Versioning requires 3rd-party solution, no edit on prod, higher effort
-			{
-				axis: "Security",
-				value: 1.0
-			}, // Choice of context, choice whether to enforce FLS/OLS/sharing, can be limited to users, custom permissions
-			{
-				axis: "Error Handling",
-				value: 1.0
-			}, // Custom exceptions and error handling, hide exceptions
-			{
-				axis: "Limit Management",
-				value: 1.0
-			}, // Limits, but also lots of ways to work around them
-			{
-				axis: "Debugging",
-				value: 1.0
-			}, // Unlimited debugging capabilities
-			{
-				axis: "Testing",
-				value: 1.0
-			}, // Massive, proven test class suites, frameworks and log handlers
-			{
-				axis: "Deployment",
-				value: 0.4
-			}, // Mandatory unit tests, slow running unit tests, easier to miss dependencies
-			{
-				axis: "Availability",
-				value: 0.8
-			}, // Not all editions, Classic/Lightning
-			{
-				axis: "Skills Required",
-				value: 0.2
-			}, // Need to one or more languages, requires additional development skills
-			{
-				axis: "Low Risk",
-				value: 0.2
-			}, // If you don't know what you do, you can kill an org
-			{
-				axis: "Future-Proofness",
-				value: 1.0
-			} // Active development, will not go away
+				value: 0.70
+			} // Active development, but more maintenance and less feature-oriented
 		]
 	];
 
-	var color = d3.scale.ordinal().range(["#EDC951", "#CC333F", "#0C7BDC", "#3C784C"]);
+	var color = d3.scale.ordinal().range(["#CC333F", "#0C7BDC", "#3C784C"]);
 	//var color = d3.scale.ordinal().range(["#FFC20A", "#0C7BDC", "#994F00", "#3C784C"]);
 
 	var radarChartOptions = {
