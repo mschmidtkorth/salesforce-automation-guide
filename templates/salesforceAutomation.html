@@ -46,6 +46,7 @@
 	<!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/flick/jquery-ui.css"> -->
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
+	<!-- JQuery dependencies: toggle(), textboxes -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- <script src="./js/handlebars.js"></script> -->
 	<script src="./js/handlebars.min.js"></script>
@@ -79,7 +80,8 @@
 		<h1>Salesforce Automation Guide</h1>
 		<div class="columnContainer">
 			<div class="columnLeft columnLeft-header headerLogo">
-				<img src="https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg" alt="salesforce.com logo" />
+				<img src="https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg" alt="salesforce.com logo" /><br />
+				<a href="https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/salesforce_release_notes.htm" target="_blank"><img id="releaseLogo" src="./images/releaseWinter21.png" alt="Updated for Winter '21 Release" /></a>
 			</div>
 			<div class="columnRight columnRight-header">
 				Salesforce offers different tools for automating business processes. They differ in features, complexity, and required skills.<br />
@@ -188,6 +190,7 @@
 												<li>Launched by another flow</li>
 												<li>Launched by process</li>
 												<li>Launched by Apex</li>
+												<li>Platform Event received</li>
 												<li>Schedule</li>
 												<li>User clicks button/link</li>
 												<li>User accesses Lightning/Community/Visualforce page, custom tab, utility bar item</li>
@@ -397,7 +400,7 @@
 									<ul>
 										<li>Orchestration, logic and actions</li>
 										<li>Provide a guided visual experience with easy-to-use interfaces (on demand; offline)</li>
-										<li>Provide simple user interfaces (on demand)</li>
+										<li>Provide simple user interfaces (on demand or embedded)</li>
 										<li>Schedule regular data tasks</li>
 										<li>Perform conditional record actions or integration with external systems in more complex scenarios</li>
 										<li>Update record values before a record is created or updated</li>
@@ -663,18 +666,18 @@
 																{{/ifEquals}}
 															{{/ifEquals}}
 															{{#ifEquals @../key "Triggers"}}
-																{{#ifEquals @key "Flow"}}
+															{{#ifEquals @key "Flow"}}
 																<ul>
-																	<li><strong>Screen Flow</strong> Provides UI and allows user interaction. Can be invoked by Flow actions, Lightning/Aura/Visualforce pages, Buttons/Links, Tabs, or Lightning Out. Can also be launched from Setup</li>
-																	<li><strong>Autolaunched Flow</strong> Is triggered by Schedule, Process, Flow, Apex, REST API, Button/Link, Visualforce, Einstein Bots, or record update and creation. Can also be launched from Setup</li>
-																	{{> partialTextbox type="info" text="While a flow cannot be triggered by a Platform Event (is not a selectable object), once it is running it can pause and <a href='https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_subscribe_flow.htm' target='_blank'>listen for a Platform Event</a>."}}
+																	<li><strong>Screen Flow</strong> Provides UI and allows user interaction. Can be invoked by Flow actions, embedded on Lightning/Aura/Visualforce or Reecord pages, Buttons/Links, Tabs, or Lightning Out. Can also be launched from Setup</li>
+																	<li><strong>Autolaunched Flow</strong> Is triggered by Schedule, Process, Flow, {{> partialTooltip placeholder="Platform Event" title="Summer '20" content="" release="https://releasenotes.docs.salesforce.com/en-us/summer20/release-notes/rn_forcecom_flow_fbuilder_platform_event_trigger.htm"}}, Apex, REST API, Button/Link, Visualforce, Einstein Bots, or record update, creation and {{> partialTooltip placeholder="deletion" title="Winter '21" content="Before-deletion flow" release="https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_forcecom_flow_fbuilder_trigger_flow.htm"}} (can check whether {{> partialTooltip placeholder="record did not meet criteria before DML" title="Winter '21" content="" release="https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_forcecom_flow_fbuilder_trigger_specific_change.htm"}}). Can also be launched from Setup</li>
+																	{{> partialTextbox type="info" text="Running flows can pause and <a href='https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_subscribe_flow.htm' target='_blank'>listen for a Platform Event</a>."}}
 																	{{> partialTextbox type="info" text="Record-change based flows do <em>not</em> require a separate process to be triggered, they run on their own."}}
 																	<li><strong>User Provisioning Flow</strong> Provisions users for third-party services in the background. Is triggered as part of user provisioning wizard</li>
 																	<li><strong>Field Service Mobile Flow</strong> Screen-based flow for FSL mobile app triggered by actions to allow capturing signatures or pictures</li>
 																	<li><strong>Field Service Embedded Flow</strong> Screen-based flow triggered by embedded appointment booking</li>
 																	<li><strong>Contact Request Flow</strong> Screen-based self-service flow for Lightning Communities to request a customer to contact the user. Is triggered via button or embedded on-page.</li>
 																	<li><strong>API</strong> Triggered by an external system</li>
-																	<li><strong>Execution Context</strong> Handles before-/after-* operations (limited functionality for before-*) for autolaunched flows. before-* flows improve the performance drastically (up to 10 times compared to process)</li>
+																	<li><strong>Execution Context</strong> Handles before-/{{> partialTooltip placeholder="after" title="Summer '20" content="" release="https://releasenotes.docs.salesforce.com/en-us/summer20/release-notes/rn_forcecom_flow_fbuilder_after-save_trigger.htm"}}-* operations (limited functionality for before-*) for autolaunched flows. before-* flows improve the performance drastically (up to 10 times compared to process)</li>
 																	{{> partialTextbox type="howto" text="before-* flows are defined by using 'Before the record is saved' (or 'New or updated records&ndash;flow makes fast field updates' in Spring '20) as the trigger. after-* flows are defined by using 'After the record is saved' as the trigger. before-* flows are limited to the <em>Get Records</em> element, field updates can be performed via assignments."}}
 																	{{> partialTextbox type="warning" text="Changing only the record owner does <em>not</em> launch record-triggered before-* flows."}}
 																</ul>
@@ -712,7 +715,7 @@
 																{{/ifEquals}}
 																{{#ifEquals @key "Apex"}}
 																<ul>
-																	<li><strong>Record Change</strong>Triggered by record creation, update, delete and undelete (can check whether record did not meet criteria before DML)</li>
+																	<li><strong>Record Change</strong> Triggered by record creation, update, delete and undelete (can check whether record did not meet criteria before DML)</li>
 																	<li><strong>Execution Context</strong> Supports before/after insert, update, delete, after delete, after undelete contexts</li>
 																	<li><strong>Process</strong> Triggered by process (<code>@InvocableMethod</code>)</li>
 																	<li><strong>Flow</strong> Triggered by flow (<code>@InvocableMethod</code>) or as embedded (polymorphic) Lightning (Web) Component</li>
@@ -1050,7 +1053,7 @@
 									<li><strong>Versioning</strong> Multiple versions per flow can be stored, you can retain previously deactivated flows. Versions cannot be compared within Salesforce</li>
 									<li><strong>Editability</strong> Cannot be edited if active (keeps your environment stable, but might also clutter your org)</li>
 									<li><strong>Status</strong> Flows can be active or inactive</li>
-									<li><strong>Maintenance Effort</strong> Medium effort to keep up-to-date, but the more (complex) flows are the messier it gets</li>
+									<li><strong>Maintenance Effort</strong> Medium effort to keep up-to-date, but the more (complex) flows are the messier it gets ({{> partialTooltip placeholder="auto-layout helps" title="Winter '21" content="" release="https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_forcecom_flow_fbuilder_autolayout_mode.htm?edition=&impact="}})</li>
 									<li><strong>Development Environment</strong> More complex visual UI, everything in one place</li>
 									{{> partialTextbox type="info" text="Setting up a flow takes more time and is significantly more complex than a process or workflow."}}
 									<li><strong>Editability</strong> Can be customized on any org</li>
@@ -1136,7 +1139,10 @@
 								{{#ifEquals @key "Flow"}}
 									<ul>
 										<li><strong>FLS, OLS, Sharing</strong> Security is handled by the platform, depending on execution mode</li>
-										<li><strong>Execution Mode</strong> Choice of <em>User Context or System context without sharing (ignores FLS, OLS, other user permissions and sharing)</em> (depends on how flow is launched) or <em>System Context with sharing (ignores FLS, OLS, other user permissions)</em>. If the first option is chosen, flows execute in the context from which they are called:</li>
+										<ul>
+											<li>Flows may {{> partialTooltip placeholder="enforce required access in merge fields" title="Summer '20" content="" release="https://releasenotes.docs.salesforce.com/en-us/summer20/release-notes/rn_forcecom_flow_cruc_enforce_data_access.htm"}} or {{> partialTooltip placeholder="access to Apex classes" title="Summer '20" content="" release="https://releasenotes.docs.salesforce.com/en-us/summer20/release-notes/rn_forcecom_flow_cruc_disable_apex_access_controls.htm"}}</li>
+										</ul>
+										<li><strong>Execution Mode</strong> Choice of <em>User Context or {{> partialTooltip placeholder="System context without sharing" title="Summer '20" content="" release="https://releasenotes.docs.salesforce.com/en-us/summer20/release-notes/rn_forcecom_flow_fbuilder_system_mode_no_sharing.htm"}} (ignores FLS, OLS, other user permissions and sharing)</em> (depends on how flow is launched) or <em>System Context with sharing (ignores FLS, OLS, other user permissions)</em>. If the first option is chosen, flows execute in the context from which they are called:</li>
 										<table>
 											<thead>
 												<tr>
@@ -1280,19 +1286,20 @@
 										<ul>
 											<li>List user and input parameters</li>
 											<li>List actions performed and their results, including those of other automations</li>
-											<li>List consumed Governor Limits</li>
 											<li>If an exception occurs, error messages are sometimes very generic</li>
 											{{! If a Flow fails, often just “Unhandled exception" is returned, without any further details. Sometimes email is sent, but only to LastModifier (trigger: whoever debugs) (can now be changed). Sometimes no email at all. Sometimes misleading error messages. You also cannot catch exceptions. A trigger exception you can catch and handle and e.g. display a better error message to the user. A flow just stupidly fails. }}
 											<li>Can be sent via email</li>
 											<li>Emails for non-template flows from managed packages contain limited information</li>
-											{{! If someone installs a non-template flow from a managed package, error emails for that flow’s interviews don’t include any details about the individual flow elements. The email is sent to either the user who installed the flow or the Apex exception email recipients. }}
+											{{! If someone installs a non-template flow from a managed package, error emails for that flow's interviews don't include any details about the individual flow elements. The email is sent to either the user who installed the flow or the Apex exception email recipients. }}
 										</ul>
 										<li><strong>Platform Events</strong> Creates <code>FlowExecutionErrorEvent</code> record in case of errors</li>
 										<li><strong>Interactive Debugging</strong> Supports manually debugging a flow and providing input parameters</li>
 										<ul>
+											<li>{{> partialTooltip placeholder="Debug as another user" title="Winter '21" content="" release="https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_forcecom_flow_fbuilder_debug_other_user.htm?edition=&impact="}}</li>
 											<li>List user and input parameters</li>
 											<li>List actions performed and their results</li>
 											<li>Page-by-page debugging for Screen Flows</li>
+											<li>Automatically {{> partialTooltip placeholder="rollback" title="Summer '20" content="" release="https://releasenotes.docs.salesforce.com/en-us/summer20/release-notes/rn_forcecom_flow_fbuilder_debug.htm"}} any changes during debugging</li>
 										</ul>
 										<li><strong>Monitoring</strong></li>
 										<ul>
@@ -1442,7 +1449,7 @@
 											<li>Not all required dependencies are added to the package automatically</li>
 											<li>Only one version of a flow can be included in a change set (the active or latest inactive version); this will lead to a mismatch of available versions between orgs</li>
 											<li>Deployed flows are inactive in the target org (if not specified otherwise in settings)</li>
-											<li>Flows can be deprecated in Unlocked Packages</li>
+											<li>Flows can be deprecated or {{> partialTooltip placeholder="deleted" title="Summer '20" content="" release="https://releasenotes.docs.salesforce.com/en-us/summer20/release-notes/rn_forcecom_flow_mgmnt_packaging_2_0_improvements.htm"}} in Unlocked Packages</li>
 											<li class="no">Flows can be <a href="https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/packaging_packageable_components.htm#packaging_packageable_components" target="_blank">deleted in Managed Packages</a> (requires new development org with new version)</li>
 										</ul>
 									</ul>
@@ -1538,14 +1545,20 @@
 								{{#ifEquals @key "Flow"}}
 									<ul>
 										<li><strong>Support Large Data Volumes</strong> Bulk processing (with limitations) and before-* actions are supported, performance is good</li>
-										{{> partialTextbox type="tip" text="Any interview that is associated with the same flow will be able to have bulkified operations. All shared operations between the interviews (if a flow is executed multiple times per transction) will collect and bulkify their actions."}}
+										{{> partialTextbox type="tip" text="Any interview that is associated with the same flow will be able to have bulkified operations. All shared operations between the interviews (if a flow is executed multiple times per transaction) will collect and bulkify their actions."}}
+										{{> partialTextbox type="note" text="Flows focused on&nbsp;<div class='custom-tooltip custom-tooltip1'><span class='custom-tooltip-placeholder'>batch processing</span><span class='custom-tooltiptext custom-tooltiptextLong'>
+				<span class='custom-tooltip-title'>Winter '21</span><br /><a class='extLink' href='https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_batch_management.htm' target='_blank'>Release Notes</a></span></div>&nbsp;and&nbsp;<div class='custom-tooltip custom-tooltip1'><span class='custom-tooltip-placeholder'>data transformation</span><span class='custom-tooltiptext custom-tooltiptextLong'>
+				<span class='custom-tooltip-title'>Winter '21</span><br /><a class='extLink' href='https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_data_processing_engine.htm?edition=&impact=' target='_blank'>Release Notes</a></span></div>&nbsp; are currently in pilot."}}
 										<div class="sourceBox">
 											<a href="https://help.salesforce.com/articleView?id=flow_concepts_bulkification.htm&type=5" target="_blank">Help</a>
 										</div>
+										{{> partialTextbox type="tip" text="Use&nbsp;<div class='custom-tooltip custom-tooltip1'><span class='custom-tooltip-placeholder'>entry criteria</span><span class='custom-tooltiptext custom-tooltiptextLong'>
+				<span class='custom-tooltip-title'>Winter '21</span><br /><a class='extLink' href='https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_forcecom_flow_fbuilder_record_triggered.htm?edition=&impact=' target='_blank'>Release Notes</a></span></div>&nbsp;to filter records in record-triggered flows to improve performance."}}
+				<!-- TODO: Replace with partial within partial  -->
 										<li><strong>Support Complex Logic</strong> Additional logic branches can be added with good flexibility, record iteration and error handling is supported</li>
+										<li><strong>Support Custom Components</strong> {{> partialTooltip placeholder="Custom flow components" title="Summer '20" content="Components can expose additional properties." release="https://releasenotes.docs.salesforce.com/en-us/summer20/release-notes/rn_forcecom_flow_extend_custom_property_editor_lwc.htm"}} (generic for {{> partialTooltip placeholder="multiple objects" title="Summer '20" content="Make your components reusable." release="https://releasenotes.docs.salesforce.com/en-us/summer20/release-notes/rn_forcecom_flow_extend_generic_sobject.htm"}}) or partner-provided <a href="https://appexchange.salesforce.com/appxStore?type=Flow" target="_blank">flow solutions</a></li>
 										<li><strong>Integrate with External Systems</strong> Some integration options for outbound and inbound integration (Platform Events, Apex, REST API, Email)</li>
 										<li><strong>Involve Other Automation</strong> Is able to utilize processes and workflows (via record updates) and Apex</li>
-										<li><strong>Extend with Solutions</strong> Partner-provided <a href="https://appexchange.salesforce.com/appxStore?type=Flow" target="_blank">flow solutions</a></li>
 									</ul>
 								{{/ifEquals}}
 								{{#ifEquals @key "ProcessBuilder"}}
@@ -2119,6 +2132,15 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</script>
+	<script id="tooltipJs" type="text/x-handlebars-template">
+		<div class="custom-tooltip custom-tooltip1"><span class="custom-tooltip-placeholder">{{{placeholder}}}</span>
+			<span class="custom-tooltiptext custom-tooltiptextLong">
+				<span class="custom-tooltip-title">{{{title}}}</span>
+				<br />{{{content}}}
+				<br /><a class="extLink" href="{{{release}}}" target="_blank">Release Notes</a>
+			</span>
 		</div>
 	</script>
 
