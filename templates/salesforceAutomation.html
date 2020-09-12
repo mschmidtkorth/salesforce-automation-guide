@@ -96,7 +96,7 @@
 
 	<button class="mdc-fab" aria-label="Favorite" onclick="mobileFullscreen();">
 		<div class="mdc-fab__ripple"></div>
-		<span id="maximize" class="mdc-fab__icon material-icons">open_in_full</span>
+		<span id="maximize" class="mdc-fab__icon material-icons">&#11020;</span>
 	</button>
 
 	<div id="content">
@@ -1287,7 +1287,7 @@
 											<li>List user and input parameters</li>
 											<li>List actions performed and their results, including those of other automations</li>
 											<li>If an exception occurs, error messages are sometimes very generic</li>
-											{{! If a Flow fails, often just “Unhandled exception" is returned, without any further details. Sometimes email is sent, but only to LastModifier (trigger: whoever debugs) (can now be changed). Sometimes no email at all. Sometimes misleading error messages. You also cannot catch exceptions. A trigger exception you can catch and handle and e.g. display a better error message to the user. A flow just stupidly fails. }}
+											{{! If a Flow fails, often just "Unhandled exception" is returned, without any further details. Sometimes email is sent, but only to LastModifier (trigger: whoever debugs) (can now be changed). Sometimes no email at all. Sometimes misleading error messages. You also cannot catch exceptions. A trigger exception you can catch and handle and e.g. display a better error message to the user. A flow just stupidly fails. }}
 											<li>Can be sent via email</li>
 											<li>Emails for non-template flows from managed packages contain limited information</li>
 											{{! If someone installs a non-template flow from a managed package, error emails for that flow's interviews don't include any details about the individual flow elements. The email is sent to either the user who installed the flow or the Apex exception email recipients. }}
@@ -1296,9 +1296,11 @@
 										<li><strong>Interactive Debugging</strong> Supports manually debugging a flow and providing input parameters</li>
 										<ul>
 											<li>{{> partialTooltip placeholder="Debug as another user" title="Winter '21" content="" release="https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_forcecom_flow_fbuilder_debug_other_user.htm?edition=&impact="}}</li>
+											{{> partialTextbox type="note" text="Noly available on non-production orgs."}}
 											<li>List user and input parameters</li>
 											<li>List actions performed and their results</li>
 											<li>Page-by-page debugging for Screen Flows</li>
+											<li>Visual debugging showing executed paths</li>
 											<li>Automatically {{> partialTooltip placeholder="rollback" title="Summer '20" content="" release="https://releasenotes.docs.salesforce.com/en-us/summer20/release-notes/rn_forcecom_flow_fbuilder_debug.htm"}} any changes during debugging</li>
 										</ul>
 										<li><strong>Monitoring</strong></li>
