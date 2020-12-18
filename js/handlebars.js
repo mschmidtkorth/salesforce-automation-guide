@@ -126,8 +126,8 @@ function drawRadarChart() {
 			}, // If something breaks, easily fixable, risk of creating too many processes with other dependencies, no deletion
 			{
 				axis: 'Future-Proofness',
-				value: 0.7,
-			}, // Active development, but more maintenance and less feature-oriented
+				value: 0.4,
+			}, // Semi-active development, but more maintenance and less feature-oriented
 		],
 		[
 			//Flow
