@@ -1049,10 +1049,10 @@
 							<div class="tab-pane {{#if @first}}active{{/if}}" id="{{@../key}}-{{@key}}">
 								{{#ifEquals @key "Flow"}}
 								<ul>
-									<li><strong>Versioning</strong> Multiple versions per flow can be stored, you can retain previously deactivated flows. Versions cannot be compared within Salesforce</li>
+									<li><strong>Versioning</strong> Multiple versions per flow can be stored, you can retain previously deactivated flows. Versions cannot be compared within Salesforce. Flows can also have a specified {{> partialTooltip placeholder="API version" title="Winter '21" content="" release="hhttps://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_forcecom_flow_extend_runtime_versioning.htm"}}</li>
 									<li><strong>Editability</strong> Cannot be edited if active (keeps your environment stable, but might also clutter your org)</li>
 									<li><strong>Status</strong> Flows can be active or inactive</li>
-									<li><strong>Maintenance Effort</strong> Medium effort to keep up-to-date, but the more (complex) flows are the messier it gets ({{> partialTooltip placeholder="auto-layout helps" title="Winter '21" content="" release="https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_forcecom_flow_fbuilder_autolayout_mode.htm?edition=&impact="}})</li>
+									<li><strong>Maintenance Effort</strong> Medium effort to keep up-to-date, but the more (complex) flows are the messier it gets ({{> partialTooltip placeholder="auto-layout helps" title="Winter '21" content="" release="https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_forcecom_flow_fbuilder_autolayout_mode.htm"}})</li>
 									<li><strong>Development Environment</strong> More complex visual UI, everything in one place</li>
 									{{> partialTextbox type="info" text="Setting up a flow takes more time and is significantly more complex than a process or workflow."}}
 									<li><strong>Editability</strong> Can be customized on any org</li>
@@ -1295,11 +1295,15 @@
 										<li><strong>Interactive Debugging</strong> Supports manually debugging a flow and providing input parameters</li>
 										<ul>
 											<li>{{> partialTooltip placeholder="Debug as another user" title="Winter '21" content="" release="https://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_forcecom_flow_fbuilder_debug_other_user.htm?edition=&impact="}}</li>
-											{{> partialTextbox type="note" text="Only available on non-production orgs."}}
+											{{> partialTextbox type="note" text="Only available on non-production orgs and only for screen flows and autolaunched flows.<br /> This feature supports flow elements and actions only. Any operations performed by screen components (custom Aura components, custom Lightning web components, and some standard flow screen components such as Lookup components) are performed as the logged-in user and not as the impersonated user."}}
+											<div class="sourceBox">
+												<a href="https://help.salesforce.com/articleView?id=release-notes.rn_forcecom_flow_fbuilder_debug_other_user.htm&release=228&type=5" target="_blank">Help</a>
+											</div>
+											{{> partialTextbox type="note" text="Only available on non-production orgs and only for screen flows and autolaunched flows.<br /> This feature supports flow elements and actions only. Any operations performed by screen components () are performed as the logged-in user and not as the impersonated user. These screen components include custom Aura components, custom Lightning web components, and some standard flow screen components such as Lookup components. But not eg Invocable Processes."}}
 											<li>List user and input parameters</li>
 											<li>List actions performed and their results</li>
 											<li>Page-by-page debugging for Screen Flows</li>
-											<li>Visual debugging showing executed paths</li>
+											<li>Visual debugging showing {{> partialTooltip placeholder="executed paths" title="Winter '21" content="" release="hhttps://releasenotes.docs.salesforce.com/en-us/winter21/release-notes/rn_forcecom_flow_fbuilder_debug_autolaunched.htm?edition=&impact="}} (debug on canvas)</li>
 											<li>Automatically {{> partialTooltip placeholder="rollback" title="Summer '20" content="" release="https://releasenotes.docs.salesforce.com/en-us/summer20/release-notes/rn_forcecom_flow_fbuilder_debug.htm"}} any changes during debugging</li>
 										</ul>
 										<li><strong>Monitoring</strong></li>
